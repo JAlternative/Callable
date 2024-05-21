@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Веб-версия" thread-count="3" parallel="tests">
+    <test name="Настройки терминалa">
+        <groups>
+            <run>
+                <include name="PNBI-10.1.[6, 7, 8]"/>
+                <include name="PNBI-10.1.1"/>
+                <include name="PNBI-10.1.1.2"/>
+                <include name="PNBI-10.1.2"/>
+                <include name="PNBI-10.1.3"/>
+                <include name="PNBI-10.1.4"/>
+                <include name="PNBI-10.1.5"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BioTerminal"/>
+        </classes>
+    </test>
+    <test name="Настройки терминала">
+        <groups>
+            <run>
+                <include name="PNBI-10.1.9"/>
+                <include name="PNBI-10.1.13"/>
+                <include name="PNBI-10.1.12"/>
+                <include name="PNBI-10.1.14"/>
+                <include name="PNBI-10.1.15"/>
+                <include name="PNBI-10.1.16"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BioTerminal"/>
+        </classes>
+    </test>
+    <test name="Главная страница">
+        <groups>
+            <run>
+                <include name="BI-10.7"/>
+                <include name="BI-10.1"/>
+                <include name="BI-10.2"/>
+                <include name="BI-10.6"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BioTerminal"/>
+        </classes>
+    </test>
+</suite>

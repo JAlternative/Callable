@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Оргструктура" thread-count="2" parallel="tests">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="MIX1">
+        <groups>
+            <run>
+                <include name="MIX1"/>
+                <exclude name="in progress"/>
+                <exclude name="grade 3"/>
+                <exclude name="grade super0"/>
+                <exclude name="zozo"/>
+                <exclude name="pochta"/>
+                <exclude name="magnit"/>
+                <exclude name="efes"/>
+                <exclude name="x5"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.OrgStructure"/>
+            <class name="apitest.OrgStructureApiTests"/>
+        </classes>
+    </test>
+</suite>

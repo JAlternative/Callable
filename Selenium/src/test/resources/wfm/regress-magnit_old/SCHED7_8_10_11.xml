@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Расписание" thread-count="4" parallel="tests">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="SCHED7">
+        <groups>
+            <run>
+                <include name="TEST-117.1"/>
+                <include name="TEST-117.2"/>
+                <include name="ABCHR3014-1"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+    <test name="SCHED8">
+        <groups>
+            <run>
+                <include name="TEST-114.3"/>
+                <include name="TK2792-1"/>
+                <include name="ABCHR2800-1"/>
+                <include name="TEST-176.1"/>
+                <include name="ABCHR5706-1"/>
+                <include name="ABCHR4464-1"/>
+                <include name="ABCHR4464-4"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+    <test name="SCHED10">
+        <groups>
+            <run>
+                <include name="ABCHR3475-1"/>
+                <include name="ABCHR3006-1"/>
+                <include name="ABCHR4232"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+    <test name="SCHED11">
+        <groups>
+            <run>
+                <include name="ABCHR5755"/>
+                <include name="ABCHR4717-1"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="dbtest.DataBaseTest"/>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+</suite>

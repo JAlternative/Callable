@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Тесты в процессе написания" parallel="classes" verbose="10">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="Тесты в процессе написания (Pochta)">
+        <method-selectors>
+            <method-selector>
+                <script language="beanshell"><![CDATA[
+      return groups.containsKey("in progress")
+      && !groups.containsKey("magnit")
+      && !groups.containsKey("zozo")
+      && !groups.containsKey("efes");
+     ]]></script>
+            </method-selector>
+        </method-selectors>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+            <class name="apitest.ScheduleBoardApiTest"/>
+            <class name="apitest.OrgStructureApiTests"/>
+            <class name="pagemodel.OrgStructure"/>
+            <class name="dbtest.DataBaseTest"/>
+<!--            <class name="pagemodel.AnalyticsInt"/>-->
+<!--            <class name="pagemodel.BatchCalculation"/>-->
+            <class name="pagemodel.Messages"/>
+            <class name="pagemodel.Notifications"/>
+            <class name="pagemodel.PersonalSchedule"/>
+            <class name="pagemodel.StaffNumber"/>
+            <class name="pagemodel.CommonModule"/>
+<!--            <class name="pagemodel.ReportsClass"/>-->
+<!--            <class name="pagemodel.Support"/>-->
+<!--            <class name="pagemodel.SystemSettings"/>-->
+        </classes>
+    </test>
+</suite>

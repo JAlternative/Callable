@@ -1,0 +1,4 @@
+WFM_STAND	WFM_DB	INT_STAND	INT_DB
+ma_gnit-birzha.t.goodt.me	magnit_birzha_test	http://magnit-integration-test.goodt.me:8080	magnit_outside_integration
+magnit-birzha.t.goodt.me	magnit_birzha_test	https://magnit-integration.t.goodt.me	outside_integration_t
+magnit-stage.t.goodt.me	magnit_wfm_stage	http://magnit-abchr-integration-qa.goodt.me:8080	magnit_outside_integration_sec

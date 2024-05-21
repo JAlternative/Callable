@@ -1,0 +1,1540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.5">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Создать подразделения, сотрудников в них (первый руководитель) и ростеры" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="BASE_URL" elementType="Argument">
+            <stringProp name="Argument.name">BASE_URL</stringProp>
+            <stringProp name="Argument.value">demostart.goodt.cloud</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">Ссылка для перехода в приложение</stringProp>
+          </elementProp>
+          <elementProp name="PROTOCOL" elementType="Argument">
+            <stringProp name="Argument.name">PROTOCOL</stringProp>
+            <stringProp name="Argument.value">https</stringProp>
+            <stringProp name="Argument.desc">протокол https/http</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="influx_url" elementType="Argument">
+            <stringProp name="Argument.name">influx_url</stringProp>
+            <stringProp name="Argument.value">${__P(influx_db_url,http://localhost:8086/write?db=goodt)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="influx_application" elementType="Argument">
+            <stringProp name="Argument.name">influx_application</stringProp>
+            <stringProp name="Argument.value">${__P(influx_db_application,apple)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="influx_measurement" elementType="Argument">
+            <stringProp name="Argument.name">influx_measurement</stringProp>
+            <stringProp name="Argument.value">${__P(influx_db_measurement,belialfff)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="countEmployee" elementType="Argument">
+            <stringProp name="Argument.name">countEmployee</stringProp>
+            <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.desc">Сколько нужно создать сотрудников в подразделении </stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="countOrgUnits" elementType="Argument">
+            <stringProp name="Argument.name">countOrgUnits</stringProp>
+            <stringProp name="Argument.value">8</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">Сколько нужно создать подразделений</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments"/>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+        <stringProp name="HTTPSampler.port"></stringProp>
+        <stringProp name="HTTPSampler.protocol">${PROTOCOL}</stringProp>
+        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+        <stringProp name="HTTPSampler.path"></stringProp>
+        <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+      </ConfigTestElement>
+      <hashTree/>
+      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+        <collectionProp name="CookieManager.cookies"/>
+        <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+        <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
+      </CookieManager>
+      <hashTree/>
+      <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC db" enabled="true">
+        <boolProp name="autocommit">true</boolProp>
+        <stringProp name="checkQuery"></stringProp>
+        <stringProp name="connectionAge">5000</stringProp>
+        <stringProp name="connectionProperties"></stringProp>
+        <stringProp name="dataSource">database</stringProp>
+        <stringProp name="dbUrl">jdbc:postgresql://212.233.73.1:5432/demostart_wfm</stringProp>
+        <stringProp name="driver">org.postgresql.Driver</stringProp>
+        <stringProp name="initQuery"></stringProp>
+        <boolProp name="keepAlive">true</boolProp>
+        <stringProp name="password">NDk4YzE0ODE0YjQyMjEwZGIyMTNkZDYz</stringProp>
+        <stringProp name="poolMax">0</stringProp>
+        <boolProp name="preinit">false</boolProp>
+        <stringProp name="timeout">10000</stringProp>
+        <stringProp name="transactionIsolation">DEFAULT</stringProp>
+        <stringProp name="trimInterval">60000</stringProp>
+        <stringProp name="username">demostart_user</stringProp>
+      </JDBCDataSource>
+      <hashTree/>
+      <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+        <collectionProp name="AuthManager.auth_list">
+          <elementProp name="" elementType="Authorization">
+            <stringProp name="Authorization.url"></stringProp>
+            <stringProp name="Authorization.username">superuser</stringProp>
+            <stringProp name="Authorization.password">NDk4YzE0ODE0YjQyMj</stringProp>
+            <stringProp name="Authorization.domain"></stringProp>
+            <stringProp name="Authorization.realm"></stringProp>
+          </elementProp>
+        </collectionProp>
+        <boolProp name="AuthManager.controlledByThreadGroup">false</boolProp>
+        <stringProp name="TestPlan.comments">qazxsw2!</stringProp>
+      </AuthManager>
+      <hashTree/>
+      <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="Backend Listener" enabled="false">
+        <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="influxdbMetricsSender" elementType="Argument">
+              <stringProp name="Argument.name">influxdbMetricsSender</stringProp>
+              <stringProp name="Argument.value">org.apache.jmeter.visualizers.backend.influxdb.HttpMetricsSender</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="influxdbUrl" elementType="Argument">
+              <stringProp name="Argument.name">influxdbUrl</stringProp>
+              <stringProp name="Argument.value">${influx_url}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="application" elementType="Argument">
+              <stringProp name="Argument.name">application</stringProp>
+              <stringProp name="Argument.value">${influx_application}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="measurement" elementType="Argument">
+              <stringProp name="Argument.name">measurement</stringProp>
+              <stringProp name="Argument.value">${influx_measurement}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="summaryOnly" elementType="Argument">
+              <stringProp name="Argument.name">summaryOnly</stringProp>
+              <stringProp name="Argument.value">false</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="samplersRegex" elementType="Argument">
+              <stringProp name="Argument.name">samplersRegex</stringProp>
+              <stringProp name="Argument.value">[US|TC|&lt;|&gt;].*</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="percentiles" elementType="Argument">
+              <stringProp name="Argument.name">percentiles</stringProp>
+              <stringProp name="Argument.value">99;95;90</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="testTitle" elementType="Argument">
+              <stringProp name="Argument.name">testTitle</stringProp>
+              <stringProp name="Argument.value">Test name</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="eventTags" elementType="Argument">
+              <stringProp name="Argument.name">eventTags</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="samplersRegex2" elementType="Argument">
+              <stringProp name="Argument.name">samplersRegex2</stringProp>
+              <stringProp name="Argument.value">[TC|&lt;|&gt;].*</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </elementProp>
+        <stringProp name="classname">org.apache.jmeter.visualizers.backend.influxdb.InfluxdbBackendListenerClient</stringProp>
+      </BackendListener>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Создать подразделения и сотрудников" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${countOrgUnits}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="Получить даты" enabled="true">
+          <stringProp name="BeanShellSampler.query">        import java.time.LocalDate;
+        
+        LocalDate date = LocalDate.now();
+        String dateToday = String.valueOf(date);
+        String dateStart = String.valueOf(date.withDayOfMonth(1));
+        String dateEnd = String.valueOf(date.withDayOfMonth(date.lengthOfMonth()));
+        String dateMonthAgo = String.valueOf(date.minusMonths(1));
+        String dateYesterday = &quot;&quot;;
+        if (date.equals(date.withDayOfMonth(1))) {
+            dateYesterday = dateToday;
+        } else {
+            dateYesterday = String.valueOf(date.minusDays(1));
+        }
+
+        vars.put(&quot;DATE_NOW&quot;, dateToday);
+        vars.put(&quot;DATE_START_MONTH&quot;, dateStart);
+        vars.put(&quot;DATE_END_MONTH&quot;, dateEnd);
+        vars.put(&quot;DATE_MONTH_AGO&quot;, dateMonthAgo);
+        vars.put(&quot;DATE_YESTERDAY&quot;, dateYesterday);
+
+        // Получение даты начала года
+	   LocalDate startDateOfYear = date.withDayOfYear(1);
+
+	   // Получение даты конца года
+        LocalDate endDateOfYear = date.withDayOfYear(date.lengthOfYear());
+
+        // Преобразование дат в строки
+        String startDateOfYearString = String.valueOf(startDateOfYear);
+        String endDateOfYearString = String.valueOf(endDateOfYear);
+
+        // Добавление значений в переменные JMeter
+        vars.put(&quot;DATE_START_YEAR&quot;, startDateOfYearString);
+        vars.put(&quot;DATE_END_YEAR&quot;, endDateOfYearString);</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="US_1_Создать подразделение" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">false</boolProp>
+        </TransactionController>
+        <hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC_1_Получить_родительское_подразделение" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">false</boolProp>
+          </TransactionController>
+          <hashTree>
+            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Получить родительский оргюнит" enabled="true">
+              <stringProp name="dataSource">database</stringProp>
+              <stringProp name="query">select id, outerid, availableforcalculation, &quot;name&quot;, datefrom, active, organizationunittype_id
+FROM organizationunit o
+WHERE outerid = &apos;MainOrgUnit&apos; AND haschildren = true limit 1;</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable"></stringProp>
+              <stringProp name="variableNames">parentOrgUnitId, parentOuterid, parentAvailableForCalculation, parentName, parentDateFrom, parentActive, parentOrgUnitTypeId</stringProp>
+            </JDBCSampler>
+            <hashTree/>
+            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller" enabled="true">
+              <stringProp name="IfController.condition">${__javaScript(&quot;${parentOrgUnitId_#}&quot; == &quot;0&quot;,)}</stringProp>
+              <boolProp name="IfController.evaluateAll">false</boolProp>
+              <boolProp name="IfController.useExpression">true</boolProp>
+            </IfController>
+            <hashTree>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Получить родительский оргюнит по одному условию" enabled="true">
+                <stringProp name="dataSource">database</stringProp>
+                <stringProp name="query">select id, outerid, availableforcalculation, &quot;name&quot;, datefrom, active, organizationunittype_id
+FROM organizationunit o
+WHERE haschildren = true limit 1;</stringProp>
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout"></stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as String</stringProp>
+                <stringProp name="resultSetMaxRows"></stringProp>
+                <stringProp name="resultVariable"></stringProp>
+                <stringProp name="variableNames">orgUnitId</stringProp>
+              </JDBCSampler>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC_2_Получить_последний_unit_type" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">false</boolProp>
+          </TransactionController>
+          <hashTree>
+            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Получить_последний_unit_type" enabled="true">
+              <stringProp name="dataSource">database</stringProp>
+              <stringProp name="query">SELECT id, &quot;level&quot;, name, outer_id
+FROM sys_list_organization_unit_type
+ORDER BY id DESC
+LIMIT 1;</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable"></stringProp>
+              <stringProp name="variableNames">unitTypeId, unitTypeLevel, unitTypeName, unitTypeOuterId</stringProp>
+            </JDBCSampler>
+            <hashTree/>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC_3_Получить_данные_на стороннем_сайте" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">false</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Получить данные о пользователя на стороннем сайте" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">api.randomdatatools.ru</stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding">UTF-16</stringProp>
+              <stringProp name="HTTPSampler.path"></stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="TestPlan.comments">СНИЛС на сайте не проходит валидацию, когда вводишь рандомные цифры, генерирую данные на сайте</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">firstname;lastname;patronymic;snils;phone;cardNumber;email;carbrand;carmodel;inn_fiz</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$.FirstName;$.LastName;$.FatherName;$.snils;$.Phone;$.PasportNumber;$.Email;$.CarBrand;$.CarModel;$.inn_fiz;</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+                <stringProp name="JSONPostProcessor.defaultValues">Федор;Федоров;Федорович;0;0;7755;good@goodt.me;lada;priora;6226;</stringProp>
+                <stringProp name="TestPlan.comments">&quot;CarBrand&quot;:&quot;Hyundai&quot;,&quot;CarModel&quot;:&quot;Creta&quot;</stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC_4_Отправить_запрос_на_создание_подразделения" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">false</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="&gt;_api/v1/org-units" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&#xd;
+    &quot;_links&quot;: {&#xd;
+        &quot;orgUnitType&quot;: {&#xd;
+            &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/org-unit-types/${unitTypeId_1}&quot;&#xd;
+        },&#xd;
+        &quot;parent&quot;: {&#xd;
+            &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/org-units/${parentOrgUnitId_1}&quot;&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;id&quot;: null,&#xd;
+    &quot;name&quot;: &quot;${carbrand} ${carmodel} ${cardNumber}&quot;,&#xd;
+    &quot;outerId&quot;: &quot;${snils}&quot;,&#xd;
+    &quot;type&quot;: {&#xd;
+        &quot;name&quot;: &quot;${unitTypeName_1}&quot;,&#xd;
+        &quot;level&quot;: ${unitTypeLevel_1},&#xd;
+        &quot;levelForNotification&quot;: null,&#xd;
+        &quot;outerId&quot;: &quot;${unitTypeOuterId_1}&quot;,&#xd;
+        &quot;_links&quot;: {&#xd;
+            &quot;self&quot;: {&#xd;
+                &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/org-unit-types/${unitTypeId_1}&quot;&#xd;
+            }&#xd;
+        },&#xd;
+        &quot;id&quot;: ${unitTypeId_1}&#xd;
+    },&#xd;
+    &quot;chief&quot;: true,&#xd;
+    &quot;parent&quot;: {&#xd;
+        &quot;outerId&quot;: &quot;${parentOuterid_1}&quot;,&#xd;
+        &quot;availableForCalculation&quot;: ${parentAvailableForCalculation_1},&#xd;
+        &quot;name&quot;: &quot;${parentName_1}&quot;,&#xd;
+        &quot;dateFrom&quot;: &quot;${parentDateFrom_1}&quot;,&#xd;
+        &quot;active&quot;: ${parentActive_1},&#xd;
+        &quot;organizationUnitTypeId&quot;: ${parentOrgUnitTypeId_1},&#xd;
+        &quot;_links&quot;: {&#xd;
+            &quot;self&quot;: {&#xd;
+                &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/org-units/${parentOrgUnitId_1}&quot;&#xd;
+            }&#xd;
+        },&#xd;
+        &quot;id&quot;: ${parentOrgUnitId_1}&#xd;
+    },    &#xd;
+    &quot;dateFrom&quot;: &quot;${DATE_START_YEAR}&quot;,&#xd;
+    &quot;dateTo&quot;: &quot;${DATE_END_YEAR}&quot;,&#xd;
+    &quot;availableForCalculation&quot;: true,&#xd;
+    &quot;active&quot;: true,&#xd;
+    &quot;timeZone&quot;: &quot;Europe/Moscow&quot;,&#xd;
+    &quot;availableForStaffingCalculation&quot;: true,&#xd;
+    &quot;organizationUnitTypeId&quot;: ${unitTypeId_1}&#xd;
+}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">api/v1/org-units</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+                <collectionProp name="AuthManager.auth_list">
+                  <elementProp name="" elementType="Authorization">
+                    <stringProp name="Authorization.url"></stringProp>
+                    <stringProp name="Authorization.username">${USERNAME}</stringProp>
+                    <stringProp name="Authorization.password">qwe</stringProp>
+                    <stringProp name="Authorization.domain"></stringProp>
+                    <stringProp name="Authorization.realm"></stringProp>
+                  </elementProp>
+                </collectionProp>
+                <boolProp name="AuthManager.controlledByThreadGroup">false</boolProp>
+              </AuthManager>
+              <hashTree/>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Content-type</stringProp>
+                    <stringProp name="Header.value">application/hal+json</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="US_2_Добавить_сотрудника_в_подразделение" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">false</boolProp>
+        </TransactionController>
+        <hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC_5_Получить_orgUnit" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">false</boolProp>
+          </TransactionController>
+          <hashTree>
+            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Получить_orgUnit" enabled="true">
+              <stringProp name="dataSource">database</stringProp>
+              <stringProp name="query">select id from organizationunit o 
+where name = &apos;${carbrand} ${carmodel} ${cardNumber}&apos; and outerid = &apos;${snils}&apos;</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+              <stringProp name="resultVariable"></stringProp>
+              <stringProp name="variableNames">unitId</stringProp>
+            </JDBCSampler>
+            <hashTree>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="false">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">created</stringProp>
+                <stringProp name="RegexExtractor.regex">id\s+(\d+)</stringProp>
+                <stringProp name="RegexExtractor.template"></stringProp>
+                <stringProp name="RegexExtractor.default"></stringProp>
+                <stringProp name="RegexExtractor.match_number"></stringProp>
+                <stringProp name="Sample.scope">variable</stringProp>
+                <stringProp name="Scope.variable"></stringProp>
+              </RegexExtractor>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC_6_Создать_ростер" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">false</boolProp>
+          </TransactionController>
+          <hashTree>
+            <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Once Only Controller" enabled="true"/>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="&gt;_api/v1/system-properties/124" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+  &quot;enabled&quot;: true,&#xd;
+  &quot;key&quot;: &quot;roster.publish.without_conflicts&quot;,&#xd;
+  &quot;title&quot;: &quot;Публикация без конфликтов&quot;,&#xd;
+  &quot;description&quot;: &quot;Публикация расписания только без конфликтов&quot;,&#xd;
+  &quot;value&quot;: false,&#xd;
+  &quot;type&quot;: &quot;BACK&quot;,&#xd;
+  &quot;dataType&quot;: &quot;BOOL&quot;,&#xd;
+  &quot;tags&quot;: [&#xd;
+    &quot;Публикация расписания&quot;&#xd;
+  ],&#xd;
+  &quot;created&quot;: &quot;2021-03-17T15:39:21.3073&quot;,&#xd;
+  &quot;updated&quot;: &quot;2023-11-08T08:10:29.636474&quot;,&#xd;
+  &quot;_links&quot;: {&#xd;
+    &quot;self&quot;: {&#xd;
+      &quot;href&quot;: &quot;https://magnit-master.goodt.me/api/v1/system-properties/124&quot;&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;id&quot;: null&#xd;
+}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol">${PROTOCOL}</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">api/v1/system-properties/124</stringProp>
+                <stringProp name="HTTPSampler.method">PUT</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="" elementType="Header">
+                      <stringProp name="Header.name">Content-Type</stringProp>
+                      <stringProp name="Header.value">application/hal+json</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree/>
+              </hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="&gt;_api/v1/system-properties/370" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+    &quot;enabled&quot;: true,&#xd;
+    &quot;key&quot;: &quot;roster.single_edited_version&quot;,&#xd;
+    &quot;title&quot;: &quot;\&quot;Редактируемая\&quot; версия ростера может быть только одна&quot;,&#xd;
+    &quot;description&quot;: &quot;При попытке отредактировать опубликованный/расчётный ростер, возникает ошибка, если он бы отредактирован ранее и уже есть другая, \&quot;редактируемая\&quot; версия&quot;,&#xd;
+    &quot;value&quot;: false,&#xd;
+    &quot;type&quot;: &quot;BOTH&quot;,&#xd;
+    &quot;dataType&quot;: &quot;BOOL&quot;,&#xd;
+    &quot;tags&quot;: [&#xd;
+        &quot;Версии расписания&quot;&#xd;
+    ],&#xd;
+    &quot;created&quot;: &quot;2021-10-26T07:59:37.047597&quot;,&#xd;
+    &quot;updated&quot;: &quot;2024-01-15T08:32:22.018546&quot;,&#xd;
+    &quot;_links&quot;: {&#xd;
+        &quot;self&quot;: {&#xd;
+            &quot;href&quot;: &quot;https://magnit-master.goodt.me/api/v1/system-properties/370&quot;&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;id&quot;: null&#xd;
+}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol">${PROTOCOL}</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">api/v1/system-properties/124</stringProp>
+                <stringProp name="HTTPSampler.method">PUT</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="" elementType="Header">
+                      <stringProp name="Header.name">Content-Type</stringProp>
+                      <stringProp name="Header.value">application/hal+json</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Создать пустой ростер" enabled="true">
+              <boolProp name="TransactionController.includeTimers">false</boolProp>
+              <boolProp name="TransactionController.parent">false</boolProp>
+            </TransactionController>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="&gt;_jobapp/cron-jobs/sys/create-empty-planned-roster" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value"> {&quot;date&quot;:&quot;${DATE_NOW}&quot;,&quot;orgUnitSelf&quot;:[${unitId_1}]}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol">${PROTOCOL}</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">/jobapp/cron-jobs/sys/create-empty-planned-roster</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="" elementType="Header">
+                      <stringProp name="Header.name">Content-Type</stringProp>
+                      <stringProp name="Header.value">application/hal+json</stringProp>
+                    </elementProp>
+                    <elementProp name="" elementType="Header">
+                      <stringProp name="Header.name">Accept-Encoding</stringProp>
+                      <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                    </elementProp>
+                    <elementProp name="" elementType="Header">
+                      <stringProp name="Header.name">Connection</stringProp>
+                      <stringProp name="Header.value">keep-alive</stringProp>
+                    </elementProp>
+                    <elementProp name="Accept" elementType="Header">
+                      <stringProp name="Header.name">Accept</stringProp>
+                      <stringProp name="Header.value">*/*</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+          </hashTree>
+          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller сколько сотрудников создать" enabled="true">
+            <boolProp name="LoopController.continue_forever">true</boolProp>
+            <stringProp name="LoopController.loops">${countEmployee}</stringProp>
+          </LoopController>
+          <hashTree>
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC_3_Получить_данные_на стороннем_сайте" enabled="true">
+              <boolProp name="TransactionController.includeTimers">false</boolProp>
+              <boolProp name="TransactionController.parent">false</boolProp>
+            </TransactionController>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Получить данные о пользователя на стороннем сайте" enabled="true">
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                  <collectionProp name="Arguments.arguments"/>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">api.randomdatatools.ru</stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding">UTF-16</stringProp>
+                <stringProp name="HTTPSampler.path"></stringProp>
+                <stringProp name="HTTPSampler.method">GET</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                <stringProp name="TestPlan.comments">СНИЛС на сайте не проходит валидацию, когда вводишь рандомные цифры, генерирую данные на сайте</stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+                  <stringProp name="JSONPostProcessor.referenceNames">firstname;lastname;patronymic;snils;phone;cardNumber;email;carbrand;carmodel;inn_fiz</stringProp>
+                  <stringProp name="JSONPostProcessor.jsonPathExprs">$.FirstName;$.LastName;$.FatherName;$.snils;$.Phone;$.PasportNumber;$.Email;$.CarBrand;$.CarModel;$.inn_fiz;</stringProp>
+                  <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+                  <stringProp name="JSONPostProcessor.defaultValues">Федор;Федоров;Федорович;0;0;7755;good@goodt.me;lada;priora;6226;</stringProp>
+                  <stringProp name="TestPlan.comments">&quot;CarBrand&quot;:&quot;Hyundai&quot;,&quot;CarModel&quot;:&quot;Creta&quot;</stringProp>
+                </JSONPostProcessor>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC_7_Получить_positiontype" enabled="true">
+              <boolProp name="TransactionController.includeTimers">false</boolProp>
+              <boolProp name="TransactionController.parent">false</boolProp>
+            </TransactionController>
+            <hashTree>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Получить_positiontype" enabled="true">
+                <stringProp name="dataSource">database</stringProp>
+                <stringProp name="query">select * from positiontype p where priority = 0</stringProp>
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout"></stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as String</stringProp>
+                <stringProp name="resultSetMaxRows"></stringProp>
+                <stringProp name="resultVariable"></stringProp>
+                <stringProp name="variableNames">positionTypePriority, positionTypeId, positionTypeName, positionTypeOuterId</stringProp>
+              </JDBCSampler>
+              <hashTree/>
+            </hashTree>
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC_8_Получить_positionCategoryId" enabled="true">
+              <boolProp name="TransactionController.includeTimers">false</boolProp>
+              <boolProp name="TransactionController.parent">false</boolProp>
+            </TransactionController>
+            <hashTree>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Получить_positionCategory" enabled="true">
+                <stringProp name="dataSource">database</stringProp>
+                <stringProp name="query">select positioncategory_id, name from &quot;position&quot; p where p.&quot;name&quot; = &apos;${positionTypeName_1}&apos; limit 1</stringProp>
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout"></stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as String</stringProp>
+                <stringProp name="resultSetMaxRows"></stringProp>
+                <stringProp name="resultVariable"></stringProp>
+                <stringProp name="variableNames">positioncategoryId</stringProp>
+              </JDBCSampler>
+              <hashTree/>
+            </hashTree>
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC_9_Создать_сотрудника " enabled="true">
+              <boolProp name="TransactionController.includeTimers">false</boolProp>
+              <boolProp name="TransactionController.parent">false</boolProp>
+            </TransactionController>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="&gt;_api/v1/employees" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+    &quot;orgUnitId&quot;: ${unitId_1},&#xd;
+    &quot;local&quot;: true,&#xd;
+    &quot;outerId&quot;: &quot;${cardNumber} ${snils}&quot;,&#xd;
+&#xd;
+    &quot;firstName&quot;: &quot;${firstname}&quot;,&#xd;
+    &quot;patronymicName&quot;: &quot;${patronymic}&quot;,&#xd;
+    &quot;lastName&quot;: &quot;${lastname}&quot;,&#xd;
+    &quot;birthday&quot;: &quot;1991-12-12&quot;,&#xd;
+    &quot;gender&quot;: &quot;FEMALE&quot;,&#xd;
+    &quot;inn&quot;: &quot;${inn_fiz}&quot;,&#xd;
+    &quot;snils&quot;: &quot;${snils}&quot;,&#xd;
+    &quot;email&quot;: &quot;${email}&quot;,&#xd;
+    &quot;startWorkDate&quot;: &quot;${DATE_START_YEAR}&quot;,&#xd;
+    &quot;endWorkDate&quot;: &quot;${DATE_END_YEAR}&quot;,&#xd;
+    &quot;orgUnitPosition&quot;: [&#xd;
+        {&#xd;
+            &quot;orgUnit&quot;: {&#xd;
+                &quot;outerId&quot;: &quot;${snils}&quot;,&#xd;
+                &quot;availableForCalculation&quot;: true,&#xd;
+                &quot;availableForStaffingCalculation&quot;: true,&#xd;
+                &quot;timeZone&quot;: &quot;Europe/Moscow&quot;,&#xd;
+                &quot;name&quot;: &quot;${carbrand} ${carmodel} ${cardNumber}&quot;,&#xd;
+                &quot;dateFrom&quot;: &quot;${DATE_START_YEAR}&quot;,&#xd;
+                &quot;dateTo&quot;: &quot;${DATE_END_YEAR}&quot;,&#xd;
+                &quot;active&quot;: true,&#xd;
+                &quot;organizationUnitTypeId&quot;: ${unitTypeId_1},&#xd;
+                &quot;_links&quot;: {&#xd;
+                    &quot;self&quot;: {&#xd;
+                        &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/org-units/${unitId_1}&quot;&#xd;
+                    }&#xd;
+                },&#xd;
+                &quot;id&quot;: ${unitId_1}&#xd;
+            }&#xd;
+        },&#xd;
+        {&#xd;
+            &#xd;
+            &quot;dateInterval&quot;: {&#xd;
+                &quot;startDate&quot;: &quot;${DATE_START_YEAR}T21:00:00.000Z&quot;,&#xd;
+                &quot;endDate&quot;: &quot;${DATE_END_YEAR}T21:00:00.000Z&quot;&#xd;
+            },&#xd;
+            &#xd;
+            &quot;position&quot;: {&#xd;
+                &quot;outerId&quot;: &quot;${positionTypeOuterId_1}&quot;,&#xd;
+                &quot;name&quot;: &quot;${positionTypeName_1}&quot;,&#xd;
+                &quot;positionCategoryId&quot;: ${positioncategoryId_1},&#xd;
+                &quot;dateInterval&quot;: {&#xd;
+                    &quot;startDate&quot;: &quot;${DATE_START_YEAR}&quot;,&#xd;
+                    &quot;endDate&quot;: &quot;${DATE_END_YEAR}&quot;&#xd;
+                },&#xd;
+                &quot;id&quot;: ${unitId_1}&#xd;
+            },&#xd;
+            &quot;dismissed&quot;: false,&#xd;
+            &quot;temporary&quot;: false,&#xd;
+            &quot;rate&quot;: 1&#xd;
+        }&#xd;
+    ]&#xd;
+}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+                <stringProp name="HTTPSampler.path">api/v1/employees</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+                  <collectionProp name="AuthManager.auth_list">
+                    <elementProp name="" elementType="Authorization">
+                      <stringProp name="Authorization.url"></stringProp>
+                      <stringProp name="Authorization.username">${USERNAME}</stringProp>
+                      <stringProp name="Authorization.password">qwe</stringProp>
+                      <stringProp name="Authorization.domain"></stringProp>
+                      <stringProp name="Authorization.realm"></stringProp>
+                    </elementProp>
+                  </collectionProp>
+                  <boolProp name="AuthManager.controlledByThreadGroup">false</boolProp>
+                </AuthManager>
+                <hashTree/>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="" elementType="Header">
+                      <stringProp name="Header.name">Content-type</stringProp>
+                      <stringProp name="Header.value">application/hal+json</stringProp>
+                    </elementProp>
+                    <elementProp name="" elementType="Header">
+                      <stringProp name="Header.name">Connection</stringProp>
+                      <stringProp name="Header.value">keep-alive</stringProp>
+                    </elementProp>
+                    <elementProp name="" elementType="Header">
+                      <stringProp name="Header.name">Accept-Encoding</stringProp>
+                      <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                    </elementProp>
+                    <elementProp name="" elementType="Header">
+                      <stringProp name="Header.name">Accept</stringProp>
+                      <stringProp name="Header.value">*/*</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC_10_Получить_sys_list_position_category" enabled="true">
+              <boolProp name="TransactionController.includeTimers">false</boolProp>
+              <boolProp name="TransactionController.parent">false</boolProp>
+            </TransactionController>
+            <hashTree>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Получить_sys_list_position_category" enabled="true">
+                <stringProp name="dataSource">database</stringProp>
+                <stringProp name="query">select id,calculationmode,&quot;name&quot;,outerid,for_exchange  from sys_list_position_category slpc where id = ${positioncategoryId_1} limit 1</stringProp>
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout"></stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as String</stringProp>
+                <stringProp name="resultSetMaxRows"></stringProp>
+                <stringProp name="resultVariable"></stringProp>
+                <stringProp name="variableNames">sysListPosCatId, sysListPosCatCalcMode, sysListPosCatName, sysListPosCatOuterId, sysListForExchange</stringProp>
+              </JDBCSampler>
+              <hashTree/>
+            </hashTree>
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC_11_Получить_employee" enabled="true">
+              <boolProp name="TransactionController.includeTimers">false</boolProp>
+              <boolProp name="TransactionController.parent">false</boolProp>
+            </TransactionController>
+            <hashTree>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Получить employee" enabled="true">
+                <stringProp name="dataSource">database</stringProp>
+                <stringProp name="query">select id from employee e where email = &apos;${email}&apos; and snils = &apos;${snils}&apos; limit 1</stringProp>
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout"></stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as String</stringProp>
+                <stringProp name="resultSetMaxRows"></stringProp>
+                <stringProp name="resultVariable"></stringProp>
+                <stringProp name="variableNames">employeeId</stringProp>
+              </JDBCSampler>
+              <hashTree/>
+            </hashTree>
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC_12_Назначить_должность_сотруднику" enabled="true">
+              <boolProp name="TransactionController.includeTimers">false</boolProp>
+              <boolProp name="TransactionController.parent">false</boolProp>
+            </TransactionController>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="&gt;_api/v1/positions" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+    &quot;active&quot;: true,&#xd;
+    &quot;positionCategory&quot;: {&#xd;
+        &quot;forExchange&quot;: null,&#xd;
+        &quot;name&quot;: &quot;${sysListPosCatName_1}&quot;,&#xd;
+        &quot;categoryId&quot;: ${positioncategoryId_1},&#xd;
+        &quot;outerId&quot;: &quot;${sysListPosCatOuterId_1}&quot;,&#xd;
+        &quot;_links&quot;: {&#xd;
+            &quot;self&quot;: {&#xd;
+                &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/position-categories/${positioncategoryId_1}&quot;&#xd;
+            }&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;jobTitle&quot;: &quot;${positionTypeName_1}&quot;,&#xd;
+    &quot;positionType&quot;: {&#xd;
+        &quot;name&quot;: &quot;${positionTypeName_1}&quot;,&#xd;
+        &quot;priority&quot;: ${positionTypePriority_1},&#xd;
+        &quot;positionIndex&quot;: null,&#xd;
+        &quot;outerId&quot;: &quot;${positionTypeOuterId_1}&quot;,&#xd;
+        &quot;_links&quot;: {&#xd;
+            &quot;self&quot;: {&#xd;
+                &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/position-types/${positionTypeId_1}&quot;&#xd;
+            },&#xd;
+            &quot;mathParameterValues&quot;: {&#xd;
+                &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/position-types/${positionTypeId_1}/math-parameter-values&quot;&#xd;
+            }&#xd;
+        },&#xd;
+        &quot;id&quot;: ${positionTypeId_1}&#xd;
+    },&#xd;
+    &quot;dateInterval&quot;: {&#xd;
+        &quot;startDate&quot;: &quot;${DATE_START_YEAR}&quot;&#xd;
+    },&#xd;
+    &quot;outerId&quot;: &quot;${positionTypeOuterId_1}&quot;,&#xd;
+    &quot;_links&quot;: {&#xd;
+        &quot;self&quot;: {&#xd;
+            &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/positions&quot;&#xd;
+        },&#xd;
+        &quot;positionType&quot;: {&#xd;
+            &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/position-types/${positionTypeId_1}&quot;&#xd;
+        },&#xd;
+        &quot;positionCategory&quot;: {&#xd;
+            &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/position-categories/${positioncategoryId_1}&quot;&#xd;
+        },&#xd;
+        &quot;orgUnit&quot;: {&#xd;
+            &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/org-units/${unitId_1}&quot;&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;name&quot;: &quot;${sysListPosCatName_1}&quot;&#xd;
+}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+                <stringProp name="HTTPSampler.path">api/v1/positions</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+                  <collectionProp name="AuthManager.auth_list">
+                    <elementProp name="" elementType="Authorization">
+                      <stringProp name="Authorization.url"></stringProp>
+                      <stringProp name="Authorization.username">${USERNAME}</stringProp>
+                      <stringProp name="Authorization.password">qwe</stringProp>
+                      <stringProp name="Authorization.domain"></stringProp>
+                      <stringProp name="Authorization.realm"></stringProp>
+                    </elementProp>
+                  </collectionProp>
+                  <boolProp name="AuthManager.controlledByThreadGroup">false</boolProp>
+                </AuthManager>
+                <hashTree/>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="" elementType="Header">
+                      <stringProp name="Header.name">Content-type</stringProp>
+                      <stringProp name="Header.value">application/hal+json</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree/>
+              </hashTree>
+              <TestAction guiclass="TestActionGui" testclass="TestAction" testname="FCA_2s" enabled="true">
+                <intProp name="ActionProcessor.action">1</intProp>
+                <intProp name="ActionProcessor.target">0</intProp>
+                <stringProp name="ActionProcessor.duration">${__Random(2000,2000,)}</stringProp>
+              </TestAction>
+              <hashTree/>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Получить_position" enabled="true">
+                <stringProp name="dataSource">database</stringProp>
+                <stringProp name="query">select id from position where organizationunit_id = ${unitId_1}
+and positioncategory_id = ${positioncategoryId_1} and positiontype_id = ${positionTypeId_1}
+order by id desc limit 1</stringProp>
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout"></stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as String</stringProp>
+                <stringProp name="resultSetMaxRows"></stringProp>
+                <stringProp name="resultVariable"></stringProp>
+                <stringProp name="variableNames">positionId</stringProp>
+              </JDBCSampler>
+              <hashTree/>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="&gt;_api/v1/positions/${positionId_1}/employee-positions" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+    &quot;_links&quot;: {&#xd;
+        &quot;self&quot;: {&#xd;
+            &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/positions/${positionId_1}/employee-positions&quot;&#xd;
+        },&#xd;
+        &quot;employee&quot;: {&#xd;
+            &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/employees/${employeeId_1}&quot;&#xd;
+        },&#xd;
+        &quot;position&quot;: {&#xd;
+            &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/positions/${positionId_1}&quot;&#xd;
+        }&#xd;
+    },&#xd;
+    &quot;id&quot;: null,&#xd;
+    &quot;dateInterval&quot;: {&#xd;
+        &quot;startDate&quot;: &quot;${DATE_START_YEAR}&quot;,&#xd;
+        &quot;endDate&quot;: &quot;${DATE_END_YEAR}&quot;&#xd;
+    },&#xd;
+    &quot;startDate&quot;: &quot;${DATE_START_YEAR}&quot;,&#xd;
+    &quot;endDate&quot;: &quot;${DATE_END_YEAR}&quot;,&#xd;
+    &quot;employee&quot;: {&#xd;
+        &quot;orgUnitId&quot;: ${unitId_1},&#xd;
+        &quot;outerId&quot;: &quot;${cardNumber} ${snils}&quot;,&#xd;
+        &quot;firstName&quot;: &quot;${firstname}&quot;,&#xd;
+        &quot;patronymicName&quot;: &quot;${patronymic}&quot;,&#xd;
+        &quot;lastName&quot;: &quot;${lastname}&quot;,&#xd;
+        &quot;birthday&quot;: &quot;1991-12-12&quot;,&#xd;
+        &quot;startWorkDate&quot;: &quot;${DATE_START_YEAR}&quot;,&#xd;
+        &quot;endWorkDate&quot;: &quot;${DATE_END_YEAR}&quot;,&#xd;
+        &quot;gender&quot;: &quot;FEMALE&quot;,&#xd;
+        &quot;inn&quot;: &quot;${inn_fiz}&quot;,&#xd;
+        &quot;snils&quot;: &quot;${snils}&quot;,&#xd;
+        &quot;email&quot;: &quot;${email}&quot;,&#xd;
+        &quot;needMentor&quot;: false,&#xd;
+        &quot;virtual&quot;: false,&#xd;
+        &quot;phone&quot;: null,&#xd;
+        &quot;outsource&quot;: false,&#xd;
+        &quot;_links&quot;: {&#xd;
+            &quot;self&quot;: {&#xd;
+                &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/employees/${employeeId_1}&quot;&#xd;
+            }&#xd;
+        },&#xd;
+        &quot;id&quot;: ${employeeId_1},&#xd;
+        &quot;_embedded&quot;: {&#xd;
+            &quot;avatar&quot;: {&#xd;
+                &quot;exists&quot;: false,&#xd;
+                &quot;_links&quot;: {&#xd;
+                    &quot;self&quot;: {&#xd;
+                        &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/employees/${employeeId_1}/avatar&quot;&#xd;
+                    }&#xd;
+                }&#xd;
+            }&#xd;
+        },&#xd;
+        &quot;local&quot;: true&#xd;
+    },&#xd;
+    &quot;position&quot;: {&#xd;
+        &quot;active&quot;: true,&#xd;
+        &quot;local&quot;: true,&#xd;
+        &quot;positionCategory&quot;: {&#xd;
+            &quot;forExchange&quot;: null,&#xd;
+            &quot;categoryId&quot;: ${positioncategoryId_1},&#xd;
+            &quot;name&quot;: &quot;${sysListPosCatName_1}&quot;,&#xd;
+            &quot;outerId&quot;: &quot;${sysListPosCatOuterId_1}&quot;,&#xd;
+            &quot;calculationMode&quot;: &quot;DYNAMIC&quot;,&#xd;
+            &quot;_links&quot;: {&#xd;
+                &quot;self&quot;: {&#xd;
+                    &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/position-categories/${positioncategoryId_1}&quot;&#xd;
+                }&#xd;
+            }&#xd;
+        },&#xd;
+        &quot;jobTitle&quot;: &quot;${sysListPosCatName_1}&quot;,&#xd;
+        &quot;positionType&quot;: {&#xd;
+            &quot;name&quot;: &quot;${sysListPosCatName_1}&quot;,&#xd;
+            &quot;priority&quot;: ${positionTypePriority_1},&#xd;
+            &quot;positionIndex&quot;: null,&#xd;
+            &quot;outerId&quot;: &quot;${positionTypeOuterId_1}&quot;,&#xd;
+            &quot;_links&quot;: {&#xd;
+                &quot;self&quot;: {&#xd;
+                    &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/position-types/${positionTypeId_1}&quot;&#xd;
+                },&#xd;
+                &quot;mathParameterValues&quot;: {&#xd;
+                    &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/position-types/${positionTypeId_1}/math-parameter-values&quot;&#xd;
+                }&#xd;
+            },&#xd;
+            &quot;id&quot;: ${positionTypeId_1}&#xd;
+        },&#xd;
+        &quot;dateInterval&quot;: {&#xd;
+            &quot;startDate&quot;: &quot;${DATE_START_YEAR}&quot;&#xd;
+        },&#xd;
+        &quot;outerId&quot;: &quot;${positionTypeOuterId_1}&quot;,&#xd;
+        &quot;_links&quot;: {&#xd;
+            &quot;self&quot;: {&#xd;
+                &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/positions&quot;&#xd;
+            },&#xd;
+            &quot;positionType&quot;: {&#xd;
+                &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/position-types/${positionTypeId_1}&quot;&#xd;
+            },&#xd;
+            &quot;positionCategory&quot;: {&#xd;
+                &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/position-categories/${positioncategoryId_1}&quot;&#xd;
+            },&#xd;
+            &quot;orgUnit&quot;: {&#xd;
+                &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/org-units/${unitId_1}&quot;&#xd;
+            }&#xd;
+        },&#xd;
+        &quot;name&quot;: &quot;${sysListPosCatName_1}&quot;&#xd;
+    },&#xd;
+    &quot;isEdit&quot;: true,&#xd;
+    &quot;dismissed&quot;: null,&#xd;
+    &quot;temporary&quot;: null,&#xd;
+    &quot;cardNumber&quot;: null,&#xd;
+    &quot;rate&quot;: 1,&#xd;
+    &quot;operationalZoneTitle&quot;: null,&#xd;
+    &quot;operationalZoneId&quot;: null,&#xd;
+    &quot;show&quot;: true&#xd;
+}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+                <stringProp name="HTTPSampler.path">api/v1/positions/${positionId_1}/employee-positions</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+                  <collectionProp name="AuthManager.auth_list">
+                    <elementProp name="" elementType="Authorization">
+                      <stringProp name="Authorization.url"></stringProp>
+                      <stringProp name="Authorization.username">${USERNAME}</stringProp>
+                      <stringProp name="Authorization.password">qwe</stringProp>
+                      <stringProp name="Authorization.domain"></stringProp>
+                      <stringProp name="Authorization.realm"></stringProp>
+                    </elementProp>
+                  </collectionProp>
+                  <boolProp name="AuthManager.controlledByThreadGroup">false</boolProp>
+                </AuthManager>
+                <hashTree/>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="" elementType="Header">
+                      <stringProp name="Header.name">Content-type</stringProp>
+                      <stringProp name="Header.value">application/hal+json</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree/>
+              </hashTree>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Получить_employeePosition" enabled="true">
+                <stringProp name="dataSource">database</stringProp>
+                <stringProp name="query">select id from employeeposition e where position_id = ${positionId_1}</stringProp>
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout"></stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as String</stringProp>
+                <stringProp name="resultSetMaxRows"></stringProp>
+                <stringProp name="resultVariable"></stringProp>
+                <stringProp name="variableNames">employeePositionId</stringProp>
+              </JDBCSampler>
+              <hashTree/>
+            </hashTree>
+            <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="TC_13_Назначить_первого_сотрудника_руководителем_подразделения" enabled="true"/>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="&gt;_api/v1/position-categories/${positioncategoryId_1}" enabled="true">
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                  <collectionProp name="Arguments.arguments"/>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding">UTF-16</stringProp>
+                <stringProp name="HTTPSampler.path">api/v1/position-categories/${positioncategoryId_1}</stringProp>
+                <stringProp name="HTTPSampler.method">GET</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+                  <stringProp name="JSONPostProcessor.referenceNames">namePositionCategory;outerIdPositionCategory;calculationModePositionCategory;</stringProp>
+                  <stringProp name="JSONPostProcessor.jsonPathExprs">$.name;$.outerId;$.calculationMode;</stringProp>
+                  <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+                  <stringProp name="JSONPostProcessor.defaultValues">Федор;22;</stringProp>
+                  <stringProp name="TestPlan.comments">&quot;CarBrand&quot;:&quot;Hyundai&quot;,&quot;CarModel&quot;:&quot;Creta&quot;</stringProp>
+                </JSONPostProcessor>
+                <hashTree/>
+              </hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="&gt;_api/v1/employee-positions/${employeePositionId_1}" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+  &quot;_links&quot;: {&#xd;
+    &quot;self&quot;: {&#xd;
+      &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/employee-positions/${employeePositionId_1}&quot;&#xd;
+    },&#xd;
+    &quot;position&quot;: {&#xd;
+      &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/positions/${positionId_1}&quot;&#xd;
+    },&#xd;
+    &quot;employee&quot;: {&#xd;
+      &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/employees/${employeeId_1}&quot;&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;isChief&quot;: true,&#xd;
+  &quot;dateInterval&quot;: {&#xd;
+    &quot;endDate&quot;: &quot;${DATE_END_YEAR}&quot;,&#xd;
+    &quot;startDate&quot;: &quot;${DATE_START_YEAR}&quot;&#xd;
+  }&#xd;
+}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+                <stringProp name="HTTPSampler.path">api/v1/employee-positions/${employeePositionId_1}</stringProp>
+                <stringProp name="HTTPSampler.method">PUT</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                <stringProp name="TestPlan.comments">https://pochta-wfm-qa.goodt.me/api/v1/employee-positions/1612273</stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+                  <collectionProp name="AuthManager.auth_list">
+                    <elementProp name="" elementType="Authorization">
+                      <stringProp name="Authorization.url"></stringProp>
+                      <stringProp name="Authorization.username">${USERNAME}</stringProp>
+                      <stringProp name="Authorization.password">qwe</stringProp>
+                      <stringProp name="Authorization.domain"></stringProp>
+                      <stringProp name="Authorization.realm"></stringProp>
+                    </elementProp>
+                  </collectionProp>
+                  <boolProp name="AuthManager.controlledByThreadGroup">false</boolProp>
+                </AuthManager>
+                <hashTree/>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="" elementType="Header">
+                      <stringProp name="Header.name">Content-type</stringProp>
+                      <stringProp name="Header.value">application/hal+json</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree/>
+              </hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="&gt;_api/v1/positions/${positionId_1}" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+  &quot;positionType&quot;: {&#xd;
+    &quot;name&quot;: &quot;${positionTypeName_1}&quot;,&#xd;
+    &quot;outerId&quot;: &quot;${positionTypeOuterId_1}&quot;,&#xd;
+    &quot;id&quot;: ${positionTypeId_1},&#xd;
+    &quot;ftePositionGroup&quot;: true&#xd;
+  },&#xd;
+  &quot;_links&quot;: {&#xd;
+    &quot;positionType&quot;: {&#xd;
+      &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/position-groups/${positionTypeId_1}&quot;&#xd;
+    },&#xd;
+    &quot;orgUnit&quot;: {&#xd;
+      &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/org-units/${unitId_1}&quot;&#xd;
+    },&#xd;
+    &quot;self&quot;: {&#xd;
+      &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/positions/${positionId_1}&quot;&#xd;
+    },&#xd;
+    &quot;positionCategory&quot;: {&#xd;
+      &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/position-categories/${positioncategoryId_1}&quot;&#xd;
+    }&#xd;
+  },&#xd;
+  &quot;jobTitle&quot;: &quot;${sysListPosCatName_1}&quot;,&#xd;
+  &quot;name&quot;: &quot;${sysListPosCatName_1}&quot;,&#xd;
+  &quot;organizationUnitId&quot;: ${unitId_1},&#xd;
+  &quot;outerId&quot;: &quot;${snils}&quot;,&#xd;
+  &quot;positionCategory&quot;: {&#xd;
+    &quot;_links&quot;: {&#xd;
+      &quot;self&quot;: {&#xd;
+        &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/position-categories/${positioncategoryId_1}&quot;&#xd;
+      }&#xd;
+    },&#xd;
+    &quot;name&quot;: &quot;${namePositionCategory}&quot;,&#xd;
+    &quot;outerId&quot;: &quot;${outerIdPositionCategory}&quot;,&#xd;
+    &quot;calculationMode&quot;: &quot;${calculationModePositionCategory}&quot;,&#xd;
+    &quot;categoryId&quot;: ${positioncategoryId_1}&#xd;
+  },&#xd;
+  &quot;dateInterval&quot;: {&#xd;
+    &quot;startDate&quot;: &quot;${DATE_START_YEAR}&quot;&#xd;
+  },&#xd;
+  &quot;positionGroup&quot;: {}&#xd;
+}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+                <stringProp name="HTTPSampler.path">api/v1/positions/${positionId_1}</stringProp>
+                <stringProp name="HTTPSampler.method">PUT</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                <stringProp name="TestPlan.comments">https://pochta-wfm-qa.goodt.me/api/v1/positions/1253640</stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+                  <collectionProp name="AuthManager.auth_list">
+                    <elementProp name="" elementType="Authorization">
+                      <stringProp name="Authorization.url"></stringProp>
+                      <stringProp name="Authorization.username">${USERNAME}</stringProp>
+                      <stringProp name="Authorization.password">qwe</stringProp>
+                      <stringProp name="Authorization.domain"></stringProp>
+                      <stringProp name="Authorization.realm"></stringProp>
+                    </elementProp>
+                  </collectionProp>
+                  <boolProp name="AuthManager.controlledByThreadGroup">false</boolProp>
+                </AuthManager>
+                <hashTree/>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="" elementType="Header">
+                      <stringProp name="Header.name">Content-type</stringProp>
+                      <stringProp name="Header.value">application/hal+json</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree/>
+              </hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="&gt;_api/v1/org-units/${unitId_1}/chief" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+  &quot;_links&quot;: {&#xd;
+    &quot;chief-position&quot;: {&#xd;
+      &quot;href&quot;: &quot;https://${BASE_URL}/api/v1/positions/${positionId_1}&quot;&#xd;
+    }&#xd;
+  }&#xd;
+}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+                <stringProp name="HTTPSampler.path">api/v1/org-units/${unitId_1}/chief</stringProp>
+                <stringProp name="HTTPSampler.method">PUT</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                <stringProp name="TestPlan.comments">https://pochta-wfm-qa.goodt.me/api/v1/org-units/196301/chief</stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+                  <collectionProp name="AuthManager.auth_list">
+                    <elementProp name="" elementType="Authorization">
+                      <stringProp name="Authorization.url"></stringProp>
+                      <stringProp name="Authorization.username">${USERNAME}</stringProp>
+                      <stringProp name="Authorization.password">qwe</stringProp>
+                      <stringProp name="Authorization.domain"></stringProp>
+                      <stringProp name="Authorization.realm"></stringProp>
+                    </elementProp>
+                  </collectionProp>
+                  <boolProp name="AuthManager.controlledByThreadGroup">false</boolProp>
+                </AuthManager>
+                <hashTree/>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="" elementType="Header">
+                      <stringProp name="Header.name">Content-type</stringProp>
+                      <stringProp name="Header.value">application/hal+json</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>false</time>
+            <latency>false</latency>
+            <timestamp>false</timestamp>
+            <success>false</success>
+            <label>false</label>
+            <code>false</code>
+            <message>false</message>
+            <threadName>false</threadName>
+            <dataType>false</dataType>
+            <encoding>false</encoding>
+            <assertions>false</assertions>
+            <subresults>false</subresults>
+            <responseData>true</responseData>
+            <samplerData>false</samplerData>
+            <xml>true</xml>
+            <fieldNames>false</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <url>true</url>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Модуль Применение ролей. Назначение, Оргструктура" thread-count="2" parallel="classes">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="Назначение роли">
+        <groups>
+            <run>
+                <include name="TK2644-1"/>
+                <include name="TK2644-1.*"/>
+                <include name="TK2644-2"/>
+                <include name="TK2644-3"/>
+                <include name="TK2644-3.1"/>
+                <include name="TK2644-4"/>
+                <include name="TK2644-5"/>
+                <include name="TK2644-6"/>
+                <include name="TK2644-7"/>
+                <include name="TK2644-8"/>
+                <include name="TK2644-9"/>
+                <include name="TK2644-12"/>
+                <include name="TK2644-13"/>
+                <include name="TK2644-15"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.OrgStructure"/>
+        </classes>
+    </test>
+    <test name="Оргструктура">
+        <groups>
+            <run>
+                <include name="TK2041-2.1"/>
+                <include name="TK2041-2.4"/>
+                <include name="TK2041-2"/>
+                <include name="TK2041-3.1"/>
+                <include name="TK2041-3.2"/>
+                <include name="TK2041-4.1"/>
+                <include name="TK2041-4.2"/>
+                <include name="TK2041-5.1"/>
+                <include name="TK2041-5.2"/>
+                <include name="TK2041-5.2"/>
+                <include name="TK2041-6.1"/>
+                <include name="TK2041-6.2"/>
+                <include name="TK2041-6.3"/>
+                <include name="TK2041-3-3"/>
+                <include name="TK2041-2-3"/>
+                <include name="TK2784.*"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.OrgStructure"/>
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Манипуляции со сменами, события" thread-count="4" parallel="classes">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="Копирование смен часть 1">
+        <groups>
+            <run>
+                <include name="TEST-124.2"/>
+                <include name="TEST-128.2"/>
+                <include name="TEST-125.2"/>
+                <include name="TEST-125.3"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+    <test name="Копирование смен часть 2">
+        <groups>
+            <run>
+                <include name="TEST-125.4"/>
+                <include name="TEST-126.2"/>
+                <include name="TEST-126.3"/>
+                <include name="TEST-126.4"/>
+                <include name="TEST-125.4"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+    <test name="Перенос, обмен смен">
+        <groups>
+            <run>
+                <include name="TEST-127.2"/>
+                <include name="TEST-123.2"/>
+                <include name="TEST-123.4"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+    <test name="События">
+        <groups>
+            <run>
+                <include name="TK2686-4"/>
+                <include name="TK2686-5"/>
+                <include name="TK2686-6"/>
+                <include name="TK2653-1"/>
+                <include name="TK2653"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+</suite>

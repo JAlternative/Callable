@@ -1,0 +1,16 @@
+allure-pytest
+allure-python-commons
+atomicwrites
+attrs
+colorama
+iniconfig
+packaging
+pluggy
+psycopg2
+py
+pyparsing
+pytest
+six
+toml
+requests
+datetime

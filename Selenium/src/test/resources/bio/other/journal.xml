@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Просмотр журнала событий" thread-count="1" parallel="tests">
+    <test name="Фиксирование событий">
+        <groups>
+            <run>
+                <include name="BI-6.[1, 2, 3, 4]"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BioControl"/>
+        </classes>
+    </test>
+</suite>

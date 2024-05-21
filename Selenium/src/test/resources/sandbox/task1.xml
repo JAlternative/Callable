@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Расписание">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="SCHED9">
+        <groups>
+            <run>
+                <include name="TEST-136"/>
+                <include name="TEST-138"/>
+                <include name="TEST-137"/>
+                <include name="TEST-133.1"/>
+                <include name="TEST-122.1"/>
+                <include name="TEST-127.1"/>
+                <include name="TEST-131.2"/>
+                <include name="TEST-125.1"/>
+                <include name="TEST-128.1"/>
+                <include name="TEST-121.2"/>
+                <include name="TEST-127.2"/>
+                <include name="TEST-129"/>
+                <include name="TEST-130.1"/>
+                <include name="TEST-131.1"/>
+                <include name="ABCHR2885-1"/>
+                <include name="ABCHR2885-2"/>
+                <include name="ABCHR4189-1"/>
+                <include name="ABCHR4189-2"/>
+                <include name="ABCHR4189-4"/>
+                <include name="ABCHR4189-6"/>
+                <include name="ABCHR4189-7"/>
+                <include name="ABCHR4189-8"/>
+                <include name="ABCHR5667"/>
+                <include name="ABCHR5057-1"/>
+                <include name="TEST-139.5"/>
+                <include name="TEST-146"/>
+                <include name="TEST-144"/>
+                <include name="TEST-145.2"/>
+                <include name="TEST-140.2"/>
+                <include name="TEST-140.3"/>
+                <include name="TEST-140.1"/>
+                <include name="ABCHR4315"/>
+                <include name="ABCHR4048"/>
+                <include name="ABCHR4363-1"/>
+                <include name="ABCHR5919-1"/>
+                <include name="ABCHR3900"/>
+                <include name="ABCHR4654"/>
+                <include name="ABCHR4653-1"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Регрессионное тестирование Биометрии">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <suite-files>
+        <suite-file path="../regress/terminal.xml"/>
+        <suite-file path="../regress/config.xml"/>
+        <suite-file path="../regress/jsu.xml"/>
+    </suite-files>
+</suite>

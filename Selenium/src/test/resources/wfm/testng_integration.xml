@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Проверяем исторический данные от клиента">
+
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+
+    <test name="Проверка данных от клиента">
+        <groups>
+            <run>
+                <include name="provider"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.Integration"/>
+        </classes>
+    </test>
+
+</suite>

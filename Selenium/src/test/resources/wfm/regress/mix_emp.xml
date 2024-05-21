@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Модуль Оргструктура. Функционал карточки сотрудника" thread-count="2" parallel="classes">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="Основные параметры">
+        <groups>
+            <run>
+                <include name="EMP-1"/>
+                <include name="Rmix-1.2"/>
+                <include name="Rmix-5"/>
+                <include name="Rmix-2.[1,2,3,4]"/>
+                <include name="Rmix-2.2"/>
+                <include name="Rmix-7.2"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.OrgStructure"/>
+        </classes>
+    </test>
+    <test name="Дополнительные параметры">
+        <groups>
+            <run>
+                <include name="Rmix-6.1"/>
+                <include name="Rmix-6.2"/>
+                <include name="Rmix-6.3"/>
+                <include name="Rmix-6.4"/>
+                <include name="Rmix-4"/>
+                <include name="Rmix-3"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.OrgStructure"/>
+        </classes>
+    </test>
+    <test name="Заместители">
+        <groups>
+            <run>
+                <include name="ABCHR2847-1"/>
+                <include name="ABCHR2659.*"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.OrgStructure"/>
+        </classes>
+    </test>
+</suite>

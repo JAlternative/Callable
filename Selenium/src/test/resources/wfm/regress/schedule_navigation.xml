@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Навигация. Модуль Расписание" thread-count="3" parallel="classes">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="Навигация">
+        <groups>
+            <run>
+                <include name="TEST-114.*"/>
+                <include name="TEST-115"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+    <test name="Навигация часть 2">
+        <groups>
+            <run>
+                <include name="TEST-116"/>
+                <include name="TEST-117.1"/>
+                <include name="TEST-117.2"/>
+                <include name="TEST-117.3"/>
+                <include name="TEST-117.4"/>
+                <include name="TEST-117.5"/>
+                <include name="TEST-117.6"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+    <test name="Навигация часть 3">
+        <groups>
+            <run>
+                <include name="TK2872-1"/>
+                <include name="TK2872-2"/>
+                <include name="TK2872-3"/>
+                <include name="ТК2792-1"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+</suite>

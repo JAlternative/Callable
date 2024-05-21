@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Прочие" thread-count="3" parallel="tests">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="AUTH1">
+        <groups>
+            <run>
+                <include name="AUTH1"/>
+                <exclude name="in progress"/>
+                <exclude name="grade 3"/>
+                <exclude name="grade super0"/>
+                <exclude name="pochta"/>
+                <exclude name="not included in regress on Magnit"/>
+                <exclude name="efes"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.CommonModule"/>
+        </classes>
+    </test>
+    <test name="N2">
+        <groups>
+            <run>
+                <include name="N2"/>
+                <exclude name="in progress"/>
+                <exclude name="grade 3"/>
+                <exclude name="grade super0"/>
+                <exclude name="pochta"/>
+                <exclude name="magnit"/>
+                <exclude name="efes"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+    <test name="OTHER13">
+        <groups>
+            <run>
+                <include name="OTHER13"/>
+                <exclude name="in progress"/>
+                <exclude name="grade 3"/>
+                <exclude name="grade super0"/>
+                <exclude name="pochta"/>
+                <exclude name="magnit"/>
+                <exclude name="efes"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.StaffNumber"/>
+        </classes>
+    </test>
+</suite>

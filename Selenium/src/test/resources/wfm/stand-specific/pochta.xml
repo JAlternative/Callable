@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Расписание" thread-count="4" parallel="classes">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="SCHED9 (pochta)">
+        <method-selectors>
+            <method-selector>
+                <script language="beanshell"><![CDATA[
+      return
+      groups.containsKey("SCHED9") &&
+      groups.containsKey("pochta") &&
+      !groups.containsKey("in progress");
+     ]]></script>
+            </method-selector>
+        </method-selectors>
+        <classes>
+            <class name="apitest.ScheduleBoardApiTest"/>
+            <class name="pagemodel.ScheduleBoard"/>
+            <class name="pagemodel.Messages"/>
+            <class name="dbtest.DataBaseTest"/>
+        </classes>
+    </test>
+
+    <test name="SCHED32 (pochta)">
+        <method-selectors>
+            <method-selector>
+                <script language="beanshell"><![CDATA[
+      return
+      groups.containsKey("SCHED32") &&
+      groups.containsKey("pochta") &&
+      !groups.containsKey("in progress");
+     ]]></script>
+            </method-selector>
+        </method-selectors>
+        <classes>
+            <class name="apitest.ScheduleBoardApiTest"/>
+            <class name="pagemodel.ScheduleBoard"/>
+            <class name="pagemodel.Messages"/>
+            <class name="dbtest.DataBaseTest"/>
+        </classes>
+    </test>
+</suite>

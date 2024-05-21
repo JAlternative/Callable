@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Отчеты">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="REP1">
+        <groups>
+            <run>
+                <include name="REP1"/>
+                <exclude name="in progress"/>
+                <exclude name="grade super0"/>
+                <exclude name="grade 3"/>
+                <exclude name="zozo"/>
+                <exclude name="not included in regress on Magnit"/>
+                <exclude name="efes"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ReportsClass"/>
+        </classes>
+    </test>
+</suite>

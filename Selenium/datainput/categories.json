@@ -1,0 +1,84 @@
+[
+  {
+    "name": "Нет подходящей даты",
+    "messageRegex": ".*NoValidDate.*"
+  },
+  {
+    "name": "Нет тестовых данных",
+    "messageRegex": ".*NoTestData.*"
+  },
+  {
+    "name": "Стенд недоступен",
+    "messageRegex": ".*(Ошибка 502)|(Unterminated string at).*"
+  },
+  {
+    "name": "Стенд недоступен",
+    "traceRegex": ".*NullPointerException.*RequestFormers.assertStatusCode.*"
+  },
+  {
+    "name": "Ошибка при отправке запроса",
+    "messageRegex": ".*Ошибка (500|4\\d{2}).*"
+  },
+  {
+    "name": "Системная ошибка",
+    "messageRegex": ".*Сообщение: Application error.*"
+  },
+  {
+    "name": "Проблема с браузером",
+    "traceRegex": ".*(org\\.openqa\\.selenium\\.NoSuchSessionException)|(WebDriverException).*"
+  },
+  {
+    "name": "Браузер недоступен",
+    "messageRegex": ".*Браузер недоступен.*"
+  },
+  {
+    "name": "Неудачный переход на страницу",
+    "traceRegex": ".*RoleWithCookies.*"
+  },
+  {
+    "name": "Неудачный переход на страницу",
+    "traceRegex": ".*GoToPageSection.*"
+  },
+  {
+    "name": "Нужный элемент перекрывается другим",
+    "messageRegex": ".*Other element would receive the click.*"
+  },
+  {
+    "name": "Дефект пресета",
+    "messageRegex": ".*FailedPreset.*"
+  },
+  {
+    "name": "Дефект автотеста",
+    "traceRegex": ".*(WaitUntil)|(java\\.util\\.NoSuchElement)|(NullPointer)Exception.*"
+  },
+  {
+    "name": "Упавший ассерт",
+    "messageRegex": ".*(The following asserts failed)|(but found).*"
+  },
+  {
+    "name": "Упавший ассерт",
+    "traceRegex": ".*htmlelements.extension.ShouldMethod.*"
+  },
+  {
+    "name": "Задвоились дескрипторы",
+    "messageRegex": ".*More than one row with the given identifier was found.*",
+    "traceRegex": ".*at utils.tools.RequestFormers.deleteMaker.*\n\tat wfm.PresetClass.removePermissions.*"
+  },
+  {
+    "name": "Ошибка при выполнении датапровайдера",
+    "messageRegex": ".*org.testng.DataProviderInvocationException.*Caused by: java.lang.AssertionError.*",
+    "matchedStatuses": ["broken"]
+  },
+  {
+    "name": "Failed tests",
+    "matchedStatuses": ["failed"]
+  },
+  {
+    "name": "Broken tests",
+    "matchedStatuses": ["broken"]
+  },
+  {
+    "name": "Skipped tests",
+    "matchedStatuses": ["skipped"]
+  }
+]

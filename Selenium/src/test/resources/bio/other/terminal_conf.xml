@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Тесты с конфиг файлом терминала">
+    <test name="Изменение конфиг файла">
+        <groups>
+            <run>
+                <include name="changeConfigInfo"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BioControl"/>
+        </classes>
+    </test>
+</suite>

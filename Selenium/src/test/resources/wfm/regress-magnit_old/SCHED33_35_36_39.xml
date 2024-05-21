@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Расписание" thread-count="4" parallel="tests">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="SCHED33">
+        <groups>
+            <run>
+                <include name="ABCHR6133-1"/>
+                <include name="TEST-177"/>
+                <include name="ABCHR2820"/>
+                <include name="ABCHR3529-1"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+    <test name="SCHED35">
+        <groups>
+            <run>
+                <include name="ABCHR4120"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+    <test name="SCHED36">
+        <groups>
+            <run>
+                <include name="ABCHR3151"/>
+                <include name="ABCHR5045-1"/>
+                <include name="ABCHR5045-2"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+    <test name="SCHED39">
+        <groups>
+            <run>
+                <include name="ABCHR3196"/>
+                <include name="ABCHR3196-3"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+</suite>

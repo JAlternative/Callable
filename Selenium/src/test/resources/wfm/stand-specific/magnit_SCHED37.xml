@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Расписание">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="SCHED37 (magnit)">
+        <method-selectors>
+            <method-selector>
+                <script language="beanshell"><![CDATA[
+      return
+      groups.containsKey("SCHED37") &&
+      groups.containsKey("magnit") &&
+      !groups.containsKey("in progress");
+     ]]></script>
+            </method-selector>
+        </method-selectors>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+            <class name="apitest.ScheduleBoardApiTest"/>
+        </classes>
+    </test>
+</suite>

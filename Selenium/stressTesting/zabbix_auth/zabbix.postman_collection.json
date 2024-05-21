@@ -1,0 +1,250 @@
+{
+	"info": {
+		"_postman_id": "68bbef9c-26f5-4e12-b068-222bb58acddf",
+		"name": "zabbix",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19312393"
+	},
+	"item": [
+		{
+			"name": "Авторизация для получения токена",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"user.login\",\r\n    \"params\": {\r\n        \"user\": \"m_druzhinin\",\r\n        \"password\": \"nM&Q#6t8p9\"\r\n    },\r\n    \"id\": 1\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://monitor.goodt.me:8443/api_jsonrpc.php",
+					"protocol": "https",
+					"host": [
+						"monitor",
+						"goodt",
+						"me"
+					],
+					"port": "8443",
+					"path": [
+						"api_jsonrpc.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Определение id итемов для построения графика",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"item.get\",\r\n    \"params\": {\r\n        \"output\": \"extend\",\r\n        \"hostids\": 10891,\r\n        \"sortfield\": \"name\"\r\n    },\r\n    \"auth\": \"0a612a0e3251be683bb0020233e72224acf8a6bb00723f846b26a6ad1601d544\",\r\n    \"id\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://monitor.goodt.me:8443/api_jsonrpc.php",
+					"protocol": "https",
+					"host": [
+						"monitor",
+						"goodt",
+						"me"
+					],
+					"port": "8443",
+					"path": [
+						"api_jsonrpc.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Взять данные с графика",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"history.get\",\r\n    \"id\": 2,\r\n    \"auth\": \"9dbf0e446cd4b98f937ee27ae99dbbbcc8e6c21deadfa63abaff05fbc5849c61\",\r\n    \"params\": {\r\n        \"output\": \"extend\",\r\n        \"history\": 0,\r\n        \"itemids\": 36517,\r\n        \"sortfield\": \"clock\",\r\n        \"sortorder\": \"DESC\",\r\n        \"time_from\": 1622544878,\r\n        \"time_till\": 1625136878,\r\n        \"limit\": 1000\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://monitor.goodt.me:8443/api_jsonrpc.php",
+					"protocol": "https",
+					"host": [
+						"monitor",
+						"goodt",
+						"me"
+					],
+					"port": "8443",
+					"path": [
+						"api_jsonrpc.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Взять данные с графика Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"history.get\",\r\n    \"id\": 2,\r\n    \"auth\": \"9dbf0e446cd4b98f937ee27ae99dbbbcc8e6c21deadfa63abaff05fbc5849c61\",\r\n    \"params\": {\r\n        \"output\": \"extend\",\r\n        \"history\": 0,\r\n        \"itemids\": 36517,\r\n        \"sortfield\": \"clock\",\r\n        \"sortorder\": \"DESC\",\r\n        \"time_from\": 1622544878,\r\n        \"time_till\": 1625136878,\r\n        \"limit\": 1000\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://monitor.goodt.me:8443/api_jsonrpc.php",
+					"protocol": "https",
+					"host": [
+						"monitor",
+						"goodt",
+						"me"
+					],
+					"port": "8443",
+					"path": [
+						"api_jsonrpc.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "x5_long_cpu",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"history.get\",\r\n    \"id\": 2,\r\n    \"auth\": \"9dbf0e446cd4b98f937ee27ae99dbbbcc8e6c21deadfa63abaff05fbc5849c61\",\r\n    \"params\": {\r\n        \"output\": \"extend\",\r\n        \"history\": 0,\r\n        \"itemids\": 116402,\r\n        \"sortfield\": \"clock\",\r\n        \"sortorder\": \"DESC\",\r\n        \"time_from\": 1642615271,\r\n        \"time_till\": 1642653655,\r\n        \"limit\": 1000\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://monitor.goodt.me:8443/api_jsonrpc.php",
+					"protocol": "https",
+					"host": [
+						"monitor",
+						"goodt",
+						"me"
+					],
+					"port": "8443",
+					"path": [
+						"api_jsonrpc.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "x5_200_cpu",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"history.get\",\r\n    \"id\": 2,\r\n    \"auth\": \"9dbf0e446cd4b98f937ee27ae99dbbbcc8e6c21deadfa63abaff05fbc5849c61\",\r\n    \"params\": {\r\n        \"output\": \"extend\",\r\n        \"history\": 0,\r\n        \"itemids\": 116402,\r\n        \"sortfield\": \"clock\",\r\n        \"sortorder\": \"DESC\",\r\n        \"time_from\": 1642608628,\r\n        \"time_till\": 1642614624,\r\n        \"limit\": 1000\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://monitor.goodt.me:8443/api_jsonrpc.php",
+					"protocol": "https",
+					"host": [
+						"monitor",
+						"goodt",
+						"me"
+					],
+					"port": "8443",
+					"path": [
+						"api_jsonrpc.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "x5_mainhost_id_items",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"item.get\",\r\n    \"params\": {\r\n        \"output\": \"extend\",\r\n        \"hostids\": 11945,\r\n        \"sortfield\": \"name\"\r\n    },\r\n    \"auth\": \"9dbf0e446cd4b98f937ee27ae99dbbbcc8e6c21deadfa63abaff05fbc5849c61\",\r\n    \"id\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://monitor.goodt.me:8443/api_jsonrpc.php",
+					"protocol": "https",
+					"host": [
+						"monitor",
+						"goodt",
+						"me"
+					],
+					"port": "8443",
+					"path": [
+						"api_jsonrpc.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "x5_db_id_items",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"item.get\",\r\n    \"params\": {\r\n        \"output\": \"extend\",\r\n        \"hostids\": 11996,\r\n        \"sortfield\": \"name\"\r\n    },\r\n    \"auth\": \"9dbf0e446cd4b98f937ee27ae99dbbbcc8e6c21deadfa63abaff05fbc5849c61\",\r\n    \"id\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://monitor.goodt.me:8443/api_jsonrpc.php",
+					"protocol": "https",
+					"host": [
+						"monitor",
+						"goodt",
+						"me"
+					],
+					"port": "8443",
+					"path": [
+						"api_jsonrpc.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Прогнозирование" thread-count="2" parallel="classes">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="FTE2">
+        <method-selectors>
+            <method-selector>
+                <script language="beanshell"><![CDATA[
+      return
+      groups.containsKey("FTE2") &&
+      groups.containsKey("zozo") &&
+      !groups.containsKey("in progress");
+     ]]></script>
+            </method-selector>
+        </method-selectors>
+        <classes>
+            <class name="pagemodel.AnalyticsInt"/>
+        </classes>
+    </test>
+</suite>

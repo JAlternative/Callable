@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Модуль Массовый расчет" thread-count="3" parallel="classes">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="Запуск и отмена расчета">
+        <groups>
+            <run>
+                <include name="MP-1.1"/>
+                <include name="MP-1.2"/>
+                <include name="MP-4.3"/>
+                <include name="MP-5"/>
+                <include name="MP-2.4"/>
+                <include name="MP-3.1"/>
+                <include name="MP-3.3"/>
+                <include name="MP-3.4.1"/>
+                <include name="MP-3.4.2"/>
+                <include name="TK2836-1"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BatchCalculation"/>
+        </classes>
+    </test>
+    <test name="Просмотр информации, отмена запущенного расчета">
+        <groups>
+            <run>
+                <include name="MP-6.1"/>
+                <include name="MP-6.2"/>
+                <include name="MP-7.1"/>
+                <include name="MP-7.2.1"/>
+                <include name="MP-7.2.2"/>
+                <include name="MP-7.2.3"/>
+                <include name="MP-7.2.4"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BatchCalculation"/>
+        </classes>
+    </test>
+    <test name="Скачивание отчета, расчет по параметрам">
+        <groups>
+            <run>
+                <include name="MP-8.1"/>
+                <include name="MP-8.2"/>
+                <include name="MP-8.3"/>
+                <include name="MP-8.4"/>
+                <include name="MP-9.3"/>
+                <include name="TK-2838"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BatchCalculation"/>
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Системные списки" thread-count="2" parallel="tests">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="LIST20 (magnit)">
+        <method-selectors>
+            <method-selector>
+                <script language="beanshell"><![CDATA[
+      return
+      groups.containsKey("LIST20") &&
+      groups.containsKey("magnit") &&
+      !groups.containsKey("in progress");
+     ]]></script>
+            </method-selector>
+        </method-selectors>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+    <test name="LIST15 (magnit)">
+        <method-selectors>
+            <method-selector>
+                <script language="beanshell"><![CDATA[
+      return
+      groups.containsKey("LIST15") &&
+      groups.containsKey("magnit") &&
+      !groups.containsKey("in progress");
+     ]]></script>
+            </method-selector>
+        </method-selectors>
+        <classes>
+            <class name="pagemodel.SystemLists"/>
+        </classes>
+    </test>
+    <test name="LIST20 api (magnit)">
+        <method-selectors>
+            <method-selector>
+                <script language="beanshell"><![CDATA[
+      return
+      groups.containsKey("LIST20") &&
+      groups.containsKey("magnit") &&
+      !groups.containsKey("in progress");
+     ]]></script>
+            </method-selector>
+        </method-selectors>
+        <classes>
+            <class name="apitest.ScheduleBoardApiTest"/>
+        </classes>
+    </test>
+</suite>

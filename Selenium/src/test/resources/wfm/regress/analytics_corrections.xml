@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Модуль Аналитика. Корректировка данных" thread-count="4" parallel="classes">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="Сохранение корректировок">
+        <groups>
+            <run>
+                <include name="A-4.2.1.1"/>
+                <include name="A-4.3.1.1"/>
+                <include name="A-4.1.2.1"/>
+                <include name="A-4.2.2.1"/>
+                <include name="A-4.3.2.1"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.AnalyticsInt"/>
+        </classes>
+    </test>
+    <test name="Отмена корректировок исторических данных">
+        <groups>
+            <run>
+                <include name="A-4.1.1.2"/>
+                <include name="A-4.1.1.3"/>
+                <include name="A-4.1.1.4"/>
+                <include name="A-4.1.1.6"/>
+                <include name="A-4.2.1.2"/>
+                <include name="A-4.2.1.3"/>
+                <include name="A-4.3.1.3"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.AnalyticsInt"/>
+        </classes>
+    </test>
+    <test name="Закрытие окна внесения корректировок, ввод некорректных значений">
+        <groups>
+            <run>
+                <include name="A-4.1.3"/>
+                <include name="A-4.2.3"/>
+                <include name="A-4.2.4"/>
+                <include name="A-4.3.3"/>
+                <include name="A-4.1.4"/>
+                <include name="A-4.3.4"/>
+                <include name="A-4.1.1.5"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.AnalyticsInt"/>
+        </classes>
+    </test>
+    <test name="Отмена корректировок прогноза">
+        <groups>
+            <run>
+                <include name="A-4.1.2.2"/>
+                <include name="A-4.1.2.3"/>
+                <include name="A-4.2.2.2"/>
+                <include name="A-4.2.2.3"/>
+                <include name="A-4.3.2.2"/>
+                <include name="A-4.3.2.3"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.AnalyticsInt"/>
+        </classes>
+    </test>
+</suite>

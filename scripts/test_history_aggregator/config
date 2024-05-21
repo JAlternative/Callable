@@ -1,0 +1,17 @@
+[storage]
+login=
+password=
+[prefixes]
+prefixes=TEST-
+    ABCHR-
+    ABCHR
+    TK-
+    MP-
+    A-
+    Rmix-
+    R-
+    TK
+    ТК
+    SE-
+    FS-
+

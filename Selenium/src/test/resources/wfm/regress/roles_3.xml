@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Модуль Применение ролей. Отчеты, Разное" thread-count="4" parallel="classes">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="Доступ к модулю, просмотр смен, численности">
+        <groups>
+            <run>
+                <include name="TK2046"/>
+                <include name="TK2046-1-1"/>
+                <include name="TK2046-1-2"/>
+                <include name="TK2046-2-1"/>
+                <include name="TK2046-2-4"/>
+                <include name="TK2046-3-1"/>
+                <include name="TK2046-3-4"/>
+                <include name="TK2046-4-1"/>
+                <include name="TK2046-4-4"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ReportsClass"/>
+        </classes>
+    </test>
+    <test name="Просмотр статуса публикации, качества ист.данных, квоты выходных дней, анализа средней конверсии">
+        <groups>
+            <run>
+                <include name="TK2046-9-1"/>
+                <include name="TK2046-9-6"/>
+                <include name="TK2046-10-1"/>
+                <include name="TK2046-10-6"/>
+                <include name="TK2046-12-1"/>
+                <include name="TK2046-12-7"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ReportsClass"/>
+        </classes>
+    </test>
+    <test name="Просмотр плановой и фактической конверсии, табеля учета рабочего времени, параметров, целевой численности">
+        <groups>
+            <run>
+                <include name="TK2046-28-1"/>
+                <include name="TK2046-28-12"/>
+                <include name="TK2046-29-1"/>
+                <include name="TK2046-29-12"/>
+                <include name="TK2046-30-1"/>
+                <include name="TK2046-30-12"/>
+                <include name="TK2046-35-1"/>
+                <include name="TK2046-35-13"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ReportsClass"/>
+        </classes>
+    </test>
+    <test name="Личное расписание">
+        <groups>
+            <run>
+                <include name="ТС-1.2.1.1"/>
+                <include name="ТС-1.2.1.2"/>
+                <include name="ТС-1.2.1.3"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.PersonalSchedule"/>
+        </classes>
+    </test>
+</suite>

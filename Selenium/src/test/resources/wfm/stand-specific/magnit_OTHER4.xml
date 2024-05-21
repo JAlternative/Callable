@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Прочие модули">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="OTHER4 (Magnit)">
+        <method-selectors>
+            <method-selector>
+                <script language="beanshell"><![CDATA[
+      return
+      groups.containsKey("OTHER4") &&
+      groups.containsKey("magnit") &&
+      !groups.containsKey("in progress");
+     ]]></script>
+            </method-selector>
+        </method-selectors>
+        <classes>
+            <class name="pagemodel.SystemLists"/>
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Модуль Оргструктура. Функционал карточки ОМ" thread-count="4" parallel="classes">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="Теги, назначение на должность">
+        <groups>
+            <run>
+                <include name="Rmix-10.1"/>
+                <include name="Rmix-10.2"/>
+                <include name="Rmix-10.3"/>
+                <include name="Rmix-10.4"/>
+                <include name="Rmix-10.5"/>
+                <include name="OM-15"/>
+                <include name="TK2415-1-1"/>
+                <include name="TK2415-1-2"/>
+                <include name="TK2415-2-1"/>
+                <include name="TK2415-2-2"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.OrgStructure"/>
+        </classes>
+    </test>
+    <test name="Изменение параметров ОМ">
+        <groups>
+            <run>
+                <include name="Rmix-12.2"/>
+                <include name="Rmix-12.3"/>
+                <include name="Rmix-12.4"/>
+                <include name="OM-2"/>
+                <include name="OM-3"/>
+                <include name="OM-4"/>
+                <include name="OM-6"/>
+                <include name="Rmix-17.2"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.OrgStructure"/>
+        </classes>
+    </test>
+    <test name="Отмена изменения параметров ОМ">
+        <groups>
+            <run>
+                <include name="OM-9"/>
+                <include name="OM-10"/>
+                <include name="OM-11"/>
+                <include name="OM-12"/>
+                <include name="OM-14"/>
+                <include name="OM-16"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.OrgStructure"/>
+        </classes>
+    </test>
+    <test name="Ввод некорректных данных">
+        <groups>
+            <run>
+                <include name="Rmix-18.1"/>
+                <include name="Rmix-18.2"/>
+                <include name="Rmix-19"/>
+                <include name="Rmix-20"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.OrgStructure"/>
+        </classes>
+    </test>
+</suite>

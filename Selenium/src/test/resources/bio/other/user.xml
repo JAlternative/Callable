@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Изменения данных вкладки пользователи" thread-count="2" parallel="tests">
+    <test name="Изменение списка пользователей">
+        <groups>
+            <run>
+                <include name="BI-3.[1, 2, 3]"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BioControl"/>
+        </classes>
+    </test>
+    <test name="Редактирование разрешений пользователя">
+        <groups>
+            <run>
+                <include name="BI-3.4.[1, 2, 3, 4, 5, 6]"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BioControl"/>
+        </classes>
+    </test>
+</suite>

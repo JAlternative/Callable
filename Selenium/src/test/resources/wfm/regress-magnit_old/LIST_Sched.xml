@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Системные списки" thread-count="4" parallel="tests">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="LIST1">
+        <groups>
+            <run>
+                <include name="ABCHR4195-2"/>
+                <include name="ABCHR5780"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+            <class name="apitest.ScheduleBoardApiTest"/>
+        </classes>
+    </test>
+    <test name="LIST2">
+        <groups>
+            <run>
+                <include name="TK2686-4"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="apitest.ScheduleBoardApiTest"/>
+        </classes>
+    </test>
+    <test name="LIST7">
+        <groups>
+            <run>
+                <include name="ABCHR4726-1"/>
+                <include name="ABCHR4727-1"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+    <test name="LIST16">
+        <groups>
+            <run>
+                <include name="ABCHR4192"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+</suite>

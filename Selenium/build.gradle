@@ -1,0 +1,616 @@
+group 'SeleniumGradle'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'io.qameta.allure'
+
+compileJava.options.encoding = 'UTF-8'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+        mavenCentral()
+    }
+}
+
+configurations {
+    agent
+}
+
+dependencies {
+    agent group: 'org.aspectj', name: 'aspectjweaver', version: '1.8.10'
+    implementation 'com.github.automatedowl:allure-environment-writer:1.0.0'
+
+    testCompile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
+
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    compile group: 'org.testng', name: 'testng', version: '7.4.0' // более свежие версии используют JDK11
+    compile group: 'org.apache.commons', name: 'commons-text', version: '1.4'
+    compile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.0.0'
+    compile group: 'com.google.inject', name: 'guice', version: '4.1.0'
+    compile group: 'io.qameta.allure', name: 'allure-testng', version: '2.20.1'
+    implementation 'io.qameta.allure:allure-rest-assured:2.20.1'
+    compile group: 'org.apache.tika', name: 'tika-parsers', version: '1.20'
+    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+    //compile group: 'com.github.eroshenkoam', name: 'htmlelements', version: '2.0.0'
+    implementation group: 'org.json', name: 'json', version: '20230618'
+    implementation 'commons-dbutils:commons-dbutils:1.7'
+    implementation 'org.postgresql:postgresql:42.5.1'
+    implementation 'io.rest-assured:rest-assured:5.3.0'
+    compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.14.0'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.1'
+//    compile group: 'org.yaml', name: 'snakeyaml', version: '1.23'
+    implementation group: 'org.apache-extras.beanshell', name: 'bsh', version: '2.0b6'
+    implementation group: 'org.jdom', name: 'jdom', version: '2.0.2'
+    implementation group: 'io.qameta.atlas', name: 'atlas-webdriver', version: '1.8.0'
+    implementation group: 'ru.yandex.qatools.matchers', name: 'webdriver-matchers', version: '1.4.1'
+
+
+
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "io.qameta.allure:allure-gradle:2.5"
+    }
+}
+
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "gradle.plugin.aspectj:gradle-aspectj:0.1.6"
+    }
+}
+ext {
+    aspectjVersion = '1.8.10'
+}
+
+apply plugin: "aspectj.gradle"
+
+allure {
+    version = '2.20.1'
+    aspectjweaver = true
+    autoconfigure = true
+    downloadLink = "https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.20.1/allure-commandline-2.20.1.jar"
+}
+
+tasks.withType(Test) {
+    systemProperty "file.encoding", "UTF-8"
+}
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+tasks.withType(Test) {
+    maxHeapSize = "2048m"
+}
+
+tasks.withType(Test) {
+    copy {
+        from 'datainput/categories.json'
+        into "build/allure-results"
+    }
+    doFirst {
+        jvmArgs "-javaagent:${configurations.agent.singleFile}"
+    }
+    Properties properties = new Properties()
+    File propertiesFile = new File('src/main/resources/localekeys.properties')
+    propertiesFile.withInputStream {
+        properties.load(it)
+    }
+    if (properties.remoteGradle == 'remote') {
+        ant.propertyfile(file: 'src/main/resources/config.properties') {
+            entry(key: 'release', value: "$QA")
+        }
+        ant.propertyfile(file: 'src/main/resources/localekeys.properties') {
+            entry(key: 'retryLimit', value: "$RETRY")
+            entry(key: 'browser', value: "$br")
+        }
+    }
+//    def file = new File('.allure/allure-commandline-2.20.1.zip')
+//    if (!file.exists()) {
+//        new URL('https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.20.1/allure-commandline-2.20.1.zip')
+//                .withInputStream { i -> file.withOutputStream { it << i } }
+//        copy {
+//            from zipTree(".allure/allure-commandline-2.20.1.zip")
+//            into ".allure/"
+//        }
+//    }
+}
+
+task p1(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/testng.xml'
+    }
+}
+task wfm_schedule_g0(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/super0/schedule_g0.xml'
+    }
+}
+task wfm_mix_g0(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/super0/mix_g0.xml'
+    }
+}
+task wfm_analytics_g0(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/super0/analytics_g0.xml'
+    }
+}
+task BC1(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/BC1.xml'
+    }
+}
+task FTE2(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/FTE2.xml'
+    }
+}
+task FTE3(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/FTE3.xml'
+    }
+}
+task FTE4(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/FTE4.xml'
+    }
+}
+task FTE7(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/FTE7.xml'
+    }
+}
+task INTEGRATION(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/INTEGRATION.xml'
+    }
+}
+task LIST1(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/LIST1.xml'
+    }
+}
+task LIST2(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/LIST2.xml'
+    }
+}
+task LIST6(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/LIST6.xml'
+    }
+}
+task LIST7(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/LIST7.xml'
+    }
+}
+task LIST16(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/LIST16.xml'
+    }
+}
+task MIX1(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/MIX1.xml'
+    }
+}
+task MIX2(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/MIX2.xml'
+    }
+}
+task MIX3(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/MIX3.xml'
+    }
+}
+task N2(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/N2.xml'
+    }
+}
+task OTHER20(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/OTHER20.xml'
+    }
+}
+task OTHER13(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/OTHER13.xml'
+    }
+}
+task PS2(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/PS2.xml'
+    }
+}
+task REP1(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/REP1.xml'
+    }
+}
+task SCHED2(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/SCHED2.xml'
+    }
+}
+task SCHED7(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/SCHED7.xml'
+    }
+}
+task SCHED8(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/SCHED8.xml'
+    }
+}
+task SCHED9(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/SCHED9.xml'
+    }
+}
+task SCHED10(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/SCHED10.xml'
+    }
+}
+task SCHED11(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/SCHED11.xml'
+    }
+}
+task SCHED12(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/SCHED12.xml'
+    }
+}
+task SCHED16(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/SCHED16.xml'
+    }
+}
+task SCHED17(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/SCHED17.xml'
+    }
+}
+task SCHED20(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/SCHED20.xml'
+    }
+}
+task SCHED21(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/SCHED21.xml'
+    }
+}
+task SCHED22(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/SCHED22.xml'
+    }
+}
+task SCHED23(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/SCHED23.xml'
+    }
+}
+task SCHED24(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/SCHED24.xml'
+    }
+}
+task SCHED26(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/SCHED26.xml'
+    }
+}
+task SCHED32(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/SCHED32.xml'
+    }
+}
+task SCHED33(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/SCHED33.xml'
+    }
+}
+task SCHED35(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/SCHED35.xml'
+    }
+}
+task SCHED36(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/SCHED36.xml'
+    }
+}
+task SCHED37(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/SCHED37.xml'
+    }
+}
+task SCHED39(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/SCHED39.xml'
+    }
+}
+task SCHED41(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/SCHED41.xml'
+    }
+}
+task OTHER4(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/OTHER4.xml'
+    }
+}
+
+task specific_x5(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/stand-specific/x5.xml'
+    }
+}
+task specific_magnit_INTEGRATION(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/stand-specific/magnit_INTEGRATION.xml'
+    }
+}
+task specific_magnit_LIST(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/stand-specific/magnit_LIST.xml'
+    }
+}
+task specific_magnit_SCHED(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/stand-specific/magnit_SCHED.xml'
+    }
+}
+task specific_magnit_SCHED37(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/stand-specific/magnit_SCHED37.xml'
+    }
+}
+task specific_magnit_OTHER4(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/stand-specific/magnit_OTHER4.xml'
+    }
+}
+task specific_efes(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/stand-specific/efes.xml'
+    }
+}
+task specific_pochta(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/stand-specific/pochta.xml'
+    }
+}
+task from_sandbox(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/sandbox/task1.xml'
+    }
+}
+task from_sandbox_bio(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/sandbox/task_bio.xml'
+    }
+}
+task from_sandbox_A(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/sandbox/task_A.xml'
+    }
+}
+task local(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/sandbox/task_local.xml'
+    }
+}
+task new_tests(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/sandbox/new_tests.xml'
+    }
+}
+task in_progress_pochta(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/sandbox/in_progress_pochta.xml'
+    }
+}
+task in_progress_zozo(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/sandbox/in_progress_zozo.xml'
+    }
+}
+task in_progress_efes(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/sandbox/in_progress_efes.xml'
+    }
+}
+task in_progress_magnit(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/sandbox/in_progress_magnit.xml'
+    }
+}
+task login_test(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/sandbox/login_test.xml'
+    }
+}
+task cnp_example(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/wfm/testng_integration.xml'
+    }
+}
+task AUTH1(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress+nightly/AUTH1.xml'
+    }
+}
+task magnit_SCHED_g0(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress-magnit/SCHED_g0.xml'
+    }
+}
+task magnit_MIX_g0(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress-magnit/MIX_g0.xml'
+    }
+}
+task magnit_MIX(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress-magnit/MIX.xml'
+    }
+}
+task magnit_LIST_Sched(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress-magnit/LIST_Sched.xml'
+    }
+}
+task magnit_LIST_Mix(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress-magnit/LIST_Mix.xml'
+    }
+}
+task magnit_BC(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress-magnit/BC.xml'
+    }
+}
+task magnit_REP(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress-magnit/REP.xml'
+    }
+}
+task magnit_SCHED7_8_10_11(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress-magnit/SCHED7_8_10_11.xml'
+    }
+}
+task magnit_SCHED9(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress-magnit/SCHED9.xml'
+    }
+}
+task magnit_SCHED12_16_17_32(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress-magnit/SCHED12_16_17_32.xml'
+    }
+}
+task magnit_SCHED20_21_22_24(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress-magnit/SCHED20_21_22_24.xml'
+    }
+}
+task magnit_SCHED33_35_36_39(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress-magnit/SCHED33_35_36_39.xml'
+    }
+}
+task magnit_SCHED41(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress-magnit/SCHED41.xml'
+    }
+}
+task magnit_OTHER_PS_AUTH_N2(type: Test) {
+    ignoreFailures = true
+    useTestNG() {
+        options.suites 'src/test/resources/wfm/regress-magnit/OTHER_PS_AUTH_N2.xml'
+    }
+}
+
+task clear_roles(type: JavaExec, dependsOn: classes) {
+    main = "wfm.PresetClass"
+    classpath = sourceSets.test.runtimeClasspath
+}

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Модуль Аналитика. Расчет, публикация" thread-count="3" parallel="classes">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="Прогноз">
+        <groups>
+            <run>
+                <include name="А-6.1.2"/>
+                <include name="A-6.2.1"/>
+                <include name="A-6.2.2"/>
+                <include name="A-6.1.4"/>
+                <include name="A-6.1.5"/>
+                <include name="TK2054-1"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.AnalyticsInt"/>
+        </classes>
+    </test>
+    <test name="Ресурсная потребность">
+        <groups>
+            <run>
+                <include name="A-6.3.1.2"/>
+                <include name="A-6.3.2.1"/>
+                <include name="A-6.3.2.2"/>
+                <include name="A-6.4.2"/>
+                <include name="A-6.3.3.1"/>
+                <include name="A-6.3.3.2"/>
+                <include name="A-6.3.4.1"/>
+                <include name="A-6.3.4.2"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.AnalyticsInt"/>
+        </classes>
+    </test>
+    <test name="Просмотр данных">
+        <groups>
+            <run>
+                <include name="A-6.3.7"/>
+                <include name="A-6.4.5"/>
+                <include name="A-6.1.6"/>
+                <include name="A-6.5"/>
+                <include name="A-6.6"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.AnalyticsInt"/>
+        </classes>
+    </test>
+</suite>

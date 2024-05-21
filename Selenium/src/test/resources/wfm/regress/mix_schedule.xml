@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Модуль Оргструктура. График работы">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="График работы">
+        <groups>
+            <run>
+                <include name="Rmix-13.1"/>
+                <include name="Rmix-13.2"/>
+                <include name="Rmix-13.3"/>
+                <include name="Rmix-14"/>
+                <include name="Rmix-15.1"/>
+                <include name="Rmix-15.2"/>
+                <include name="Rmix-16.1"/>
+                <include name="Rmix-16.2"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.OrgStructure"/>
+        </classes>
+    </test>
+</suite>

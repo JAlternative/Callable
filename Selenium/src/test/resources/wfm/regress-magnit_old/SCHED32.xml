@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Расписание" thread-count="3" parallel="classes">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="SCHED32">
+        <groups>
+            <run>
+                <include name="ABCHR3789"/>
+                <include name="ABCHR4537-1"/>
+                <include name="ABCHR3547-1"/>
+                <include name="ABCHR3584"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="apitest.ScheduleBoardApiTest"/>
+            <class name="pagemodel.ScheduleBoard"/>
+            <class name="pagemodel.Notifications"/>
+        </classes>
+    </test>
+</suite>

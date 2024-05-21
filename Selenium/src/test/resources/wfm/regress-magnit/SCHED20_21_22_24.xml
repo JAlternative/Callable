@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Расписание" thread-count="4" parallel="tests">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="SCHED20">
+        <groups>
+            <run>
+                <include name="SCHED20"/>
+                <exclude name="in progress"/>
+                <exclude name="grade super0"/>
+                <exclude name="grade 3"/>
+                <exclude name="zozo"/>
+                <exclude name="not included in regress on Magnit"/>
+                <exclude name="efes"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+            <class name="apitest.ScheduleBoardApiTest"/>
+        </classes>
+    </test>
+    <test name="SCHED21">
+        <groups>
+            <run>
+                <include name="SCHED21"/>
+                <exclude name="in progress"/>
+                <exclude name="grade super0"/>
+                <exclude name="grade 3"/>
+                <exclude name="zozo"/>
+                <exclude name="magnit"/>
+                <exclude name="efes"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+            <class name="apitest.ScheduleBoardApiTest"/>
+        </classes>
+    </test>
+    <test name="SCHED22">
+        <groups>
+            <run>
+                <include name="SCHED22"/>
+                <exclude name="in progress"/>
+                <exclude name="grade super0"/>
+                <exclude name="grade 3"/>
+                <exclude name="zozo"/>
+                <exclude name="magnit"/>
+                <exclude name="efes"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+            <class name="apitest.ScheduleBoardApiTest"/>
+        </classes>
+    </test>
+    <test name="SCHED24">
+        <groups>
+            <run>
+                <include name="SCHED24"/>
+                <exclude name="in progress"/>
+                <exclude name="grade super0"/>
+                <exclude name="grade 3"/>
+                <exclude name="zozo"/>
+                <exclude name="magnit"/>
+                <exclude name="efes"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+            <class name="apitest.ScheduleBoardApiTest"/>
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Исправленные и новые тесты (i.butinskaya)" thread-count="2" parallel="tests">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="БИО. Новые задачи">
+        <groups>
+            <run>
+                <include name="ЦУ1-1"/>
+                <include name="ЦУ1-2"/>
+                <include name="ЦУ1-3"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BioControl"/>
+        </classes>
+    </test>
+</suite>

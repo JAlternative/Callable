@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Вкладки: Журнал событий, Персонал, Пользователи и Работа с файлами" thread-count="3"
+       parallel="tests">
+    <test name="Журнал событий">
+        <groups>
+            <run>
+                <include name="BI-6.[2, 3, 4]"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BioControl"/>
+        </classes>
+    </test>
+    <test name="Пользователи">
+        <groups>
+            <run>
+                <include name="BI-3.1"/>
+                <include name="BI-3.2"/>
+                <include name="BI-3.3"/>
+                <include name="BI-3.4.[1, 2, 3, 4, 5, 6]"/>
+                <include name="BI-3.5"/>
+                <include name="BI-3.6"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BioControl"/>
+        </classes>
+    </test>
+    <test name="Персонал">
+        <groups>
+            <run>
+                <include name="BI-5.[1, 3, 4, 5]"/>
+                <include name="BI-4.16"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BioControl"/>
+        </classes>
+    </test>
+    <test name="Работа с файлами">
+        <groups>
+            <run>
+                <include name="TEST-685"/>
+                <include name="BI-12.1"/>
+                <include name="BI-12.2"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BioControl"/>
+        </classes>
+    </test>
+</suite>

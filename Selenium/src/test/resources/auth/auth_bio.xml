@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Авторизация пользователя">
+
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+
+    <test name="Берем cookie для пользователя superuser">
+        <parameter name="projectString" value="BIO"/>
+        <parameter name="roleString" value="ADMIN"/>
+        <groups>
+            <run>
+                <include name="login"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BioControl"/>
+        </classes>
+    </test>
+
+</suite>

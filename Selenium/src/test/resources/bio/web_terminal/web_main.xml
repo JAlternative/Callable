@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Веб версия терминала" thread-count="4" parallel="tests">
+    <test name="Проверка режимов авторизации">
+        <groups>
+            <run>
+                <include name="TEST-423"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BioTerminal"/>
+        </classes>
+    </test>
+    <test name="Взаимодействия с главным экраном">
+        <groups>
+            <run>
+                <include name="BI-10.1"/>
+                <include name="BI-10.6"/>
+                <include name="BI-10.7"/>
+                <include name="BI-10.2"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BioTerminal"/>
+        </classes>
+    </test>
+    <test name="Действия на панели администратора. Часть 1">
+        <groups>
+            <run>
+                <include name="PNBI-10.1.12"/>
+                <include name="PNBI-10.1.13"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BioTerminal"/>
+        </classes>
+    </test>
+    <test name="Действия на панели администратора. Часть 2">
+        <groups>
+            <run>
+                <include name="PNBI-10.1.[6, 7, 8, 9]"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BioTerminal"/>
+        </classes>
+    </test>
+</suite>

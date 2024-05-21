@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Расписание" thread-count="2" parallel="tests">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="SCHED8">
+        <groups>
+            <run>
+                <include name="SCHED8"/>
+                <exclude name="in progress"/>
+                <exclude name="grade super0"/>
+                <exclude name="grade 3"/>
+                <exclude name="zozo"/>
+                <exclude name="magnit"/>
+                <exclude name="efes"/>
+                <exclude name="x5"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="apitest.ScheduleBoardApiTest"/>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Оргструктура" thread-count="4" parallel="tests">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="MIX1, грейд super0">
+        <groups>
+            <run>
+                <include name="MIX1"/>
+
+                <exclude name="in progress"/>
+
+                <exclude name="grade 1"/>
+                <exclude name="grade 2"/>
+                <exclude name="grade 3"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.OrgStructure"/>
+        </classes>
+    </test>
+    <test name="MIX2, грейд super0">
+        <groups>
+            <run>
+                <include name="MIX2"/>
+
+                <exclude name="in progress"/>
+
+                <exclude name="grade 1"/>
+                <exclude name="grade 2"/>
+                <exclude name="grade 3"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.OrgStructure"/>
+            <class name="apitest.OrgStructureApiTests"/>
+        </classes>
+    </test>
+    <test name="MIX3, грейд super0">
+        <groups>
+            <run>
+                <include name="MIX3"/>
+
+                <exclude name="in progress"/>
+
+                <exclude name="grade 1"/>
+                <exclude name="grade 2"/>
+                <exclude name="grade 3"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.OrgStructure"/>
+        </classes>
+    </test>
+</suite>

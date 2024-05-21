@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Модуль Расписание. События, работа с графиком" thread-count="4" parallel="classes">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="События">
+        <groups>
+            <run>
+                <include name="TEST-172.1"/>
+                <include name="TEST-172.2"/>
+                <include name="TEST-173"/>
+                <include name="TEST-174"/>
+                <include name="TEST-175"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+    <test name="Комментарии к дням, сравнение версий">
+        <groups>
+            <run>
+                <include name="TEST-156.1"/>
+                <include name="TEST-156.2"/>
+                <include name="TEST-157"/>
+                <include name="TEST-158"/>
+                <include name="TEST-168"/>
+                <include name="TEST-169"/>
+                <include name="TEST-170"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+    <test name="Комментарии к графику">
+        <groups>
+            <run>
+                <include name="TEST-159.1"/>
+                <include name="TEST-159.2"/>
+                <include name="TEST-160"/>
+                <include name="TEST-161"/>
+                <include name="TEST-162"/>
+                <include name="ABCHR2781-1"/>
+                <include name="ABCHR2781-2"/>
+                <include name="ABCHR2781-3"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+    <test name="Печать графика и табеля">
+        <groups>
+            <run>
+                <include name="TEST-163.1"/>
+                <include name="TEST-165"/>
+                <include name="TK2705-1"/>
+                <include name="TK2705-2"/>
+                <include name="TK2705-3"/>
+                <include name="TK2705-4"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+</suite>

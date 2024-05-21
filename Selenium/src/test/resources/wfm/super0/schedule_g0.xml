@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Расписание" thread-count="2" parallel="tests">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="SCHED9, грейд super0">
+        <method-selectors>
+            <method-selector>
+                <script language="beanshell"><![CDATA[
+      return
+      groups.containsKey("SCHED9") &&
+      groups.containsKey("grade super0");
+     ]]></script>
+            </method-selector>
+        </method-selectors>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+            <class name="apitest.ScheduleBoardApiTest"/>
+        </classes>
+    </test>
+    <test name="SCHED11, грейд super0">
+        <method-selectors>
+            <method-selector>
+                <script language="beanshell"><![CDATA[
+      return
+      groups.containsKey("SCHED11") &&
+      groups.containsKey("grade super0");
+     ]]></script>
+            </method-selector>
+        </method-selectors>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+            <class name="apitest.ScheduleBoardApiTest"/>
+        </classes>
+    </test>
+    <test name="SCHED12, грейд super0">
+        <method-selectors>
+            <method-selector>
+                <script language="beanshell"><![CDATA[
+      return
+      groups.containsKey("SCHED12") &&
+      groups.containsKey("grade super0");
+     ]]></script>
+            </method-selector>
+        </method-selectors>
+        <classes>
+            <class name="apitest.ScheduleBoardApiTest"/>
+        </classes>
+    </test>
+    <test name="SCHED21, грейд super0">
+        <method-selectors>
+            <method-selector>
+                <script language="beanshell"><![CDATA[
+      return
+      groups.containsKey("SCHED21") &&
+      groups.containsKey("grade super0");
+     ]]></script>
+            </method-selector>
+        </method-selectors>
+        <classes>
+            <class name="apitest.ScheduleBoardApiTest"/>
+        </classes>
+    </test>
+    <!--<test name="SCHED33, грейд super0">
+        <method-selectors>
+            <method-selector>
+                <script language="beanshell"><![CDATA[
+      return
+      groups.containsKey("SCHED33") &&
+      groups.containsKey("grade super0");
+     ]]></script>
+            </method-selector>
+        </method-selectors>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+            <class name="apitest.ScheduleBoardApiTest"/>
+        </classes>
+    </test>-->
+</suite>

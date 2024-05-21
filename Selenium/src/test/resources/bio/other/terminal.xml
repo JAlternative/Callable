@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Изменения параметров функционирования терминала" thread-count="4" parallel="tests">
+    <test name="Изменение параметров терминала">
+        <groups>
+            <run>
+                <include name="BI-4.[2, 3]"/>
+                <include name="BI-4.[7, 9]"/>
+                <include name="BI-4.10"/>
+                <include name="BI-4.13"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BioControl"/>
+        </classes>
+    </test>
+    <test name="Редактирование привязанного персонала к терминалу">
+        <groups>
+            <run>
+                <include name="BI-4.[4, 5, 6]"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BioControl"/>
+        </classes>
+    </test>
+    <test name="Редактирование привязанного персонала к терминалу ч. 2">
+        <groups>
+            <run>
+                <include name="BI-4.11.*"/>
+                <include name="BI-4.12.*"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BioControl"/>
+        </classes>
+    </test>
+    <test name="Изменение списка терминалов">
+        <groups>
+            <run>
+                <include name="BI-4.14"/>
+                <include name="BI-4.15"/>
+                <include name="BI-4.16"/>
+                <include name="BI-4.1"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BioControl"/>
+        </classes>
+    </test>
+</suite>

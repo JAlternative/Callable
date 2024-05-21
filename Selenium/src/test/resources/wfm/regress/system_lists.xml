@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Модуль Системные списки">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="Системные списки, Служба поддержки">
+        <groups>
+            <run>
+                <include name="TK2686-1"/>
+                <include name="TK2686-2"/>
+                <include name="TK2686-3"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.SystemLists"/>
+        </classes>
+    </test>
+    <test name="Служба поддержки">
+        <groups>
+            <run>
+                <include name="TK2587.*"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.Support"/>
+        </classes>
+    </test>
+</suite>

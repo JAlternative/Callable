@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Модуль Отчеты, Результат расчета рабочей нагрузки" thread-count="4" parallel="classes">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="Просмотр смен, численности по графикам, статуса публикации графика">
+        <groups>
+            <run>
+                <include name="R-1.1.1"/>
+                <include name="R-1.1.2"/>
+                <include name="R-1.1.3"/>
+                <include name="R-1.1.4"/>
+                <include name="R-3.1"/>
+                <include name="ABCHR2873-1"/>
+                <include name="ABCHR2873-2"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ReportsClass"/>
+        </classes>
+    </test>
+    <test name="Переход между режимами, просмотр исторических данных, квоты выходных дней, анализ средней конверсии, посещаемость">
+        <groups>
+            <run>
+                <include name="R-3.3"/>
+                <include name="R-3.4"/>
+                <include name="R-4.1"/>
+                <include name="TK2831.1"/>
+                <include name="TK2831.2"/>
+                <include name="TK2831.3"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ReportsClass"/>
+        </classes>
+    </test>
+    <test name="Просмотр конверсии, численности, табеля">
+        <groups>
+            <run>
+                <include name="R-9.1.1"/>
+                <include name="R-9.1.2"/>
+                <include name="R-9.1.3"/>
+                <include name="R-9.1.4"/>
+                <include name="R-11.1"/>
+                <include name="TK-2811"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ReportsClass"/>
+        </classes>
+    </test>
+    <test name="Результат расчета рабочей нагрузки">
+        <groups>
+            <run>
+                <include name="ABCHR2656.*"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.FteOperationValues"/>
+        </classes>
+    </test>
+</suite>

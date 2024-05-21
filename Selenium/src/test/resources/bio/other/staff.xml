@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Изменения данных вкладки персонал" thread-count="2" parallel="tests">
+    <test name="Изменение списка персонала">
+        <groups>
+            <run>
+                <include name="BI-5.[1, 2]"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BioControl"/>
+        </classes>
+    </test>
+    <test name="Редактирование дескрипторов персонала">
+        <groups>
+            <run>
+                <include name="BI-5.[3, 4, 5]"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BioControl"/>
+        </classes>
+    </test>
+</suite>

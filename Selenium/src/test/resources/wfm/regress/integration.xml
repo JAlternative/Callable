@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Проверка интеграции биометрии и вфм" thread-count="2" parallel="classes">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="Переход в расписание, проверка отображения отметки">
+        <groups>
+            <run>
+                <include name="TI-9"/>
+                <include name="TI-7.1"/>
+                <include name="TI-8.2"/>
+                <include name="TI-8.1"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+    <test name="Выход из системы">
+        <groups>
+            <run>
+                <include name="TI-6.3"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.CommonModule"/>
+        </classes>
+    </test>
+</suite>

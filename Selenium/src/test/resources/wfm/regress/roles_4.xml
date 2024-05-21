@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Модуль Применение ролей. Аналитика, доступ к модулям" thread-count="2" parallel="classes">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="Аналитика">
+        <groups>
+            <run>
+                <include name="TK2045-2.1"/>
+                <include name="TK2045-2.4"/>
+                <include name="TK2045-3.1"/>
+                <include name="TK2045-3.5"/>
+                <include name="TK2045-4.1"/>
+                <include name="TK2045-4.6"/>
+                <include name="TK2045-5.1"/>
+                <include name="TK2045-5.7"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.AnalyticsInt"/>
+        </classes>
+    </test>
+    <test name="Доступ к модулям">
+        <groups>
+            <run>
+                <include name="PD-Roles-1"/>
+                <include name="PD-Roles-2"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.CommonModule"/>
+        </classes>
+    </test>
+    <test name="Расписание">
+        <groups>
+            <run>
+                <include name="TK2043.*"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+</suite>

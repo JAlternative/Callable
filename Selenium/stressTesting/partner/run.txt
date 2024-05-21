@@ -1,0 +1,4 @@
+1. Для того, что запустить файл, нужно открыть командную строку в папке с файлом и ввести нижнюю команду, заменив путь у -Jp_csv_user_path на свой.
+
+jmeter -n -t partner.jmx -Jp_host="partner.goodt.me" -Jp_csv_user_path="D:\GoodtMe\testit\Selenium\stressTesting\partner\users_insight.csv" -Jp_scheme=https -Jp_auth_url="partner-auth.goodt.me" -Jp_port_token=9443
+

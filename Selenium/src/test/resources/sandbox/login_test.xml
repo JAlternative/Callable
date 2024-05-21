@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Исправленные и новые тесты (i.butinskaya)">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="Login test">
+        <groups>
+            <run>
+                <include name="login_test"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="apitest.SampleRestTests"/>
+        </classes>
+    </test>
+
+</suite>

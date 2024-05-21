@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Модуль Оргструктура" thread-count="3" parallel="classes">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="Переход между вкладками, сортировка">
+        <groups>
+            <run>
+                <include name="Rmix-8.[1, 2]"/>
+                <include name="FM-19"/>
+                <include name="FM-20"/>
+                <include name="FE-1"/>
+                <include name="FE-19"/>
+                <include name="FE-20"/>
+                <include name="FE-18"/>
+                <include name="CheckInDifferentModes"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.OrgStructure"/>
+        </classes>
+    </test>
+    <test name="Фильтры вкладки Подразделения">
+        <groups>
+            <run>
+                <include name="FM-1"/>
+                <include name="FM-2"/>
+                <include name="FM-3"/>
+                <include name="FM-4"/>
+                <include name="FM-6"/>
+                <include name="FM-12"/>
+                <include name="FM-13"/>
+                <include name="FM-11"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.OrgStructure"/>
+        </classes>
+    </test>
+    <test name="Фильтры вкладки Сотрудники">
+        <groups>
+            <run>
+                <include name="FE-1"/>
+                <include name="FE-2"/>
+                <include name="FE-3"/>
+                <include name="FE-5"/>
+                <include name="FE-6"/>
+                <include name="FE-12"/>
+                <include name="FE-13"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.OrgStructure"/>
+        </classes>
+    </test>
+</suite>

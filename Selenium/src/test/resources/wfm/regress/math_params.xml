@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Модуль Математические параметры">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="Математические параметры">
+        <groups>
+            <run>
+                <include name="MP-1.1"/>
+                <include name="MP-1.2"/>
+                <include name="MP-2.1"/>
+                <include name="MP-2.2"/>
+                <include name="MP-3"/>
+                <include name="MP-4"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.MathParameters"/>
+        </classes>
+    </test>
+</suite>

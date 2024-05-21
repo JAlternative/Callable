@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Новые тесты" parallel="tests">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="Новые тесты">
+        <classes>
+            <class name="pagemodel.OrgStructure">
+                <methods>
+                    <include name="addInternProgram"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

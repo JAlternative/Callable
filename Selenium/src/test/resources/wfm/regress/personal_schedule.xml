@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Модуль Личное расписание, Уведомления" thread-count="1" parallel="classes">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="Личное расписание">
+        <groups>
+            <run>
+                <include name="ABCHR2939-3"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.PersonalSchedule"/>
+        </classes>
+    </test>
+</suite>

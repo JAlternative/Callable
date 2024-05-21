@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Smoke тестирование Биометрии">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="Центральное управление">
+        <groups>
+            <run>
+                <include name="BI-3.2"/>
+                <include name="BI-3.4.1"/>
+                <include name="BI-4.[2, 3]"/>
+                <include name="BI-5.2"/>
+                <include name="BI-6.1"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BioControl"/>
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Smoke тестирование WFM" thread-count="4" parallel="classes">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="модуль Расписание">
+        <groups>
+            <run>
+                <include name="TEST-132.1"/>
+                <include name="TEST-13[3, 4]"/>
+                <include name="TEST-163.1"/>
+                <include name="TEST-171"/>
+                <include name="TEST-16[6, 7]"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+    <test name="модуль Аналитика">
+        <groups>
+            <run>
+                <include name="A-6.3.1.1"/>
+                <include name="А-4.1.1.1"/>
+                <include name="A-3.1.1"/>
+                <include name="A-5.1"/>
+                <include name="A-5.4.1.1"/>
+                <include name="A-6.[1, 2, 4].1"/>
+                <include name="A-2.3"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.AnalyticsInt"/>
+        </classes>
+    </test>
+    <test name="модуль Оргструктура">
+        <groups>
+            <run>
+                <include name="Rmix-1.1"/>
+                <include name="Rmix-11.[1,2]"/>
+                <include name="Rmix-12.1"/>
+                <include name="Rmix-14"/>
+                <include name="Rmix-7.1"/>
+                <include name="Rmix-17.1"/>
+                <include name="OM-8"/>
+                <include name="Rmix-9"/>
+                <include name="EMP-1"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.OrgStructure"/>
+        </classes>
+    </test>
+    <test name="модуль Массовый расчет">
+        <groups>
+            <run>
+                <include name="MP-2.[1,2,3]"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.BatchCalculation"/>
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Манипуляции со сменами" thread-count="4" parallel="classes">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="Перенос, обмен смен">
+        <groups>
+            <run>
+                <include name="ABCHR2878"/>
+                <include name="TEST-121.1"/>
+                <include name="TEST-122.1"/>
+                <include name="TEST-123.1"/>
+                <include name="TEST-127.1"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+    <test name="Копирование смен">
+        <groups>
+            <run>
+                <include name="TEST-124.1"/>
+                <include name="TEST-125.1"/>
+                <include name="TEST-126.1"/>
+                <include name="TEST-128.1"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+    <test name="Создание смены, запроса">
+        <groups>
+            <run>
+                <include name="TEST-136"/>
+                <include name="TEST-138"/>
+                <include name="TEST-139.1"/>
+                <include name="TK2779-1"/>
+                <include name="TK2779-2"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+    <test name="Редактирование смен, массовые действия">
+        <groups>
+            <run>
+                <include name="TEST-129.1"/>
+                <include name="TEST-130.1"/>
+                <include name="TEST-131.1"/>
+                <include name="TEST-135"/>
+                <include name="TEST-137"/>
+                <include name="ABCHR2885-1"/>
+                <include name="ABCHR2885-2"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+        </classes>
+    </test>
+</suite>

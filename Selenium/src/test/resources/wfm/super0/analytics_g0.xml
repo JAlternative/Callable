@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Прогнозирование" thread-count="2" parallel="tests">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="FTE4, грейд super0">
+        <groups>
+            <run>
+                <include name="grade super0"/>
+
+                <exclude name="FTE7"/>
+                <exclude name="display"/>
+                <exclude name="adjustments"/>
+
+                <exclude name="in progress"/>
+
+                <exclude name="grade 1"/>
+                <exclude name="grade 2"/>
+                <exclude name="grade 3"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.AnalyticsInt"/>
+        </classes>
+    </test>
+    <test name="FTE7, грейд super0">
+        <groups>
+            <run>
+                <include name="grade super0"/>
+
+                <exclude name="FTE4"/>
+                <exclude name="display"/>
+                <exclude name="adjustments"/>
+
+                <exclude name="in progress"/>
+
+                <exclude name="grade 1"/>
+                <exclude name="grade 2"/>
+                <exclude name="grade 3"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.AnalyticsInt"/>
+        </classes>
+    </test>
+</suite>

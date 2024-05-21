@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Локальный таск" thread-count="2" parallel="tests">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <!--    <test name="Настраиваемый табель">-->
+    <!--        <groups>-->
+    <!--            <run>-->
+    <!--                <include name="ABCHR3056"/>-->
+    <!--            </run>-->
+    <!--        </groups>-->
+    <!--        <classes>-->
+    <!--            <class name="pagemodel.ScheduleBoard"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+</suite>

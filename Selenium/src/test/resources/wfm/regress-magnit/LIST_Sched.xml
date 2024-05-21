@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Системные списки" thread-count="4" parallel="tests">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="LIST1">
+        <groups>
+            <run>
+                <include name="LIST1"/>
+                <exclude name="in progress"/>
+                <exclude name="grade super0"/>
+                <exclude name="grade 3"/>
+                <exclude name="zozo"/>
+                <exclude name="not included in regress on Magnit"/>
+                <exclude name="efes"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+            <class name="apitest.ScheduleBoardApiTest"/>
+        </classes>
+    </test>
+    <test name="LIST2">
+        <groups>
+            <run>
+                <include name="LIST2"/>
+                <exclude name="in progress"/>
+                <exclude name="grade super0"/>
+                <exclude name="grade 3"/>
+                <exclude name="zozo"/>
+                <exclude name="magnit"/>
+                <exclude name="efes"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+            <class name="apitest.ScheduleBoardApiTest"/>
+        </classes>
+    </test>
+    <test name="LIST7">
+        <groups>
+            <run>
+                <include name="LIST7"/>
+                <exclude name="in progress"/>
+                <exclude name="grade super0"/>
+                <exclude name="grade 3"/>
+                <exclude name="zozo"/>
+                <exclude name="magnit"/>
+                <exclude name="efes"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+            <class name="apitest.ScheduleBoardApiTest"/>
+        </classes>
+    </test>
+    <test name="LIST16">
+        <groups>
+            <run>
+                <include name="LIST16"/>
+                <exclude name="in progress"/>
+                <exclude name="grade super0"/>
+                <exclude name="grade 3"/>
+                <exclude name="zozo"/>
+                <exclude name="magnit"/>
+                <exclude name="efes"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="pagemodel.ScheduleBoard"/>
+            <class name="apitest.ScheduleBoardApiTest"/>
+        </classes>
+    </test>
+</suite>

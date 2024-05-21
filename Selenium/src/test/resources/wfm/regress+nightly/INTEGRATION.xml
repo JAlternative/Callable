@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Прочие модули" thread-count="2" parallel="tests">
+    <listeners>
+        <listener class-name="testng.retry.AnnotationTransformer"/>
+    </listeners>
+    <test name="INTEGRATION">
+        <groups>
+            <run>
+                <include name="INTEGRATION"/>
+                <exclude name="in progress"/>
+                <exclude name="grade 3"/>
+                <exclude name="grade super0"/>
+                <exclude name="magnit"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="dbtest.DataBaseTest"/>
+        </classes>
+    </test>
+</suite>
