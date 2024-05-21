@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.5">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Взять данные из postgresql и положить их в influxDB" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="BASE_URL" elementType="Argument">
+            <stringProp name="Argument.name">BASE_URL</stringProp>
+            <stringProp name="Argument.value">pmi-bio-test.goodt.tech</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">Ссылка для перехода в приложение</stringProp>
+          </elementProp>
+          <elementProp name="PROTOCOL" elementType="Argument">
+            <stringProp name="Argument.name">PROTOCOL</stringProp>
+            <stringProp name="Argument.value">https</stringProp>
+            <stringProp name="Argument.desc">протокол https/http</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="influx_db" elementType="Argument">
+            <stringProp name="Argument.name">influx_db</stringProp>
+            <stringProp name="Argument.value">pmi</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="influx_url" elementType="Argument">
+            <stringProp name="Argument.name">influx_url</stringProp>
+            <stringProp name="Argument.value">${__P(influx_db_url,http://localhost:8086/write?db=pmi)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="influx_application" elementType="Argument">
+            <stringProp name="Argument.name">influx_application</stringProp>
+            <stringProp name="Argument.value">${__P(influx_db_application,apple)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="influx_measurement" elementType="Argument">
+            <stringProp name="Argument.name">influx_measurement</stringProp>
+            <stringProp name="Argument.value">${__P(influx_db_measurement,belialfff)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments"/>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+        <stringProp name="HTTPSampler.port"></stringProp>
+        <stringProp name="HTTPSampler.protocol">${PROTOCOL}</stringProp>
+        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+        <stringProp name="HTTPSampler.path"></stringProp>
+        <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+      </ConfigTestElement>
+      <hashTree/>
+      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+        <collectionProp name="CookieManager.cookies"/>
+        <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+        <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
+      </CookieManager>
+      <hashTree/>
+      <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+        <collectionProp name="AuthManager.auth_list">
+          <elementProp name="" elementType="Authorization">
+            <stringProp name="Authorization.url"></stringProp>
+            <stringProp name="Authorization.username">superuser</stringProp>
+            <stringProp name="Authorization.password">Qazxsw21Q</stringProp>
+            <stringProp name="Authorization.domain"></stringProp>
+            <stringProp name="Authorization.realm"></stringProp>
+          </elementProp>
+        </collectionProp>
+        <boolProp name="AuthManager.controlledByThreadGroup">false</boolProp>
+      </AuthManager>
+      <hashTree/>
+      <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC pmi" enabled="true">
+        <boolProp name="autocommit">true</boolProp>
+        <stringProp name="checkQuery"></stringProp>
+        <stringProp name="connectionAge">5000</stringProp>
+        <stringProp name="connectionProperties"></stringProp>
+        <stringProp name="dataSource">db_pmi</stringProp>
+        <stringProp name="dbUrl">jdbc:postgresql://stage-t-db.goodt.me/pmi_bio_test</stringProp>
+        <stringProp name="driver">org.postgresql.Driver</stringProp>
+        <stringProp name="initQuery"></stringProp>
+        <boolProp name="keepAlive">true</boolProp>
+        <stringProp name="password">hi570CmZ1pudW</stringProp>
+        <stringProp name="poolMax">0</stringProp>
+        <boolProp name="preinit">false</boolProp>
+        <stringProp name="timeout">10000</stringProp>
+        <stringProp name="transactionIsolation">DEFAULT</stringProp>
+        <stringProp name="trimInterval">60000</stringProp>
+        <stringProp name="username">s_khoroshkov</stringProp>
+      </JDBCDataSource>
+      <hashTree/>
+      <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="Backend Listener" enabled="true">
+        <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="influxdbMetricsSender" elementType="Argument">
+              <stringProp name="Argument.name">influxdbMetricsSender</stringProp>
+              <stringProp name="Argument.value">org.apache.jmeter.visualizers.backend.influxdb.HttpMetricsSender</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="influxdbUrl" elementType="Argument">
+              <stringProp name="Argument.name">influxdbUrl</stringProp>
+              <stringProp name="Argument.value">${influx_url}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="application" elementType="Argument">
+              <stringProp name="Argument.name">application</stringProp>
+              <stringProp name="Argument.value">${influx_application}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="measurement" elementType="Argument">
+              <stringProp name="Argument.name">measurement</stringProp>
+              <stringProp name="Argument.value">${influx_measurement}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="summaryOnly" elementType="Argument">
+              <stringProp name="Argument.name">summaryOnly</stringProp>
+              <stringProp name="Argument.value">false</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="samplersRegex" elementType="Argument">
+              <stringProp name="Argument.name">samplersRegex</stringProp>
+              <stringProp name="Argument.value">[US|TC|&lt;|&gt;].*</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="percentiles" elementType="Argument">
+              <stringProp name="Argument.name">percentiles</stringProp>
+              <stringProp name="Argument.value">99;95;90</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="testTitle" elementType="Argument">
+              <stringProp name="Argument.name">testTitle</stringProp>
+              <stringProp name="Argument.value">Test name</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="eventTags" elementType="Argument">
+              <stringProp name="Argument.name">eventTags</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="samplersRegex2" elementType="Argument">
+              <stringProp name="Argument.name">samplersRegex2</stringProp>
+              <stringProp name="Argument.value">[TC|&lt;|&gt;].*</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </elementProp>
+        <stringProp name="classname">org.apache.jmeter.visualizers.backend.influxdb.InfluxdbBackendListenerClient</stringProp>
+      </BackendListener>
+      <hashTree/>
+      <JSR223Listener guiclass="TestBeanGUI" testclass="JSR223Listener" testname="Подключенные библиотеки для записи данных в InfluxDB" enabled="false">
+        <stringProp name="cacheKey">true</stringProp>
+        <stringProp name="filename"></stringProp>
+        <stringProp name="parameters"></stringProp>
+        <stringProp name="script">//https://mvnrepository.com/artifact/org.influxdb/influxdb-java/2.23
+//https://square.github.io/retrofit/
+//https://github.com/square/retrofit/blob/trunk/retrofit-converters/moshi/README.md
+//https://jar-download.com/download-handling.php
+//https://mvnrepository.com/artifact/com.squareup.okhttp3/logging-interceptor/4.10.0
+//http://www.java2s.com/ref/jar/download-moshi110jar-file.html
+//https://jar-download.com/download-handling.php</stringProp>
+        <stringProp name="scriptLanguage">groovy</stringProp>
+      </JSR223Listener>
+      <hashTree/>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="________________________________________________________________________________________" enabled="false"/>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Запись метрик в Grafana" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Взять последний id из бд" enabled="true"/>
+        <hashTree>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="1. Взять последний Id в таблице records" enabled="true">
+            <stringProp name="dataSource">db_pmi</stringProp>
+            <stringProp name="query">select id from record t order by t.id desc limit 1</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryTimeout">60</stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">lastId</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler" enabled="true">
+            <stringProp name="scriptLanguage">java</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">vars.put(&quot;lastId_1&quot;, &quot;1019192&quot;);</stringProp>
+          </JSR223Sampler>
+          <hashTree/>
+        </hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Запросы в БД" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">false</boolProp>
+        </TransactionController>
+        <hashTree>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="1. Размер БД (общий размер всех таблиц в динамике) " enabled="true">
+            <stringProp name="dataSource">db_pmi</stringProp>
+            <stringProp name="query">SELECT 
+    SUM(CASE WHEN r.id &gt; ${lastId_1} AND r.personid = &apos;4971&apos; THEN 1 ELSE 0 END) AS isPerson,
+    SUM(CASE WHEN r.id &gt; ${lastId_1} AND r.personid IS NULL THEN 1 ELSE 0 END) AS notPerson,
+    SUM(CASE WHEN r.id &gt; ${lastId_1} AND r.facecount = &apos;1&apos; THEN 1 ELSE 0 END) AS isFace,
+    SUM(CASE WHEN r.id &gt; ${lastId_1} AND r.facecount = &apos;0&apos; THEN 1 ELSE 0 END) AS notFace
+FROM 
+    record r;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryTimeout">60</stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="variableNames">isperson,notperson,isface,notface</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugSampler>
+          <hashTree/>
+        </hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler Запись в Influx" enabled="true">
+          <stringProp name="scriptLanguage">java</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">	   import org.influxdb.InfluxDB;
+        import org.influxdb.InfluxDBFactory;
+	   import org.influxdb.dto.Point;
+	   import org.influxdb.dto.Query;
+	   import java.time.Instant; 
+	   import java.time.LocalDateTime;
+	   import java.time.format.DateTimeFormatter;
+        import java.util.concurrent.TimeUnit;
+        
+
+	   private static final String isperson = &quot;isperson&quot;;
+    	   private static final String notperson = &quot;notperson&quot;;
+    	   private static final String isface = &quot;isface&quot;;
+    	   private static final String notface = &quot;notface&quot;;
+    	   
+
+	   String influxDbUrl = &quot;http://localhost:8086&quot;;
+        String influxDbDatabase = vars.get(&quot;influx_db&quot;);
+        String influxDbMeasurement = vars.get(&quot;influx_measurement&quot;);
+        InfluxDB influxDB = InfluxDBFactory.connect(influxDbUrl);
+        influxDB.query(new Query(&quot;CREATE DATABASE &quot; + influxDbDatabase));
+        influxDB.setDatabase(influxDbDatabase);
+
+        Point.Builder pointBuilder = Point.measurement(influxDbMeasurement);
+	   pointBuilder.addField(isperson, Integer.valueOf(vars.get(&quot;isperson_1&quot;).replaceAll(&quot;[^0-9]&quot;, &quot;&quot;)));
+	   pointBuilder.addField(notperson, Integer.valueOf(vars.get(&quot;notperson_1&quot;).replaceAll(&quot;[^0-9]&quot;, &quot;&quot;)));
+	   pointBuilder.addField(isface, Integer.valueOf(vars.get(&quot;isface_1&quot;).replaceAll(&quot;[^0-9]&quot;, &quot;&quot;)));
+	   pointBuilder.addField(notface, Integer.valueOf(vars.get(&quot;notface_1&quot;).replaceAll(&quot;[^0-9]&quot;, &quot;&quot;)));
+	   pointBuilder.time(Instant.now().toEpochMilli(), TimeUnit.MILLISECONDS);
+	   influxDB.write(pointBuilder.build());
+
+
+	   
+
+	   
+
+
+  </stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action" enabled="true">
+          <intProp name="ActionProcessor.action">1</intProp>
+          <intProp name="ActionProcessor.target">0</intProp>
+          <stringProp name="ActionProcessor.duration">15000</stringProp>
+        </TestAction>
+        <hashTree>
+          <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
+            <intProp name="calcMode">0</intProp>
+            <doubleProp>
+              <name>throughput</name>
+              <value>1.0</value>
+              <savedValue>0.0</savedValue>
+            </doubleProp>
+          </ConstantThroughputTimer>
+          <hashTree/>
+        </hashTree>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Отправка запросов 1 поток" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">10</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">400</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">900</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="US_1_Отправка_запросов_в_яндекс" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">false</boolProp>
+        </TransactionController>
+        <hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC_1.1_Отправить_запрос_на_распознавание_лиц" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">false</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="&lt;_bio-api/tasks/create/recognition-task" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&#xd;
+    &quot;zoneOffset&quot;: 10800,&#xd;
+    &quot;series2&quot;: [],&#xd;
+    &quot;purpose&quot;: &quot;RECORD&quot;,&#xd;
+    &quot;deviceGuid&quot;: &quot;cc6c7bc1-bcb2-5695-aa5c-668b0e2b610c&quot;,&#xd;
+    &quot;scenario&quot;: &quot;CONFIRM_PERSON_2&quot;,&#xd;
+    &quot;personToConfirm&quot;: &quot;6555&quot;,&#xd;
+    &quot;series1&quot;: [],&#xd;
+    &quot;method&quot;: &quot;SIMPLE&quot;,&#xd;
+    &quot;geoPoint&quot;: {&#xd;
+        &quot;lng&quot;: 38.08910162975469,&#xd;
+        &quot;lat&quot;: 55.59670117682064&#xd;
+    },&#xd;
+    &quot;image&quot;: &quot;/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAKBueIx4ZKCMgoy0qqC+8P//8Nzc8P//////////////////////////////////////////////////////////2wBDAaq0tPDS8P//////////////////////////////////////////////////////////////////////////////wAARCAR6BHoDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwB1FFLQAlFLSUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFJS0lABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABS0lKKAHdqYetPPSmUAKOlIaWikAlFFFADhRSClpgFFFFACGgUGlFIAooopgLTSKdSGgBtFBopAFOBptLTAdRSA0tACUUUUAFFFFACUUtFACUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABSUtFACUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAU4U2nCgAbpTRStSCgBaDRRQAlFLSUgClBpKKAHUUlLTAKKKKACiiigBRRRRQAhFNp1IRQAUlFLSAKXNNopgOooooAKKKKACiiigBKKWkoAKKWigBKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKM0hNAC0U3NJuoAdmjNMzRmgB+aM1HmjNAEmaM1HmjNAEmaM1Huo3UASZozUe6jdQBJmlzUW6l3UASUUzdS5oAdRSZpaACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKSgBaSlpKACiiigAooooAKKKKACiiigAooooAWnCmindqAGHrSik706gBDQKKBSAKCKWigBtFBooAWlAptOFMAopaSgAooooAKKKKAFpDRS0AMNFONNoAKKKKQDqKKKYBRRRQAUUUUAFJS0UAJS0lFAC0lLRQAlFLSUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUhNAC5ppNITSUAKTTc0UUAFFFFABSUUtACUUYooAKKKKAEooooAKKKKAClpKKAFpQabRQBIDThUQNPBoAfRSA0tABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFJS0lABRRRQAUUUUAFFFFABRRRQAUUUUAKKU9KBQ1ADRTqaKdSASiiigApaQUtACGkp1IaYCUoNJRSAfSUA0tMBKKKKACiiigBRRRSUAFIaWg0ANooozSAdRRRTAKKKKACiiigAooooAKKKKAEopaKACiiigApKWigBKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKM0maQ0ABNJRSE0ABNJRRigBaKSjNABRSUtABS0UlABSUtJQAUUUlABRRRQAUUUUAFFFFABRRRQAUuaSigB4NPBqKnA0ASUUgNLQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUlLSUALSUtFACUUUUAFFFFABRRRQAUUUUAFLSUooAUUjU7tTDQAUopKBSAWg0UUAFLRRTAKDRRQA2ilIpKQCinUynA0wFpKWkoAKKKKAClpKCaAFppoFL3oATFJinUYoAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApKWigBKKKKACiiigAooooAKKKWgApKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKQmgmmk0ALTSaCaSgAooozQAtBpM0maACiikoAWjNJRQAuaM0lFABmlpKKACiiigAooooAKKKKACiiigAooooAKKKKAClFJS0APBpwqMGng0AOooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAEooooAKKKKACiiigAooooAKUUlOFACnpTKc1NFABRSmkpAAp1IKWmAlLRRQAUUUUAFNp1IRQAlLSUUgHikpAadTASiiloASkNKaSgAFLQKKAClpBS0AJRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABSUtFACUUtFACUUtJQAUtJS0AJRRRQAUUtJQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUtJQAUUUUAFFFFABSE0E0wmgBc0lJmkzQA6kozRQAUlLRQAlJS0UAJRS0UAJRS4oxQAlFLiigBKKWigBKKKKACiiigAooooAKKKKAEpaSigBaKKKACiiigBacDTaUUASA0tMBp9ABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUlLSUAFFFFABRRRQAUUUUAFOFJTh0oAa1ApD1pRQAtNp1IaQCU4U2lFMBaKKKACiiigAFBpaSgBpopTSUgCnCm0opgOpKWkoAKKKKAAUtJRmgAozQKKACiiigAooooAKKKKACiiigAooooAKSlooAKKKKACiiigAooooAKKKKAEpaKKACiiigBKWikoAKKWkoAWkpaSgBaSiloASiiigAoopaAEooooAKWkooAKKKKAFpKWigAopKWgBKKWigApKKWgApKWigBKCaKaxoAaTSGikoAKKKKACiilAoAKMUoFLigBuKMU6igY3FLS0lABSUtFACUUUUAFJS0UAJRRRQAUlLRQAlFLRQISilpKACiiigBKKWkoAKWkpaAClFJSigBwp4qOnqaAHUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFACUUUUAFFFFABRRRQAop3akFDdKAG96WkpaQC0GiimA2ilNJSAcKKQU6mAlFFFABRRQTQAGm0tGKAEooopAOBpaaKWmAUUUUAFJS0lAAKdSCigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApKWigApKWkoAKWkooAKKKWgBKKWkoAWkpaKACiiigApKWigBKKKKACloooAKKKKACkpaKAEpaKKACkpaaTQAE0wnNBOaSgANJS0lABRS0oFACAU4ClAooGFFFFIBKKWkoAKSlpKACiiigBKKKKYBRRRQAUlLRQAlFLRQAlFFFABRRRQAUlLRQAlFFFAgooooAKWkooAdQDSUUASg0tRqaeDQAtFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABSUtJQAUUUUAFFFLQAooalFNbrQAClpBRSAWkpaKYBTadSGgBKcKbSigBaKKWgBDSUppKAFooooAQikpxptABSikopAOoFJRTAU0UCloASilpKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApKWigBKWikoAKWiigAooooAKKKKACiiigAooooAKSlooASloooAKKKKACiiigAoopKAAmo2NOY0ygAooFFABRiinAUAIBTgKAKWgYUUUUgEooooAKSlpKACkpaSgAooooASiiigAooopgFFFFABRRRQAUlLRQAlFLRQAlFFFABRRRQAlFLSUCCiiigBaKKKACnA02igCYGimKafQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAlFLRQAlFFFABSikpRQA7tTD1p56UygBRS02nUAFJS0lAC0lLQaAG0UUUgHClNNFOpgJRRRQAUUUCgApCKWigBtFBopALS4ptOBpgLSUtFACUUUtACUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAlITSmmMaAEJptLRQACiiloAAKdQBS0DCilpKQBRRRQAlFFFACUUUUAFJS0lABRRRQAUlFFMAooooAKKKKACiiigAooooAKKSloAKSlooASiiloASiiigBKKWigQlFFFABS0lFADgakU1FTlNAElFAooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKSlooAKUUlOFACN0ptOakFACUopDQKQDqKKKYBSUGgUAFJTqQ0gEpwptKKAFooopgIaBSmigAooooAQikp9MNABSikopAPopAaWmAlLSUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUlLSUAIajJp7GmUAFAoooAKcBSCngUDCloopAFJS0lABRRSUAFFFFACUUUUAFJS0lABRRSUwCiiigAooooAKKKKACiiigAooooAKKKKACkpaKAEpaKKACiiigApKWigBKSnU2gQUUUUALSim0tAEimnVGDTwaAFooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKcOlNFO7UANPWlpO9LSAQ0lKaSgBwoNIKWmAlApaKACg0UUANopTSUgFpc0lLimAUUUUAFFFFAC0hFKKKAGUUppKQC04UylBpgOooooASiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKQ0tNY0AMY0lFFABRRSigBQKeBSAU6gYUlLSUgCkoooAKKKKYCUUUUAFJRRQAUUUUAJSUtJQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFLQAyinEU2gQUtJRQAtPU0ylBoAlopAaWgAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigBRSnpSChqAEFFAoNIApDTqKAG04U2lFAC0lLQaYCClpBS0ABptPppoASnCm0ooAdSUtJQAUtJRQAtJRRQAGm06kIoASiiikA4Glpop2aYCUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFACUxjTzUZoASiiigApyim1IooAcKWiigYlJS0lIBKKWkoAKKKSmAtJRRQAlFFFABSUUUAFJRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUALRRRQAU0inUhoAbRRRQIWikpaAHqafUQNSA0ALRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFADhTW607tTT1oAUdKKBRSAKKKBQAhpKcabQAtL1pBS0wCiiigBaQ0UtADKWg0lIBwopBTqYCUtFJQAUUUUAFBpRRQAzpRTiKbSAKKKKAHUUUUwCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigBDUZp5phoASiiigBRUi9KYtSDpQAtFFJQMKSlNNJoAKSiigAopKKAFpKTNFAC0lFFABRRRQAlFFFABRRRQAUUUUAFFFFABRRRQAUUUlAC0UlFAC0UlFAC0UlFAC0UlFAC0UlLQAUtJS0AFFFFADTSU402gQUtJRQA4U8UwU9aAHUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABSikpRQAp6UyntTcUAApabSikAGloooAKaadSGmACnUynCgAooooAWkoooADTadSGgBKcKbSigB1JS0hoAKKKKAFpKKKACkNLSGgBKKKKQDqKKKYBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAjVGae1MNACUUUUAPXrUlRpUlABSUtJQMQ0lLikNACUlLSUAFJRRQAUUUUAFFFFABRS0UAJSU6koASilooASiiigAooooAKKKSgAooooAKKKKACiiigAooooAKKKKACilooAKWkooAWiiloAQ0w1JTDQISiiigBRUgpgp60AOooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACnCm04UAI1ApD1pRQAlAoNApALRS0lMAoNFLQAylFBpKQD6SgUtMBKKKKACg0oooAZS0GkpAOFKaaKdTASiiloASg0UhoAWkNApe9ADaKWkxSAdRRRTAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAGtTDTzTDQAlFLSUASJT6anSnUAFGKKWgBpphpzU00DEpKKKACkpaKAEooooAWikooAWlpKKAHUUUUAJRS4ooAaaSlNJQAUUUUAFFFFACUUUUAFFFFABRRRQAUUUUAFFFFAC0UlLQAUtJS0AFLSUtABTGp9NagBtLSUtAhRT1pgp60AOooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAFFKelIKVulADe9LSClpABptPpp60wFFFIKdQAlFFFAAabTqQ0AAp1NpRQAUUUUAFFFLQA00lONNpALSim0opgOooooAQ0hpaTFACiigUtACUUCloASiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAQ9KjNSGozQAUnelpB1oAmXpS0g6U6gApDS000ANNNNKaaaBhSgUAU7GKAG4opaQ0gENJQaSmAUUUUALRSUUAPFOFMBpwoAdSGlFBoAYabTzTDQAUUUUAFFFJQAUUUUAFFFJQAtJRS0AFFFFABRRRQAUUUUALRRRQAtLSCloAKa1OprUANpaSloEKKkWoxUgoAWiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAcKRqUU09aAFFFAopAFBoopgJTqZThQAUUGigBaQ0UUANpRSUtIBaKWimAlJmlNJ3oADRilooAbS0GkpAOFLTRTqYCUUUUAApaSjNAC0ZpKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAQ1GakNMNADTQvWg0J1oAnHSlpBS0AFMNOppoAaab3pxoUc0DHAcUGnUhoAZSGlJphNAAaSiigAooooAKKKKAFpQabSigCUUGminUANNNNONNNIBKKKKYBSUUUAFJS0lABRRRQAUtFFABRRRQAUUUUAFFLSUAFLSUtAC0tJS0AFNanUjdKBDKUUlKKAHCpBUYqQUALRSUtACUUtJQAUUUUAFFFFABRRRQAUUUUAFFFFABSikpRQAvamGnnpTaAAU6m0vakAUtJRTAQ0ClNJSAdSUDpS0wEooNIKAEopaSkA4Uppop1MBKSlooAKKKKAAim0+mmgApRTaUUgFoozQKYBSU402gBRS0gooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigBDTDUlNYUARmlTrSGnJ1oAlFLSUUAFNNKTTSaAENKtIaBQMfmmk5OKOtGMGgQFajI5qVm4qI9aAGmlFBoFABRRRQMKKKKACnCkFOAoAcKWkooAQ0004000gEooopgJRRRQAlFFFABRRRQAUUUUCCiiigApaBS4oABQaSloGJRRRQAtLSUtAC0jdKWkbpQAylFJTqBCjrUgqNakFAC0UUUAFFFFACUUUUAFFFFABRRRQAUUUUAFFFFABThTacKAEagUh60tACGlFIaBSAWilpDTADTaWg0gFFKaaKd2pgIaBRRQAUhp1IaAG04U2lFIBaKKKYCUopDQKAHCkNFLQAyilopAFLmkpcUwCjFLRQAlFLRQAlFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUjUtIaAIzSp1oalTrQBJRRSUDENNpxptIApKDRTAeppTTAaXNACGmkU402gBtFKaSgAooooAKKKWgBRTxTVFOoAWiiikA00008000ANooopgJRS0lABSUtJQAUUUUAFFFFAgooooAWiiigYUUtJQAUUUUALRRRQA4UjdKUUHpQAwUtJSigQ5aeKatOoAWiiigApKWkoAKKWkoAKKKKACiiigAooooAKKKKAFFL2pBSnpQA3vS0gpTSAQ0UtJQA7tSUCigAFFFLTAbSikNApALRRQaYBmlpop1ADT1pKcabSAWlzSUuKYBRS0lABS0lKKAEIptPNNoAKcKbQKAHGkpaKAEoopaAEooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigBhpUpDSp1oAfSGlpKBiUlOpKQDTSUtJQAlLmkopgLSUUUAJRRRQAUUUUAFOApAKeKAAUtFLQAlFLSUgENNNKaQ0ANooopgFFFFACUUUUAJRS0UAJRS0UAJRS0UAFFFFABRRRQAUUUtABS0lLQAooPSiigBlKKSnKKBDxS0CloAKKKKACiikoAKKKKACiiigAooooAKKKKACiiigBwpGpRSN1oABRSClpAFBoooAQUtJSigANAoNFMANJTqbSABS9aQU6mAlFLSUALTKfTTQAU4UynCgAopaSgAooooAWkIpaDQA2iiigBwopop1ABRSUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUANahetObpTV60APooooGJSUtFADTSU6kNADaSlpKQCUUtJTAKKKKAClAopRQAopRSU4UALRRRQAUlLSGgBppppxppoASiiigAooooAKSlooASiiigAooooAKKKKACiiigAoopaACiiigBaKKKQC0UUtMBnenrTO9SLQIWlpKWgAooooAKSlpKACiiigAooooAKKKKACiiigApaSlFAC9qb3px6U0UAFKKDSCkAtFFFACGgUppBQAtFLSUwFppp1IaAEFOptOFACUtFFABQaKKAGUooNJSAfSUClpgFFJRQAuaKSigAIpKdTaACnCm0CgB1FFFACUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAjGkXrQ1IOtIZJRQKWmISkNOpDQMbSGlNIaAEpKWkoASkpaKAEpaKKAClpKWgBacKZTxQA6koooAKQ06kIoAYaaacaYaACiiigAFLSCloASiiigBKKKKACiiigAooooAKKKKAClpKWgAooooAWiiigBaWkpaQDR1qQUxetSUxBRRRQAUUUUAFFFFACUUUUAFFFFABRRRQAUUUUAFKKSnCgAakFDUCgApBTqb3pAOpKWimAU2nU00gHDpRSClpgFFFFADT1oFKaSgBxpKUdKKACkpaSgANNp9NPWgAFOptOFABRRSUAFKKSigBaQilFBoAbRRRQA4UU0U6gBKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooARqaKfTQKQx46UtNXinUxBSGlooAaabTjSGgY2kp1JQAlFFFABSUtJQAUUUlADqUGm0qnmgCSgUCgmgBc0hNNzRmgBDTDTzTTQAlFFFABS0lGaAFpDS0hoASiiigAooooAKKKKACiiigApaSloAKKKWgAoopaAClpKWkAi9akpi9afTEFFFFABRRRQAUUUUAJRS0lABRRRQAUUUUAFFFFABTh0pBS9qAGnrS0lLQAtIaKDQAClpop1ACUGiigBBTqbThQAUlLSUABpKdTT1oAUUtNFOoASiiigBRSGloNADKUUUUgHUlKKSmAUUtJQAtFFJQAGkpTSUAFGaKKAFooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApQKSl7UDE706o8808UALRRRQIQ0hpaQ0DG0UtJQAlJS0UAJSUtJQAlFFFABSjrSUUATDpTSaM8U00AIWpA1IaVRk0APBzSGnAUjUAMooooAQmkFKaSgBwoNIKU0AJRSUtABRRRQAUUUUAFFFLQAUUUUAFLSUtABS0lLQAUpopDQAop9RipKACiiigQUUUUAFFFFABSUtFACUUUUAFFFFABRRRQAopT0oFI1ACUoo7UCkAUUUtMBvendqaaUUAFLRSUAIaUUGkFIBxpKWkpgLSGiigBKcKbSigBaSlooASilooAaaSnGkpAKKWm06mAlFLRQAlLRSZ5oAKQ06mmgAooopALRRRTAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAobpRSNQMZUinio6ehpAPooopiEooooASm040hoGJSUUUAJSUtNoAKKKKACiiigB6mkNIKdQA3FOVcUoFOoAQmmE0pphoAKKSigBaSlooASiiigAooooAKKKKACiiigApaSloAKKKKAFooooAKWkpaAFpp606md6AHCn1GKkHSgBaKKKBBRRRQAUUUlAC0lLSUAFFFFABRRRQAUUUtACikPWl7UnegApKWkpALRQKDTADSClpKQDqKKQ0wA0lLSUgFFLSClpgJRmg0goADRRiikA6ikFKaYCUmaU0negBTTadSGgApRSUCgB1FFJQAGkNLSUAKOlJil7UUAIaSnUmKAFooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKSloAKKKKACiiigAooooASloooAKOoooFADSKF605qQCkMfRSUtMQUlLSUAFNNOppoGNpKWkoAKbS0lABRRRQAUtFLigAFKKKWgBRQaKQ0ANNNNKabQAUUUUALSUUUAFFFFABRRRQAUUUUAFFFFABS0lLQAUtJS0AFFFFABS0UUAB6U2nNSCkAoFPpFFOpgFFFFAgooooAKSlpKAFpKKKACiiigAooooAKUUlOFAAelIKGpBQAtJS0UgAUGkpaYBSGloNAAKKBRQAUGiloAaKd2ptKKACiiigApDTqRqAEFOptKOlABRS0lABRS0CgBpopTSUAOFFNFOoASiiigAFLRRQAgpaBRQAlFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAlLRRQAUUUUAFFFFABRRRQAUUUCgBTSZobpURY5oGTClpiHIp9AgpKWkoAKaadTTQMaaSlpKAEopaXFADcUUppKAFFLQKWgAooooAKQ0UhoAaaSlNJQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUtJS0AFLSUtABS0lLQAUtJS0AIaQUGigCQdKWmrTqBBRRRQAUUlFAC0lFFABRRRQAUUUUAFFFFABThSUvagBD1pKO9KaQBRQKKAENKKDSCgBaKKWmA2lpDQKQC0UGgUwENApTSUgHUlAoNMAzS0gpaAG0Cg0UAOpKM0tACZopDSigBe1Np1NNABSikoFAC0UZooAKM0GkoAdmjNIKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAoopKAFpKKKAClpKWgApKKKAFooooAKKKSgBaKKSgBaKKKACiiigA7UwpzT6KAEQYp9NHWnUAFJS0lABTTSmmmgYlJS0hoABTqBSGgBpoFFKKAHCilooASiiigBKQ0UlACGkpaSgAooooAKKKKACiiigAooooAKKKKACiiloASlpKKAFooooAWlpKWgApaSlpANoHWlpQKYCinUlFAhaSiigAooooAKKKKACiiigAooooAKKKWgAFKelIKU0ANFKaBS0AIKKTvTqAEpBTqb3oAdRRSUABpBTqbQAuKKWkoAWm06mmgAFLSCnUAJRS0UAIaSnU2gApc0gp2KAEopaKACg0UUANooNFABTqaKWgANJS4oxQAtFFJQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUlAC0lFFABRS0UAFJS0lABRRRQAUUUUAFLSUUALRRRQAUUUUAFFFFACUUUUAKKdTKcKAFpKWkoAQ0006koGJSGnU00AL2pppc8U00AFKKbQDQBJmkJpuaWgBc0hNFGKAEpKKKACkpaSgApKWkoAWikooAWikpaACiikoAWikooAWiiigApaSloAKKKWgApaSloAKcBmm08UAG2lxRmjNAgopM0ZoAWikzRmgBaKTNGaAFopuaM0AOopuaM0AOopuaKAHZozTaSkA/NITSUtACilpopaYCGloNAoAWkNFBoABS0gpaACmnrTqQ0AApaQUtABSGlooAbTh0pp60ooAKWiigApDS0GgBtOHSm0ooAWjNFJQAtAoozQAhpKdTTQAU4U2lFAC0UGkoAWkoooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKSlooASilooASloooASloooASilooAKKKKACiiigAooooAKKWigBKKWigBKKWigBKUUlKKAFpKWkoASiiigYlNNPNMNADc0hoNJQAUoGaKeooATbS4p1FADaKWkoAQ0lOpDQAhptKaSgAooooAKKKKACiiigAopaKAEpKdSUAFFFFABS0lLQAUtFFABS0lLQAtLSClIpAFFFAoAKKWigBKKWigBKSnUlACUuKKXtQAmKMUtFAhMUuKKBQAhpKU0lAxRTqaKcKBCd6WkNLQAUCik70wFoopaAG96dSGgUAFFFLQA2nU09acKACkpaSgBDQKU0lIB1FA6UUwCiiigBp60ClNJQA7tRQKKACiiigApDS0GgBtAoooAfSUCg0AJilxRRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAmKMUtGaAExRilzRmgBKKM0ZoAKWkzRmgBaKTNGaAFopM0ZoAWim5ozQA6im5ozQA6im5ozQA6im5ozQA6im5pM0AOozTc0ZoAdmjNNzRQA7NGabRQA7NGabRQA7NGabRQAuaM0lFAC5ozSUUALmjNJiikAuaM0lLigBM0oPNJS0APpKBRTASiiigYGmGn000ARmilNJQAoFPFIBTqACiikoAKSiigBKQ0tNNABSUUUAFFFFABRRRQAUtJRQAtFJS0AFJS0UAJRS0lABS0lLQAtFFFABS0lLQA4UppBSmkISgUUUDFooooASgUtFABSUtJQAUopKUUCCilpKACgUUUABptONJQAUoptLQA40CjtQKACkNKaSgBRRQKWmAhoFFIKAHUCikoADQKDSCgBxpKWkoAWmnrTqQ0AApaaKdQAUUUUAFNpwpDQAClptOHSgAooooAKKSlFACGkpxptACilptOFABRRRQAmaM0lFAC5ozSUUALmjNJRigBc0maMUUAGaM0lLQAZozRijFABmijFGKAEzRQaKACilxRigBKKXFGKAEop2KaaACiinUANopaKAExRilpaAG0UGigBcUYpaKAG4pcUtFACYpKcabQAUuKSloAKKKSgBcUUCigBKKKBSAdSUtFMBKKWigAptONNpAFLSUtABRRRQAqmlpop1MApKWkoGFNNOpDQAw0ClIpBQA4UtIKKACkpaSgApKWmmgApKKKAEooooAKKKKACiiigAooooAKWkpaACiiigApKWigAooooAKWkpaAFpRSCnCgBRS0lFIQlFFFAxaKBRQIKKKSgYtIaWg0CEpRSUCgYtFFFAgooooAKSlpDQAUopKBQA4UneloNABRRRQAg60ppD1paYBSUtIaQDhRSCg0wCkpaSkAoooFLTASg0tJQAlOFNNKKAFoopKAFoNFFADaUUhoFAD6SiigBKWkpaACmmnUhoASlFJRQA+koooAQ0lBoFACiilooASilooASkNKaSgApRSUtABSUtJQAoopKKAEpRSUooAWiiigAooooADTacabQAU6koFABRS0UAJRS0hoASlFJSigBaKKKACiiigBDSUppKAClFAooAKKDQKACkp1IaAEpRSUopALRRSUwClpKWgANNpTSUgAUtApaAEooooAWlFJRQAtJS0lMYUUlLQA0ikp9NIoABRRRQAUlOpKAEpKWkoASilpKAEopaSgBKKKKACiiigAooooAKWkpaACiiigAooooAKKWkoAKWiloABTxTQKdSAKWkooEIetFBooGKKKBS0CEooooAKDRS0ANooooGOopKKBBRRRmgAoNFBoASgUUUDHUGkpaYhBS0gpaQAaBRSUwFoooFACClpO9LQAUGiloAaKdTaUdKAA0gpaKAENApaSkA6igUUwCiikzQAGkpTSUAOFFIKWgApKWigBaSiigBpopTSUAKKdTBTs0ANpRSU4UAFFFJQAtFJRQAGkoNFABSilpKACig0CgApDS0lACU4UgpaACiiigAooooAQ0lFKKAFFFFFACGgUtFABSGlptABThTadQAUUUUAFFFFADTRRRQA4UUUUAJRS0UAFIaWmmgApwptOFABRRRQACiiigBDSUppKQCiloFFABRRRQAUhpaQ0AKOlFC0poGJSUtFMAoopaAG4opaSgApKWigBtFLSUAJSUppDQAlFFFACUUUUAFFFFABRRRQAtFFFABRRRQAtFFFABRRRQAUoopwoAUUUUUgDNFFFACGiiigBRS00U6gQlFLSUAFLSUtADTRQaKBi0UlKKBBSUtFABRRSUAFFFFAxRSiminUxB3ooNAoAKTvS0GgAooFFAAaQUppKAFoFFAoADQKDSUALRRRQAUhp1IaAAUpptO7UAIaTvS0UABpKWg0AJTh0ptKKAFopaSgAoopM0ABpKdTaACiiikAopaQUtMAooooAKQ0tIaAEpRSU4UAFJS0lABRRS0AIabSmigAFOpBRQAUUUUAFBopDQAlKKSnCgAooooAKKKKAA02lNJQAopaQUtABRRSUALRRSGgBKUUlKKAFooooAKKKKACm0402gAp1NpaACilpKAAGlpKKAENFFFIBwooooAKKKKACkNLSGgBVpaRadQA2ilpKYwpaSigBaSlooASiikoAKQ0UlACGkpTSUAJRRRQAlFFFABRRRQAUtJS0AFFFFABS0UUAFFFFABS0UoFAABTqSlFIAopaQ0CCikpaACkpT0pKBgOtOptOoEJRRRQAUUUUABpKU0lAAKXFIKdQAlJS0UAFFFFACGilNJQMBS0lLQIU0Cl7Ug60wFpDS0lAAKKQU6gAptOppoAdRSCigBabTqQ0AJS0gpaAAUtJS0ANpRSGgUAOpKWigApKWigBtApTSUAPpKBRQAlJ3paSgBe1JTu1JQAlFBopAOooopgJSikooAKSlpKAAU6kFLQAUUUUAFFFIaAEooooAWigUUAJRS0UAFJQaSgBadTRTqAEooooAKWkooAQ0lLRQAUtGKKACikpaAEpKdTaACnCm04UAFFFFABRRRQAGm0ppKAFFApRRQAUlLSUALSUtBoAbQKKUUgFooooASlpKWgApDS0hoAVadTVp1MApDRRQAlFLSUDCiiigApKKQ0AFJRRQAhpKWigBtFLSUAFJS0lABRRRQAtFFFABRRS0AFLSUtABRRRQAU4UgpaQBSikpRQAtFFFAhKKKKAFptOptABThTacOlABSUUUAFLSUUAKabS0lABTqbSigAooooAKKKKACkp1NNABSikoFADhR3pBSmmAtJQKKAE706kNAoAWkNFFAAKWm06gApDS0UANp1NpwoAKSiloAQ0lOptAC5pabTs0AJSikNAoAU9KbTqaetACilptOFABSUtFABSUtBoAQ9KbT6TFAC0UUlAC0lLSGgBKKKUUAKKKKKAEoopaACmmnU2gApcUgp1ACUGlpKAAUUUtADTRQaKAFFFKKKAEooooAKDS0hoAbSiilFAC0lFFACUtFFABTacabQAopaQU6gBKKKKACiiigBDSUUUAOFFFFABRRRQAUGikNACUopKUUgFooopgFFFFIAptOptADlp1ItLTASiiigAoopKBhSUtJQAUlFFIBKKKKYCUUUUAJSUppKACkpaKAEopaKACiiigApaKKACloooAKKKKQCinGminUAJSikpRQAtFFFAgpKWigApp606mmgApRSUUDFooFFAhKUUUUAFIaWkoAKUUlKKAFNJS0lABRRRQAtNNOpDQAlFFFAxQaU02nDpTEAopO9OoAQ0Cik70ALRS0UANPWnCkNAoAWiikoADQKDSCgB1FFFABTTTqQ0AIKdim04dKADFFFFABSGlooAbSikooAdRSUtABRSGgGgB1JRRQAUUUUAFIaWm0AFOFJS0AFFFFABRRRQAhpKDRQAopaBRQAlFFFABQaWkNACUCigUAOpKKKACikpRQAtNNLSUAFKKSnUAJRRRQAUUUtADTSUppKAFFLSCloAKTNLSUALRRSUAJSikpRQAtFLSUAFFFFABSGnU00AJSikpaQC0lLSUAFAopaACm0tJQA9aWkHSlpgJRRRQAlFBpKBi0UlLQAlJTqQigBtJTjSUAJSUtJQAUlLSUAFFFFABRRRQAUUUtABS0UUAFFFFABRRQKQDhS0gpTQAlKKSlFAC0UUUCEpaSigBaQ0UGgBKBRQKBi0tFJQIKKKQUALSGloNACUCiigY6kpaSgQUUUUAFBoooASiiigYtKKQUopiA9aKDQKACkpaDQAUUCloAQ0gpaSgB1JS9qSgBabTqQ0AKKKQUtABQaKKAG0ooNIKAHUUUUAFFFFACGkpxptACilzSCjFAAaSnYpKAFooooAKKKKAA02lNFAAKWkFLQAUlLSUAAoNFJQAUCilFAC0UUUAFJRS0AFNNONNoAKBRRQAtFFFABRRRQAlFBooABTqQUtACUUUUALSUUGgBKKSlFABS0UUAFFIaWgApKWkNACUopKcKACiiigAooooAKbTu1NoAKWilpAFJS0lAC0UgpaAENJSmgUAOHSilpKYBSUtJQAUlBpKBhSikoFADqKKKAENNpxpKAEpKWkoASkpaSgAooooAKKKKAFooooAWiiigApKKKAClFJSigB60ppBSmkIbRRRQMdRRRQIKSlpKAFpDS0GgBtFFFAx1JSikoEFFFFABSmkpaAG0UUUDFFLSCigQUUUUAFLSUUwENFBopDAU6milpiF7UCikoAWiigUAAoNJ3paACkpaQ0AKKKQU6gApDS0lACCnU2nCgApKWigBDSU6m0AOFFIKWgAooooAWmHrT6aaAEpwptOFABRQaKACiiigAoNFIaAEpaSnCgBKWiigBKWkpaAEpKcabQAU4UgpaACkpaSgApaKKAENJQaKAFFFApaAEpKdSUAFLSUpoAaaKKBQAoopaKAEooooAKDS000AJSiilFAC0lFFABRRRQAUhpaSgBKcKSloAKKKKACiiigANNpxptACilpBS0AFFFFABRRRQAhoFBpwpALSUtJTAKSikoADTadSUDEpaSkoAeKWmg0tAAaSlNJQAlJS0lACUlLRQAlFFFABRRRQAtLSUtABRRSUAFFFFAC0CilFIBwpTQKKBDaKKKBjqKSloEJRRSUAOpKBRQAlFFFAxwopBSmgQUlFFABS0lLQA00UppKBgKWkpaBBSUtFACUtJS0ABpKKKBhS0lKKBCig0Cg0wCigUtACGgUGkoAWiiigBKd2pppRQAtFIaBQAhpRSGgUAOooooAKQ0tBoAbT+1MpwoAKKKKACg0UUANpRQaSgB9JQKKAEpaKKACkNKabQAtKKQUtABRRRQAUUUUAIaSg0UAKKWgUUAFJS0UAFFFIaAEoopRQAtFFFACUUUtABSGlppoAKUUlKKAFopKKACikpRQAUhpaSgApRSU6gBKKKKACiiloAQ02nGkoAKWkFLQAUUUhoAXNFJS0AIaSlNJSAUUtAopgFFFFABRRRSAKWiloAKSiimAlJS0lAwpKWkoASkpaSgApwNNpRQA6koooASkpaSgBKSlpKACiiigAooooAWlpKKAFpKKKACiiigBaUUlKKQDxRSCloENopaSgYtFAooEFFLSUAFFLSUAJRQaKBiilpBS0CCkoooAKWkopgBpKU0lIAoopaACiiigAopKWgBKKXFIaACgUUCgYtL2pKUdKYgFLTe9OoAKbTqaaAFoFAooADQKKSgBaKKKACkp1NNADhRSCnUAJRRRQA2lFBpKAH0lA6UUAFFFFAAabTqbQAop1Mp9ACUUUUAIaKKBQAoopaSgAooooAKDRSGgBKKKWgBaSlpKACiiigBaQ0UlABSikpwoAKSlooAKKKKACm0402gApRSUooAKKKKAEpaKKAEooooABTqQUtACUUUUAFLSUtADTRQaKAClFFFABRRSUALSUtFACUlLRSAUUUCimAUUUUgCloooGFLSUUxBRRSUAFJS0lAxKKWkoASkpaSgBKUUlLQAtFFFACUlLSUAFJRRQAUUUUAFLSUtABRRRQAUUUUAFFFFABThTaUUgHilpBS0CENJSmkoAUUtIKWgApKWkoABS0lLQAhpKU0lAAKdTadQAlFLSUAFFFLQAU2nU00AFKKSlFABRS0lMAxRRRSAKDRQaYCUUUUhi0opBSimIDS0hoFAC0hpaSgAFLSCloASkNOpDQAA0UlOoAKQ0UtADRTqbThQAlGaKO9AAaSlNJSAcKKQUtMAooooAWmmnUhoAbThTaUUAOpKWkoASlFJSigBaSiigAooooAKQ0pptABS0CloAKSlpDQAtFIKWgBDSUppKAAU6kFLQAlFLSUAFLRRQAhpKDRQAoooFLQAlFFFABRRRQAhooooAUUUopKACiiigAoooNACUUUUAKKKWkoAKSlooAKWiigBppM06kIoATNLmm4ooGOpaaDS5oAdRSUtABRRRQIKSikoAKKKSgYtJRRQAlJS0hoASiiigBaKSigBaSiigBKKKKACiiigApaSloAKKKKACiiigAooooAKUUlKKAHKadTKcDSEBpKU0lACilpBS0AJRS0UAJRS0UAIaSnGm0AFOptKKAFpKKKACiijNAC0006kNACUCiigB1JS0lMAooooAKKKWgBtFBopAApaSlpgLQKBSd6AHUlLSUAJ3p1IaBQAtIelLRQA2lpO9OFACUtFFACGgUGkoAdSUtFACUGlpKAEpw6U2nCgAopaSgAooooAaetFKaSgBwpaaKdQA0UtApaAEooooAKKWkoAQ0lLRQAoooooAKSlooAKKKDQA00UUooAUUUUUAFJS0UAFFFIaAEoooFADqKKKAEooooAKDRQaAEoFFAoAdRRSUAFFFFAC0hooNACUCiloAWkpRQaAENJmlpCKAFzRTaWgYtFFFACYpCKdRQA3FJT6TFACZpwNJiigB1JSZozQIKSjNJmgYtFJmigBaKSloEIaQ0ppDQMSkoooAKWkooAKKKKACiiigAooooAKKKKAFopKWgAooooAKKKKAClFJSigBaKKSkApNIDRSimAop1MpwNAhaKKKQBRRRQAU2nU3vQAUtJRQMWigUUCA0lLRQAUUUlABRRRQMdSUClpiEooooAKWkpaAENJSmkpAFFFFADhSGgUppgAooFLQAhoFFJQA6iikoADQKDQKAFooooAKbTqQ0AGaWm06gAopDSigBp60ooNJQA+koFFABQKSkoAcabTqSgBKdmm0UAOooooAKKSlFABQaKQ0AJSiilFABRRRQAUUUUAFIaWkNACUopKUUALSUtJQAUtJQKAFpDRSGgApRSU4UAFJS0UAFJS0UAFNNOptABQKKWgAoozSE0AFFJmjNAC5opKUUALSZopKAHClpoNLQAGkp1IRQAmKSnUUAJmlpCKSgY6ikooAWikooAWkoooAKSlpKACjFFFACYpMU6koASlzRRQAlIaWigBtFLikxQAlFLijFACUUUUAFFFFABRRRQAtFJRQAtFFFAC0UlFAC0lFFABSiiigBaKSloAKWkpaACjNFFAC5pc0yloAdS03NLmgQtNNKDQaQCUCigUDFpaKSgQUUUlAC0UUtADaKDRQMUUGgUtMQlFFFABRRRQAUlLSGgAoFFApALS9qSlFMAHWlpD1ooAKSlpDQA7tSUCigBabTqQ0ALRSCloAKQ0tBoAbS0lOFACGgUtFAB2ptOpD1oABSmm06gBKKWkoAU9KbTqKAG0UUUgHUUUUwEopaKACkoooAKUUgpaACiiigAooooADTaU0lABS0UUALSUtJQAUUtJQAUlLRQAlOptGaAHUU3NJmgB1GabmjNADs0lJmkzQA7NJmkzRQAZopKKBhS0lLQACnU2loELSUUlAC0tJRQA6lpKKACikooAWkopaAExRRRQAUUUlAxaKSigAooooAKKSigBaSiigAoopKACiiigBKSlpKACiiigAooooAKKKKACiiigAooooAKKKKACiiigBaKKKACiiigApaSloAKWkooAWkopaACiiigAooooAKM0UUALRSUUAPpKQGlzQIKKKKAClFJRQAGkpTSUgAU6m06gBMUUtJTAKKKKAFpDRQaAEooopALSikFHemApoFB6UCgAoNFFAAKWm06gAFIaKKAAUtNp1ABRRRQA00ooNAoAWiiigApDS0UANpRSUooAWijNFABQaKDQAhFJTj0puKAHUUUlAC0UUUAIaKKKAFFFFFABRRRQAUUUUAIaSiloAUUUUmaAFpKM0UAFFFITQAuaTNITTc0AOzSUmaKBi0UUUAFFJRQAtJRRQAUUUUAFFFFABS0UUAFFFFABRRRQAUtJRQA6ikooELSUUUALRSUUALRSUtABRRSUAFFFFABSUtJQMKKKKACikooAKKKKACkpaSgApKWkoAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAFooooAKKKKACiiigBaKKKAClpKWgAooooAKKKKACiiigAoopKAFopKKAFzS5ptGaAH5opuaM0CHGkozRQAUopKUUgCiiimAUUUlIBaKBRTASiiikAoopBS0wF7UlKKDQAUUUd6AA0opDQKAFopDRQAlOFIaBQAtJS0UABptOpDQAo6UUCigAooooAQ0UpptACilpBS5oAKBQaQUAOpMUUtACUUUUAFBopDQAUCilFAC0lFFABRRRQAUGiigBKKDTSaAFJpKTNFADqKSjNAATSE0E0lAwpKWkoAKWkpaACiiigAooooAKKKKACiiigApaSigBaKKKACiiigApaSigAooooAKKKKAFooooAKKKKACiiigAoopKAFpKWkoAKKKKACiiigBKKKKACiiigApKKKACkpaSgAooooAKKKKACiiigAooooAKKKKACiiigApaSloAKKKKACiiigAoopaACiiigAooooAWikooAWiiigAoopKAFopKWgBKKKKACiiigAooooAKWkooAWjNJRQA7NLTKWgQ6kpM0uaAFooooASiiikAUtJSimAooNJS9qAAUUCloAKbTqaaAFooooADSClpKAHUUCigAFIaUUGgBBS02nCgAooooAKbT6aaAAUuKbTx0oAQ0gFOpKAClpKKACiiloASkpTSUAFLSUtABRRRQAUUGm5oAdRSA06gBhptPamGgBKWkooGLSUUUAFFJRQAUUUUAFFFFAC0UUUAFFFFABRRRQAUUUUAFFFFABRRRQAtFJRQAtFJS0AFFFFABRRRQAUUUlAC0UUUAFFFJQAtFJRQAtFJRQAtFJRQAUUUUAFFFFABRRRQAlFLSUAJRS0lABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAC0UUUAFFFFABRRRQAUtFFABRRRQAUUUUAFFFFABS0lFAC0lFFABRRRQAUUUUAFJRRQAUUUUAFLSUUALRRRQAUUUUAFFFFAC5pc02igB9JSZpaBBSikoFAC0opKUUAHelpDS0AFIaWkNAAKKSloAWkNFKaAEFLSCloAKKKKAG04UhoFAC0UtJQAUGiigBtOFNpRQAtFLSUAFFFFAC0UUlACGiiloAKKM0maAFopKKAA02lpKAAGng1HTlNADj0qM1L2qJqAEoopKBhRRRQAUUUUAFFFFABRRRQAUtJS0AFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAC0UlFAC0lFFABRRRQAUUUUAFFFFABRRRQAUUlFAC0UlFAC0UlFAC0UlFAC0UlFAC0UlFABRRRQAUUUUAFFFFACUUtFACUUtFACUUtFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUALRSUtABRRRQAUUUUAFFFJQAUUUUAFFFFABRRRQAtFFFACUUUUALRSUUALRRRQAUUUUALS02loEOpRTQacKAA0ClpBQAtFFFADaWg0CgApaTFLQA2ndqQ0CgBaSiigANJS0lADqKBRQAUUUUAIaSnHpTaAHDpRQKKACiiigApaSloASkNOppoAbmjNIaKAHZopM0tABSUtNNABQKSigCUHimN1pVNI1ADaSlpKBhRRRQAUUUUAFFFFABRRRQAUUUUALRSUtABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFJQAtFJRQAtJRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFJQAtFJS0AFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAC0UUUAFFFFABSUtJQAUUUUAFFFJQAtFFFAC0UUUAJRRRQAUUUUAFFFFABRRRQAtFJS0ALSg02igRIDR3pgNOzQA6ikFFAAaBRSCgB1FFFACGkFOptADqSlooASkp1IaAAUtNp1ABRRRQAU2n000AAp1MpwoAKKKKAEzTqjWpKACkNFFADDTaewptACUoNJRQA6kNGaSgAooooGOWhqFoagQ2kpaSgYUUUUAFFFFABSUUUALRRRQAUUUUAFFFFAC0UlLQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFJQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRSUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAtFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFLSUtABRRRQAUUUUAFJRRQAUUUUAFJS0lAC0UlLQAtFFFABTacabQAUtJRQAtFJRQAtFFFABRSUtAC0UUUAFLSUUAOBpwOajpQaBElN70o5oNAC0UgpaACkNLSGgApabThQAUUlKKAG04UhoFAC0UtJQAUGiigBtKKKBQA40lLSUANWnZ5pB0pKAHUUgNLQAhphqQ0w0ANooooGFFJRQAUUUUAOWlakWlagQ2koooGFFFFABRRRQAlLSUtABRRRQAUUUUAFFFFABRRRQAUUUUAFFLRQAlFLRQAUlLRQAUUUUAFFFFABRRRQAUlFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFJS0UAFFFFACUUtFACUUtFACUUtFACUUtFACUUtFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFLSUtABRRRQAlLSUUAFFFFABRRRQAlFFFABS0lLQAUtJS0AFIaWkNACUUUUAFFFFABRRRQAUUUUALS02lFAC0UUUAFFFFAD1NKaYKcDQIUUtNp1ABQaKKAG0tJThQAhoFKRRQAGm06koAUUUCigAopKAaAA0lONNoAcKWminUAJ2ptLSGgBAafUdPU0ALTTTqaaAGUUppKBiUUUUAFFFFADloahaG60CG0UUUDCiiigAoopKAClpKWgAooooAKKKKACiiigAooooAKKKKAFpKKKAFpKKKACiiigAooooAKKKKACiiloASiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAClpKWgAooooASiiigAooooAKKKKACkpaSgAooooAWlpKWgApDS0GgBtFFFABRRRQAUUUUAFFFFABS0lFADqKQUtACUUUUALSg0lFAD6cKYKcKBC0UUlAAaBQaBQAtFFFABSGloNACClpKUUAJRS0lAC0lKabQAtLmm0tABSGlpDQA2gHmg0lAEtIaRTxSmgBhpKcabQAUlLSUDCiiigB601utOHSmnrQAlFFFABRRRQAUlLSUAFLSUtABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFLSUtABRRSUAFFFFABRRRQAUUUUAFJRRQAUUUUALRRRQAtFFFADaKWkoAKKKKACiiigAooooAKKKKAFpaSlFABSUtJQAtJS0lADhThTBThQIfSUtFABTadSGgBR0opBS0AFFFLQA2gUGigBaKM0UAFJS0GgBtFLRQACkNAoNADTSUppKAFU0+o6cpoAU0006mmgBtFLSUDCgUUooAd2plPPSmUAFFFFABRRSUAFFFFAC0UlLQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABS0UUAFJS0lABRRRQAUUUUAFFFFABSUtJQAUUUUALRRRQAtFFFACUlLSUAFFFFABRRRQAUUUUAFFFFABSikooAdRRRQAUlLSGgBRSiminUAPFLTVNOoEApDS0GgBBS02nUAFFFFACGilNNoAUUtIKWgAopDSigBDSU403FACClNIKWgBpptONJQMSlBpKKAJKQ0KaWgQw0lONNoGFKtJTloAGptOam0AFFFFABSUtJQAUUtJQAUtJRQAtFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAtFJRQAtJRRQAUUUUAFFFFABRRRQAUlLSUAFFFFAC0UUUALRRRQAlJS0UAJRRRQAUUUUAFFFFABRRRQAUUUUALS02loAWmmnU00AKKdTKcKAFB5qQdKiqRTQIWiiigBKUUhoFAC0UUUALTTS0GgBBS0lOoAbQKWjFABRiiloAiFLTRTqAA02nGmmgBKKKKBig80+o6cpoEBptPNNNACU8dKaKd2oAaetJQaKBhRRRQAlFFLQAUUlLQAlLRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAJRRRQAUUUtABRRRQAtFJS0AIaKWkoASiiigAooooAKKKKACiiigAooooAKWkooAdTadTaACnCm04UAFOU000CgRJRQOlFAAaSlpKAHUUCigAoNFFACUopKBQAtFFFABS0lFAEVKKSlFAC000tIaAEooooGFAODRSUASdqaaVTQaBCCnHpSLQ1ADaKKKBhSUtJQAUtFFABRRRQAUUUlAC0UUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFJQAtJRRQAUtJRQAtFJRQAtFJS0AFJRRQAtJRRQAtFJRQAtFJRQAtFJS0AFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAlFFFABS0lLQAUUUUAFLSUtABSUtJQAlFFFABRRRQAUUUUAFFFFABRRRQAUUUUALSGlFIaAClFJSigBTSUppKAJFNLTFp9AgpKdSGgAFLSCloAKKKKAENFKelJQA6koFFABRRRQBDSikpaBi02lpKACiiigAooooAB1p1MpwoAcKa1OHSmnrQISiiigYUUUUAFFFFABRRSUAFFFFABS0lLQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFJQAtJRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUtABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUlLSUAFFFFABS0lLQAUUUUAFLSUtABSUtJQAlFFFABRRRQAUUUUAFFFFABRRRQAUUUUALSGlpDQAUopKUUAKaSlNJQAoqQVGKkU0CFpKKWgBtOFIaUUAFFFFAC02nU00AApaSloAKKKKAIaKKKBhRRRQAUUUlAC0UUUABoWihetAD+1MNObpTaBBRRRQMKKKKACiikoAKKKKACiiigApaKKACiiigAooooAKKKWgBKKWkoAKKKKACiiigAoopKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAoopaAEpaKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigApKWkoAKKKKAFooooAKKKKAClpKWgApKWkoAKSlpKACiikoAWiiigAooooAKWkpaAEopaSgBaQ0tIaAClFJSigANFBpKAFFPWmU9TQIcaBS0UAIaBS0lADqSiigAoNFFACUopKUUAFFBooAhooooGFFFFABSUUUAFLSUUALTlptOWgQNTaU0lAwpKWkoAWikooAKKKKACiiigAooooAWiiigAooooAKKWkoAKWiigAoopKACiiigAoopKACiiigAooooAKKKKACiiigBaKKKACkpaKAEooooAKKKKACiiigAooooAKKKKACloooASloooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkoooAKKKKAFooooAKKKKAClpKWgApKWkoAKKKKAEooooAKKSloAKKKKACiiigBaKKKACkNLSGgApRSUooADSUtJQAtOFNpRQBIKWminUCCkpaQ0AKKKQUtABRSUA0ABoFKaSgB1JQKWgCCikpaBhRSUUAFFFFABRRRQAop46UwU7tQIQ0lBpKBhRRRQAUUUUAFFFFABRRRQAUtJS0AFFFFABS0lLQAUUUUAFFFFABSUtJQAUUUUAFJRRQAUUUUAFFFFABRRRQAUUUUALRRRQAUUUUAJRS0UAJRS0UAJRRRQAtFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABSUtJQAUUUUAFFFFAC0UUUAFFFFABS0lLQAUUUUAJRRRQAlFFJQAUtJS0AFFFFABRRRQAtFFLQAlJS02gBaWkFLQAlFFFABThTacKAHCnUynigQtBoooASlpKUUAFIKWigANJQaKAFFLTRS0AQUtJRQMKKKKACiiigAooooAUU49KaKcaBDTSUtJQMKKKKACiiigAooooAKKKWgAooooAKKKKAFooooAKKKWgApKWkoEJRRRQMSiiigAooooAKKKKACiiigAooooAKKKWgAooooAKKKKACiiigAooooAKKKSgBaKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkoooAKKKKAClpKWgAooooAKKKKAClpKWgAooooASiiigBKSlpKAClpKKAFooooAKKKKAFpaSloAQ02nGm0AKKWkFFABRRRQAU4U2nCgBactNpRQIfRRRQAhoFBooAWikFLQAUlLRQAlFFFAENFFFAwooooAKKKKACiikoActKaQUGgBKKKKACiiigAooooAKKKKACloooAKKKKACiiloAKKKWgAooooEFJRSUDCkpaSgAooooAKKKKACiiloASilooASiiigApaSloAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACikpaACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkpaKAEooooAKKKKAClpKWgAooooAKKKKAClpKWgAooooASiiigBKSlpKACiiigBaKKKACiiigBaWkooADTaU0UAFFFFABRRRQAU4U2nCgBaBSUooEPFLTVp1AAaSlpKAAUtJS0AFFJSigBDRSmkoAhpKU0lAxaKKKACiikoAWkopaAFFFFFACUUUUAFFFFABRRRQAUUUtABRRRQAUUUtABRRRQAtFFFAgpKWkoASiikoGFFFFABRRRQAUUUUAFLRRQAUUUUAJS0UUAJS0lFAC0UlFAC0UUlAC0UlFAC0UlFABRRRQAUUUUAFLRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFJRRQAUUUUAFFFFAC0UUUAFFFFABRRRQAUUUUALRRRQAlFFFACUlLSUAFFFFAC0UUUAFLSUtABQaKTvQAUUUUAFJS0lABS0lLQAtKKSlFABRQaKBDhT6jFPFAC0hpaDQAgpaSloASlFFAoADSUtFAENJSmkNAxKWkooAWkoooAKUUlKKAFpKWkoAKKKKACiiigAooooAKWkpaACiiigApaKKAClopaBCUUUUAJSUUUDEooooAKKKKACiiigApaSloAKKKKACiiigAooooASiiigAooooAKKKKACiiigAooooAKKKKACiiigBaKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACikpaAEooooAKKKKACiiigBaKKKACiiigAooooAKKKKAFooooASilpKAEpKWkoAKKKKAFopKWgApaKKACkpTSCgAooooASiiigApaKKAFpRSUooADRQaSgBwpwpgpwoEPopBS0AJSikNAoAWiiigApaSigCIikpxppoAQ0lLSUDCiiigQUopKcKBhSUtJQAUUUUAFFFFABRRS0AFFFFABRRS0AFLRS0AFFFIaBBSGikoAKSiigYUUUUAFFFFABRRRQAtFFFABRRRQAUUUUAFFFFACUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUtFJQAtFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFACUUtJQAUUUUAFFFFABRRS0AFFFFABRRRQAUUUUAFFFFAC0UlLQAUlLSUAJSU6m0AFFFFABS0lLQAtFFFACGgUGgUAFJS0lABRRRQAtFFFAC0opKUUABpKU0lACilpKWgQ4U6mCnigBDQKU0lAC0UCigAooooAYaaadTTQAlIaWkoGJRQaKBBTqaKdQMSiiigAooooAKKKKAFooooAKKKWgAoopaACloooEFNNKaQ0AJRRSUDCiiigAooooAKKKKACiiigBaKKKACiiigAooooAKKKKACkpaSgAooooAKKKKACiiigAooooAKKKKACloooAKKKKACloooAKSlpKACiiigAooooAKKSigBaSiigApaSigAopaSgBaKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKSgBaSiigAooooAKKKKAClpKWgAooooAKKKKACiiigAooooAKWkpaACkpaSgAptOppoAKKKKAClpKWgBaKKKAENFJS0AJRRRQAUUUUALRRRQAtLSUtAAaSlNJQAtFJS0AOpwNMFOFAh1JS0hoAUUUgpaACiiigCOkNLSGgBKSlpKBhSUtJQAopaQUpoASiiigAooooAKWiigAooooAKWiloAKWiigQUlLSUAIaSiigYlFFFABRRRQAUUUUAFFFFABS0lLQAUUUUAFFFFABRRRQAUUUUAFFFFACUtFJQAUUtJQAUUtJQAUUUUAFLSUtABRRRQAUtFFABRRRQAlFFFABRRRQAUUUUAFJRRQAUUUUAFFFFABRRRQAtFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUlABRRRQAUUUUAFFFFABRRRQAUtFFABRRRQAUUUUAFFFFABRRRQAUtJS0AFFFFACUhpaQ0AJRRRQAUtJS0AKKKQUGgBKWkpaAEooooAKKKKAFooooAWlFJSigANJSmkoAKWkpaAFFLSCloEOFBpBTqAEpaSlFABRRRQB/9k=&quot;&#xd;
+}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">bio-api/tasks/create/recognition-task</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Connection</stringProp>
+                    <stringProp name="Header.value">keep-alive</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugSampler>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>false</time>
+            <latency>false</latency>
+            <timestamp>false</timestamp>
+            <success>false</success>
+            <label>false</label>
+            <code>false</code>
+            <message>false</message>
+            <threadName>false</threadName>
+            <dataType>false</dataType>
+            <encoding>false</encoding>
+            <assertions>false</assertions>
+            <subresults>false</subresults>
+            <responseData>true</responseData>
+            <samplerData>false</samplerData>
+            <xml>true</xml>
+            <fieldNames>false</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <url>true</url>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

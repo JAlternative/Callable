@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Implementation-Title: allure-commandline
+Implementation-Version: 2.20.1
+

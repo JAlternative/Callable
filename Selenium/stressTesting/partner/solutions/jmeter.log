@@ -1,0 +1,252 @@
+2023-06-05 21:37:34,566 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2023-06-05 21:37:34,580 INFO o.a.j.JMeter: Loading user properties from: D:\Jmeter\apache-jmeter-5.5\bin\user.properties
+2023-06-05 21:37:34,580 INFO o.a.j.JMeter: Loading system properties from: D:\Jmeter\apache-jmeter-5.5\bin\system.properties
+2023-06-05 21:37:34,580 INFO o.a.j.JMeter: Setting JMeter property: p_host=partner.goodt.me
+2023-06-05 21:37:34,580 INFO o.a.j.JMeter: Setting JMeter property: p_csv_user_path=D:\GoodtMe\testit\Selenium\stressTesting\partner\users_insight.csv
+2023-06-05 21:37:34,580 INFO o.a.j.JMeter: Setting JMeter property: p_scheme=https
+2023-06-05 21:37:34,580 INFO o.a.j.JMeter: Setting JMeter property: p_auth_url=partner-auth.goodt.me
+2023-06-05 21:37:34,581 INFO o.a.j.JMeter: Setting JMeter property: p_port_token=9443
+2023-06-05 21:37:34,586 INFO o.a.j.JMeter: Copyright (c) 1998-2022 The Apache Software Foundation
+2023-06-05 21:37:34,586 INFO o.a.j.JMeter: Version 5.5
+2023-06-05 21:37:34,586 INFO o.a.j.JMeter: java.version=11.0.17
+2023-06-05 21:37:34,586 INFO o.a.j.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+2023-06-05 21:37:34,586 INFO o.a.j.JMeter: os.name=Windows 11
+2023-06-05 21:37:34,586 INFO o.a.j.JMeter: os.arch=amd64
+2023-06-05 21:37:34,586 INFO o.a.j.JMeter: os.version=10.0
+2023-06-05 21:37:34,586 INFO o.a.j.JMeter: file.encoding=Cp1251
+2023-06-05 21:37:34,586 INFO o.a.j.JMeter: java.awt.headless=true
+2023-06-05 21:37:34,586 INFO o.a.j.JMeter: Max memory     =1073741824
+2023-06-05 21:37:34,586 INFO o.a.j.JMeter: Available Processors =12
+2023-06-05 21:37:34,592 INFO o.a.j.JMeter: Default Locale=English (EN)
+2023-06-05 21:37:34,593 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2023-06-05 21:37:34,593 INFO o.a.j.JMeter: JMeterHome=D:\Jmeter\apache-jmeter-5.5
+2023-06-05 21:37:34,593 INFO o.a.j.JMeter: user.dir  =D:\GoodtMe\testit\Selenium\stressTesting\partner\solutions
+2023-06-05 21:37:34,593 INFO o.a.j.JMeter: PWD       =D:\GoodtMe\testit\Selenium\stressTesting\partner\solutions
+2023-06-05 21:37:34,597 INFO o.a.j.JMeter: IP: 172.28.176.1 Name: Java FullName: Java.mshome.net
+2023-06-05 21:37:34,608 INFO o.a.j.s.FileServer: Default base='D:\GoodtMe\testit\Selenium\stressTesting\partner\solutions'
+2023-06-05 21:37:34,608 INFO o.a.j.s.FileServer: Set new base='D:\GoodtMe\testit\Selenium\stressTesting\partner\solutions'
+2023-06-05 21:37:34,715 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2023-06-05 21:37:34,728 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2023-06-05 21:37:34,730 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2023-06-05 21:37:34,733 INFO o.a.j.s.SaveService: Loading file: partner.jmx
+2023-06-05 21:37:34,766 INFO o.a.j.p.h.c.CookieManager: Settings: Delete null: true Check: true Allow variable: true Save: false Prefix: COOKIE_
+2023-06-05 21:37:34,768 INFO o.a.j.p.h.c.CacheManager: Will only cache the following methods: [GET]
+2023-06-05 21:37:34,772 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2023-06-05 21:37:34,772 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to ISO-8859-1
+2023-06-05 21:37:34,772 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2023-06-05 21:37:34,772 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2023-06-05 21:37:34,806 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2023-06-05 21:37:34,806 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2023-06-05 21:37:34,806 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2023-06-05 21:37:34,806 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2023-06-05 21:37:34,807 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2023-06-05 21:37:34,807 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2023-06-05 21:37:34,892 INFO o.a.j.JMeter: Creating summariser <summary>
+2023-06-05 21:37:34,902 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2023-06-05 21:37:34,904 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2023-06-05 21:37:34,904 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2023-06-05 21:37:34,912 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
+2023-06-05 21:37:34,912 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
+2023-06-05 21:37:35,156 INFO o.a.j.v.b.BackendListener: Backend Listener: Starting worker with class: class org.apache.jmeter.visualizers.backend.influxdb.InfluxdbBackendListenerClient and queue capacity: 5000
+2023-06-05 21:37:35,157 INFO o.a.j.v.b.BackendListener: Backend Listener: Started  worker with class: class org.apache.jmeter.visualizers.backend.influxdb.InfluxdbBackendListenerClient
+2023-06-05 21:37:35,585 WARN o.a.j.r.ResultCollector: Error creating directories for F:\
+2023-06-05 21:37:35,585 WARN o.a.j.r.ResultCollector: Error creating directories for F:\
+2023-06-05 21:37:35,585 WARN o.a.j.r.ResultCollector: Error creating directories for F:\
+2023-06-05 21:37:35,586 INFO o.a.j.JMeter: Running test (1685990255586)
+2023-06-05 21:37:35,600 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : bzmFFATG_Работа_с_редактором
+2023-06-05 21:37:35,600 INFO o.a.j.e.StandardJMeterEngine: Starting 0 threads for group bzmFFATG_Работа_с_редактором.
+2023-06-05 21:37:35,600 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2023-06-05 21:37:35,627 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-1
+2023-06-05 21:37:35,628 INFO c.b.j.t.a.ArrivalsThreadGroup: Got first arrival
+2023-06-05 21:37:35,628 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2023-06-05 21:37:35,629 INFO o.a.j.s.FileServer: Stored: D:\GoodtMe\testit\Selenium\stressTesting\partner\users_insight.csv
+2023-06-05 21:37:35,684 INFO o.a.j.p.h.s.HTTPHCAbstractImpl: Local host = Java
+2023-06-05 21:37:35,687 INFO o.a.j.p.h.s.HTTPHC4Impl: HTTP request retry count = 0
+2023-06-05 21:37:35,711 INFO o.a.j.p.h.s.h.LazyLayeredConnectionSocketFactory: Setting up HTTPS TrustAll Socket Factory
+2023-06-05 21:37:35,714 INFO o.a.j.u.JsseSSLManager: Using default SSL protocol: TLS
+2023-06-05 21:37:35,714 INFO o.a.j.u.JsseSSLManager: SSL session context: per-thread
+2023-06-05 21:37:35,741 INFO o.a.j.u.SSLManager: JmeterKeyStore Location:  type JKS
+2023-06-05 21:37:35,742 INFO o.a.j.u.SSLManager: KeyStore created OK
+2023-06-05 21:37:35,742 WARN o.a.j.u.SSLManager: Keystore file not found, loading empty keystore
+2023-06-05 21:38:05,621 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-2
+2023-06-05 21:38:05,881 INFO o.a.j.r.Summariser: summary +     57 in 00:00:30 =    1.9/s Avg:   184 Min:    92 Max:   653 Err:     0 (0.00%) Active: 2 Started: 2 Finished: 0
+2023-06-05 21:38:14,862 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-3
+2023-06-05 21:38:22,490 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-4
+2023-06-05 21:38:29,130 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-5
+2023-06-05 21:38:30,055 INFO o.a.j.r.Summariser: summary +    119 in 00:00:24 =    4.9/s Avg:   182 Min:    79 Max:   550 Err:     0 (0.00%) Active: 5 Started: 5 Finished: 0
+2023-06-05 21:38:30,056 INFO o.a.j.r.Summariser: summary =    176 in 00:00:54 =    3.2/s Avg:   183 Min:    79 Max:   653 Err:     0 (0.00%)
+2023-06-05 21:38:35,140 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-6
+2023-06-05 21:38:38,867 ERROR o.a.j.m.JSR223PreProcessor: Problem in JSR223 script, jsr<<<PROJECT_TITLE
+javax.script.ScriptException: Sourced file: inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' : Typed variable declaration : Attempt to resolve method: getBytes() on undefined variable or class name: myField : at Line: 4 : in file: inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' : myField .getBytes ( Charset .forName ( "ISO-8859-1" ) ) 
+ in inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' at line number 4
+	at bsh.engine.BshScriptEngine.evalSource(BshScriptEngine.java:93) ~[bsh-2.0b6.jar:2.0b6 2016-02-05 05:16:19]
+	at bsh.engine.BshScriptEngine.eval(BshScriptEngine.java:46) ~[bsh-2.0b6.jar:2.0b6 2016-02-05 05:16:19]
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:233) ~[java.scripting:?]
+	at org.apache.jmeter.util.JSR223TestElement.processFileOrScript(JSR223TestElement.java:219) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.modifiers.JSR223PreProcessor.process(JSR223PreProcessor.java:45) ~[ApacheJMeter_components.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.runPreProcessors(JMeterThread.java:978) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.executeSamplePackage(JMeterThread.java:561) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.processSampler(JMeterThread.java:501) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.run(JMeterThread.java:268) ~[ApacheJMeter_core.jar:5.5]
+	at java.lang.Thread.run(Thread.java:834) ~[?:?]
+2023-06-05 21:38:40,634 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-7
+2023-06-05 21:38:45,751 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-8
+2023-06-05 21:38:50,556 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-9
+2023-06-05 21:38:55,093 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-10
+2023-06-05 21:38:59,403 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-11
+2023-06-05 21:39:00,085 INFO o.a.j.r.Summariser: summary +    354 in 00:00:30 =   11.8/s Avg:   167 Min:    81 Max:   882 Err:     0 (0.00%) Active: 11 Started: 11 Finished: 0
+2023-06-05 21:39:00,085 INFO o.a.j.r.Summariser: summary =    530 in 00:01:24 =    6.3/s Avg:   172 Min:    79 Max:   882 Err:     0 (0.00%)
+2023-06-05 21:39:03,539 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-12
+2023-06-05 21:39:07,336 ERROR o.a.j.m.JSR223PreProcessor: Problem in JSR223 script, jsr<<<PROJECT_TITLE
+javax.script.ScriptException: Sourced file: inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' : Typed variable declaration : Attempt to resolve method: getBytes() on undefined variable or class name: myField : at Line: 4 : in file: inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' : myField .getBytes ( Charset .forName ( "ISO-8859-1" ) ) 
+ in inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' at line number 4
+	at bsh.engine.BshScriptEngine.evalSource(BshScriptEngine.java:93) ~[bsh-2.0b6.jar:2.0b6 2016-02-05 05:16:19]
+	at bsh.engine.BshScriptEngine.eval(BshScriptEngine.java:46) ~[bsh-2.0b6.jar:2.0b6 2016-02-05 05:16:19]
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:233) ~[java.scripting:?]
+	at org.apache.jmeter.util.JSR223TestElement.processFileOrScript(JSR223TestElement.java:219) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.modifiers.JSR223PreProcessor.process(JSR223PreProcessor.java:45) ~[ApacheJMeter_components.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.runPreProcessors(JMeterThread.java:978) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.executeSamplePackage(JMeterThread.java:561) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.processSampler(JMeterThread.java:501) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.run(JMeterThread.java:268) ~[ApacheJMeter_core.jar:5.5]
+	at java.lang.Thread.run(Thread.java:834) ~[?:?]
+2023-06-05 21:39:07,496 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-13
+2023-06-05 21:39:11,290 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-14
+2023-06-05 21:39:14,974 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-15
+2023-06-05 21:39:16,854 ERROR o.a.j.m.JSR223PreProcessor: Problem in JSR223 script, jsr<<<PROJECT_TITLE
+javax.script.ScriptException: Sourced file: inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' : Typed variable declaration : Attempt to resolve method: getBytes() on undefined variable or class name: myField : at Line: 4 : in file: inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' : myField .getBytes ( Charset .forName ( "ISO-8859-1" ) ) 
+ in inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' at line number 4
+	at bsh.engine.BshScriptEngine.evalSource(BshScriptEngine.java:93) ~[bsh-2.0b6.jar:2.0b6 2016-02-05 05:16:19]
+	at bsh.engine.BshScriptEngine.eval(BshScriptEngine.java:46) ~[bsh-2.0b6.jar:2.0b6 2016-02-05 05:16:19]
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:233) ~[java.scripting:?]
+	at org.apache.jmeter.util.JSR223TestElement.processFileOrScript(JSR223TestElement.java:219) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.modifiers.JSR223PreProcessor.process(JSR223PreProcessor.java:45) ~[ApacheJMeter_components.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.runPreProcessors(JMeterThread.java:978) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.executeSamplePackage(JMeterThread.java:561) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.processSampler(JMeterThread.java:501) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.run(JMeterThread.java:268) ~[ApacheJMeter_core.jar:5.5]
+	at java.lang.Thread.run(Thread.java:834) ~[?:?]
+2023-06-05 21:39:18,535 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-16
+2023-06-05 21:39:21,977 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-17
+2023-06-05 21:39:25,337 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-18
+2023-06-05 21:39:25,476 ERROR o.a.j.m.JSR223PreProcessor: Problem in JSR223 script, jsr<<<PROJECT_TITLE
+javax.script.ScriptException: Sourced file: inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' : Typed variable declaration : Attempt to resolve method: getBytes() on undefined variable or class name: myField : at Line: 4 : in file: inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' : myField .getBytes ( Charset .forName ( "ISO-8859-1" ) ) 
+ in inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' at line number 4
+	at bsh.engine.BshScriptEngine.evalSource(BshScriptEngine.java:93) ~[bsh-2.0b6.jar:2.0b6 2016-02-05 05:16:19]
+	at bsh.engine.BshScriptEngine.eval(BshScriptEngine.java:46) ~[bsh-2.0b6.jar:2.0b6 2016-02-05 05:16:19]
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:233) ~[java.scripting:?]
+	at org.apache.jmeter.util.JSR223TestElement.processFileOrScript(JSR223TestElement.java:219) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.modifiers.JSR223PreProcessor.process(JSR223PreProcessor.java:45) ~[ApacheJMeter_components.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.runPreProcessors(JMeterThread.java:978) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.executeSamplePackage(JMeterThread.java:561) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.processSampler(JMeterThread.java:501) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.run(JMeterThread.java:268) ~[ApacheJMeter_core.jar:5.5]
+	at java.lang.Thread.run(Thread.java:834) ~[?:?]
+2023-06-05 21:39:28,581 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-19
+2023-06-05 21:39:30,058 INFO o.a.j.r.Summariser: summary +    529 in 00:00:30 =   17.6/s Avg:   177 Min:    84 Max:   838 Err:     0 (0.00%) Active: 19 Started: 19 Finished: 0
+2023-06-05 21:39:30,058 INFO o.a.j.r.Summariser: summary =   1059 in 00:01:54 =    9.3/s Avg:   175 Min:    79 Max:   882 Err:     0 (0.00%)
+2023-06-05 21:39:31,382 ERROR o.a.j.m.JSR223PreProcessor: Problem in JSR223 script, jsr<<<PROJECT_TITLE
+javax.script.ScriptException: Sourced file: inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' : Typed variable declaration : Attempt to resolve method: getBytes() on undefined variable or class name: myField : at Line: 4 : in file: inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' : myField .getBytes ( Charset .forName ( "ISO-8859-1" ) ) 
+ in inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' at line number 4
+	at bsh.engine.BshScriptEngine.evalSource(BshScriptEngine.java:93) ~[bsh-2.0b6.jar:2.0b6 2016-02-05 05:16:19]
+	at bsh.engine.BshScriptEngine.eval(BshScriptEngine.java:46) ~[bsh-2.0b6.jar:2.0b6 2016-02-05 05:16:19]
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:233) ~[java.scripting:?]
+	at org.apache.jmeter.util.JSR223TestElement.processFileOrScript(JSR223TestElement.java:219) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.modifiers.JSR223PreProcessor.process(JSR223PreProcessor.java:45) ~[ApacheJMeter_components.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.runPreProcessors(JMeterThread.java:978) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.executeSamplePackage(JMeterThread.java:561) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.processSampler(JMeterThread.java:501) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.run(JMeterThread.java:268) ~[ApacheJMeter_core.jar:5.5]
+	at java.lang.Thread.run(Thread.java:834) ~[?:?]
+2023-06-05 21:39:31,768 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-20
+2023-06-05 21:39:34,858 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-21
+2023-06-05 21:39:36,604 ERROR o.a.j.m.JSR223PreProcessor: Problem in JSR223 script, jsr<<<PROJECT_TITLE
+javax.script.ScriptException: Sourced file: inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' : Typed variable declaration : Attempt to resolve method: getBytes() on undefined variable or class name: myField : at Line: 4 : in file: inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' : myField .getBytes ( Charset .forName ( "ISO-8859-1" ) ) 
+ in inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' at line number 4
+	at bsh.engine.BshScriptEngine.evalSource(BshScriptEngine.java:93) ~[bsh-2.0b6.jar:2.0b6 2016-02-05 05:16:19]
+	at bsh.engine.BshScriptEngine.eval(BshScriptEngine.java:46) ~[bsh-2.0b6.jar:2.0b6 2016-02-05 05:16:19]
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:233) ~[java.scripting:?]
+	at org.apache.jmeter.util.JSR223TestElement.processFileOrScript(JSR223TestElement.java:219) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.modifiers.JSR223PreProcessor.process(JSR223PreProcessor.java:45) ~[ApacheJMeter_components.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.runPreProcessors(JMeterThread.java:978) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.executeSamplePackage(JMeterThread.java:561) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.processSampler(JMeterThread.java:501) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.run(JMeterThread.java:268) ~[ApacheJMeter_core.jar:5.5]
+	at java.lang.Thread.run(Thread.java:834) ~[?:?]
+2023-06-05 21:39:37,878 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-22
+2023-06-05 21:39:40,834 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-23
+2023-06-05 21:39:42,884 ERROR o.a.j.m.JSR223PreProcessor: Problem in JSR223 script, jsr<<<PROJECT_TITLE
+javax.script.ScriptException: Sourced file: inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' : Typed variable declaration : Attempt to resolve method: getBytes() on undefined variable or class name: myField : at Line: 4 : in file: inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' : myField .getBytes ( Charset .forName ( "ISO-8859-1" ) ) 
+ in inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' at line number 4
+	at bsh.engine.BshScriptEngine.evalSource(BshScriptEngine.java:93) ~[bsh-2.0b6.jar:2.0b6 2016-02-05 05:16:19]
+	at bsh.engine.BshScriptEngine.eval(BshScriptEngine.java:46) ~[bsh-2.0b6.jar:2.0b6 2016-02-05 05:16:19]
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:233) ~[java.scripting:?]
+	at org.apache.jmeter.util.JSR223TestElement.processFileOrScript(JSR223TestElement.java:219) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.modifiers.JSR223PreProcessor.process(JSR223PreProcessor.java:45) ~[ApacheJMeter_components.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.runPreProcessors(JMeterThread.java:978) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.executeSamplePackage(JMeterThread.java:561) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.processSampler(JMeterThread.java:501) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.run(JMeterThread.java:268) ~[ApacheJMeter_core.jar:5.5]
+	at java.lang.Thread.run(Thread.java:834) ~[?:?]
+2023-06-05 21:39:46,564 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-24
+2023-06-05 21:39:47,459 ERROR o.a.j.m.JSR223PreProcessor: Problem in JSR223 script, jsr<<<PROJECT_TITLE
+javax.script.ScriptException: Sourced file: inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' : Typed variable declaration : Attempt to resolve method: getBytes() on undefined variable or class name: myField : at Line: 4 : in file: inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' : myField .getBytes ( Charset .forName ( "ISO-8859-1" ) ) 
+ in inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' at line number 4
+	at bsh.engine.BshScriptEngine.evalSource(BshScriptEngine.java:93) ~[bsh-2.0b6.jar:2.0b6 2016-02-05 05:16:19]
+	at bsh.engine.BshScriptEngine.eval(BshScriptEngine.java:46) ~[bsh-2.0b6.jar:2.0b6 2016-02-05 05:16:19]
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:233) ~[java.scripting:?]
+	at org.apache.jmeter.util.JSR223TestElement.processFileOrScript(JSR223TestElement.java:219) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.modifiers.JSR223PreProcessor.process(JSR223PreProcessor.java:45) ~[ApacheJMeter_components.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.runPreProcessors(JMeterThread.java:978) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.executeSamplePackage(JMeterThread.java:561) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.processSampler(JMeterThread.java:501) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.run(JMeterThread.java:268) ~[ApacheJMeter_core.jar:5.5]
+	at java.lang.Thread.run(Thread.java:834) ~[?:?]
+2023-06-05 21:39:49,329 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-25
+2023-06-05 21:39:52,065 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-26
+2023-06-05 21:39:52,629 ERROR o.a.j.m.JSR223PreProcessor: Problem in JSR223 script, jsr<<<PROJECT_TITLE
+javax.script.ScriptException: Sourced file: inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' : Typed variable declaration : Attempt to resolve method: getBytes() on undefined variable or class name: myField : at Line: 4 : in file: inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' : myField .getBytes ( Charset .forName ( "ISO-8859-1" ) ) 
+ in inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' at line number 4
+	at bsh.engine.BshScriptEngine.evalSource(BshScriptEngine.java:93) ~[bsh-2.0b6.jar:2.0b6 2016-02-05 05:16:19]
+	at bsh.engine.BshScriptEngine.eval(BshScriptEngine.java:46) ~[bsh-2.0b6.jar:2.0b6 2016-02-05 05:16:19]
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:233) ~[java.scripting:?]
+	at org.apache.jmeter.util.JSR223TestElement.processFileOrScript(JSR223TestElement.java:219) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.modifiers.JSR223PreProcessor.process(JSR223PreProcessor.java:45) ~[ApacheJMeter_components.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.runPreProcessors(JMeterThread.java:978) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.executeSamplePackage(JMeterThread.java:561) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.processSampler(JMeterThread.java:501) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.run(JMeterThread.java:268) ~[ApacheJMeter_core.jar:5.5]
+	at java.lang.Thread.run(Thread.java:834) ~[?:?]
+2023-06-05 21:39:54,733 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-27
+2023-06-05 21:39:57,335 ERROR o.a.j.m.JSR223PreProcessor: Problem in JSR223 script, jsr<<<PROJECT_TITLE
+javax.script.ScriptException: Sourced file: inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' : Typed variable declaration : Attempt to resolve method: getBytes() on undefined variable or class name: myField : at Line: 4 : in file: inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' : myField .getBytes ( Charset .forName ( "ISO-8859-1" ) ) 
+ in inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' at line number 4
+	at bsh.engine.BshScriptEngine.evalSource(BshScriptEngine.java:93) ~[bsh-2.0b6.jar:2.0b6 2016-02-05 05:16:19]
+	at bsh.engine.BshScriptEngine.eval(BshScriptEngine.java:46) ~[bsh-2.0b6.jar:2.0b6 2016-02-05 05:16:19]
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:233) ~[java.scripting:?]
+	at org.apache.jmeter.util.JSR223TestElement.processFileOrScript(JSR223TestElement.java:219) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.modifiers.JSR223PreProcessor.process(JSR223PreProcessor.java:45) ~[ApacheJMeter_components.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.runPreProcessors(JMeterThread.java:978) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.executeSamplePackage(JMeterThread.java:561) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.processSampler(JMeterThread.java:501) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.run(JMeterThread.java:268) ~[ApacheJMeter_core.jar:5.5]
+	at java.lang.Thread.run(Thread.java:834) ~[?:?]
+2023-06-05 21:39:57,366 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-28
+2023-06-05 21:39:59,946 INFO o.a.j.t.JMeterThread: Thread started: bzmFFATG_Работа_с_редактором-ThreadStarter 1-29
+2023-06-05 21:40:00,024 INFO o.a.j.r.Summariser: summary +    901 in 00:00:30 =   30.1/s Avg:   183 Min:    79 Max:   902 Err:     0 (0.00%) Active: 29 Started: 30 Finished: 1
+2023-06-05 21:40:00,024 INFO o.a.j.r.Summariser: summary =   1960 in 00:02:24 =   13.6/s Avg:   178 Min:    79 Max:   902 Err:     0 (0.00%)
+2023-06-05 21:40:01,662 ERROR o.a.j.m.JSR223PreProcessor: Problem in JSR223 script, jsr<<<PROJECT_TITLE
+javax.script.ScriptException: Sourced file: inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' : Typed variable declaration : Attempt to resolve method: getBytes() on undefined variable or class name: myField : at Line: 4 : in file: inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' : myField .getBytes ( Charset .forName ( "ISO-8859-1" ) ) 
+ in inline evaluation of: ``import java.nio.charset.Charset;  String myField = vars.get("PROJECT_TITLE"); by . . . '' at line number 4
+	at bsh.engine.BshScriptEngine.evalSource(BshScriptEngine.java:93) ~[bsh-2.0b6.jar:2.0b6 2016-02-05 05:16:19]
+	at bsh.engine.BshScriptEngine.eval(BshScriptEngine.java:46) ~[bsh-2.0b6.jar:2.0b6 2016-02-05 05:16:19]
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:233) ~[java.scripting:?]
+	at org.apache.jmeter.util.JSR223TestElement.processFileOrScript(JSR223TestElement.java:219) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.modifiers.JSR223PreProcessor.process(JSR223PreProcessor.java:45) ~[ApacheJMeter_components.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.runPreProcessors(JMeterThread.java:978) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.executeSamplePackage(JMeterThread.java:561) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.processSampler(JMeterThread.java:501) ~[ApacheJMeter_core.jar:5.5]
+	at org.apache.jmeter.threads.JMeterThread.run(JMeterThread.java:268) ~[ApacheJMeter_core.jar:5.5]
+	at java.lang.Thread.run(Thread.java:834) ~[?:?]
+2023-06-05 21:40:01,914 INFO o.a.j.r.ResultCollector: Shutdown hook started
+2023-06-05 21:40:01,914 INFO o.a.j.r.ResultCollector: Shutdown hook ended
